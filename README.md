@@ -3,9 +3,6 @@ prueba
 # [prueba](https://www.youtube.com/watch?v=iL6G83HaczU)
 
 
-![](imagenes/promedio%daily%total%steps%1y2.png)
-
-
 ![](imagenes/promediodailytotalsteps1y2.png)
 
 Case Study 2: How Can a Wellness Technology Company Play It Smart?
