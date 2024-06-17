@@ -1,6 +1,6 @@
-# prueba
+## prueba
 prueba
-# prueba(https://www.youtube.com/watch?v=iL6G83HaczU)
+# [prueba](https://www.youtube.com/watch?v=iL6G83HaczU)
 
 Case Study 2: How Can a Wellness Technology Company Play It Smart?
 1. What are some trends in smart device usage?
