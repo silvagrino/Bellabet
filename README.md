@@ -35,7 +35,7 @@ Tratar de ganar insight del uso de apps de salud y bienestar, mediante el análi
  Deliverable 
 A clear statement of the business task
 Analizar el uso que se le dan a las apps de parte de los usuarios para poder desarrollar una estrategia de marketing eficiente
-
+## prueba
 Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company. You have been asked to focus on one of Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. The insights you discover will then help guide marketing strategy for the company
 She has asked the marketing analytics team to focus on a Bellabeat product and analyze smart device usage data in order to gain insight into how people are already using their smart devices. Then, using this information, she would like high-level recommendations for how these trends can inform Bellabeat marketing strategy.
 
