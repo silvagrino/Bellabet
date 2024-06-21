@@ -18,7 +18,7 @@ Case Study 2: How Can a Wellness Technology Company Play It Smart?
 6. Your top high-level content recommendations based on your análisis
 
 
-Case Study Roadmap – ##Ask
+Case Study Roadmap – ## Ask
  Guiding questions 
 ● What is the problem you are trying to solve? 
 
