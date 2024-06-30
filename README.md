@@ -14,7 +14,7 @@ Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar
 Interesados principales: Urška Sršen y Sando Mur, miembros del equipo ejecutivo.
 Interesados secundarios: Equipo de análisis de marketing de Bellabeat.
 
-#2. Preparar
+# 2. Preparar
 Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle.
 
 Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño a nivel de minuto.
