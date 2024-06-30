@@ -9,6 +9,7 @@ Empresa: Bellabeat, fundada en 2013, es una compañía de bienestar para mujeres
 Productos: Aplicación Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
 
 Objetivo: Convertirse en un jugador más grande en el mercado global de dispositivos inteligentes.
+
 Tarea del equipo: Analizar datos de dispositivos inteligentes para obtener información sobre el uso de estos dispositivos por parte de los consumidores y guiar la estrategia de marketing.
 
 # 1. Tarea
