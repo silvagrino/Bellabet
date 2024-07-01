@@ -58,7 +58,7 @@ LLEVAR A TABLEAU
 porque no voy a ocupar el 1er dataset del primer mes, evidenciando que hay pocos datos :
 
 Promedio :
-![](imagenes/1y2/promedio_daily_total%steps_1y2.png)
+![](imagenes/1y2/promedio_daily_total_steps_1y2.png)
 
 Suma total:
 ![](imagenes/1y2/suma_total_steps_1y2.png)
@@ -78,22 +78,22 @@ convertir los dataset separando hora y fecha.
 ## EDITAR
 
 calorias en un marco de 24 horas :
-![](calories_hourly.png)
+![](imagenes/hourly/calories_hourly.png)
 
 Promedio de calorias dentro de 24 horas:
-![](promedio_calories_hourly.png)
+![](imagenes/hourly/promedio_calories_hourly.png)
 
 Promedio de pasos dados en 24 horas:
-![](promedio_hourly_steps.png)
+![](imagenes/hourly/promedio_hourly_steps.png)
 
 Total de pasos dados en 24 horas:
-![](step_total_hourly.png)
+![](imagenes/hourly/step_total_hourly.png)
 
 suma total de calorias por hora:
-![](suma_calories_hourly.png)
+![](imagenes/hourly/suma_calories_hourly.png)
 
 suma de pasos totales por hora:
-![](suma_steps_total_hourly.png)
+![](imagenes/hourly/suma_steps_total_hourly.png)
 
 ## EDITAR 
 
