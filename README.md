@@ -56,4 +56,4 @@ Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de
 LLEVAR A TABLEAU
 
 
-![](imagenes/daily/Promedio_activity_date_total%steps2.png)
+![](imagenes/daily/Promedio_activity_date_total_steps2.png)
