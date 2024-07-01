@@ -47,3 +47,10 @@ Método de registro del peso: 5 usuarios ingresaron manualmente su peso y 3 lo r
 Días de registro: Mayoría de los datos registrados de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
 
 
+
+## DAILY
+  solo data activity
+
+Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de columnas
+LLEVAR A TABLEAU
+
