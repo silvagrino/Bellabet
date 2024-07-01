@@ -52,6 +52,8 @@ Días de registro: Mayoría de los datos registrados de martes a jueves, lo que 
   solo data activity
 
 Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de columnas
+
 LLEVAR A TABLEAU
+
 
 ![](imagenes/daily/Promedio_activity_date_total%steps2.png)
