@@ -4,11 +4,11 @@
 
 ## Escenario
 
-Empresa: Bellabeat, fundada en 2013, es una compañía de bienestar para mujeres que ha crecido rápidamente.
+Empresa: Bellabeat, fundada en 2013, es una compañía pequeña de alta tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 
 Productos: Aplicación Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
 
-Objetivo: Convertirse en un jugador más grande en el mercado global de dispositivos inteligentes.
+Objetivo: Convertirse en una de las compañias más grande en el mercado global de dispositivos inteligentes.
 
 Tarea del equipo: Analizar datos de dispositivos inteligentes para obtener información sobre el uso de estos dispositivos por parte de los consumidores y guiar la estrategia de marketing.
 
@@ -20,7 +20,7 @@ Interesados principales: Urška Sršen y Sando Mur, miembros del equipo ejecutiv
 Interesados secundarios: Equipo de análisis de marketing de Bellabeat.
 
 # 2. Preparar
-Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle.
+Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle. Constituido por n° archivos, abarcando un periodo de 2 meses.
 
 Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño a nivel de minuto.
 
