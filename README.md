@@ -24,9 +24,9 @@ Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obte
 
 Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
-Enfoque ROCCC:
+## Enfoque ROCCC:
 
-*R*eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
+**R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
 **O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios.
 
@@ -37,7 +37,7 @@ Enfoque ROCCC:
 **C**ited/Citación: Desconocida.
 
 
-Limitaciones del conjunto de datos:
+## Limitaciones del conjunto de datos:
 
 * El Tamaño de la muestra son solo 30 usuarios, lo cual es pequeño para un análisis conclusivo y robusto.
 
@@ -49,6 +49,8 @@ Limitaciones del conjunto de datos:
 * Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes, el primer mes no se puede considerar para hacer un analisis preciso con datos tan dispersos e inconsistentes. Ademas la mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
 
 
+
+# 3. Process 
 
 ## DAILY
   solo data activity
