@@ -26,7 +26,7 @@ Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuenc
 
 Enfoque ROCCC:
 
-**R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
+*R*eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
 **O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios.
 
