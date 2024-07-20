@@ -79,9 +79,3 @@ n_distinct(dataActivity_SD_big$Id)
 write_csv(dataActivity_sindistancia, file = "dataActivity_sindistancia.csv")
 write_csv(dataActivity_sindistancia2, file = "dataActivity_sindistancia2.csv")
 
-rm(dataActivity_big2)
-rm(dataActivity_big)
-
-dataActivity_big <- merge(dataActivity_1, dataActivity_2, all = TRUE)
-
-write_csv(dataActivity_big, file = "dataActivity_big.csv")
