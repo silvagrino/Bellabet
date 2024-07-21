@@ -35,6 +35,13 @@ summary(dailyActivity_merged2 %>%
 sum(is.na(dailyActivity_merged))
 sum(is.na(dailyActivity_merged2))
 
+# duplicados 
+
+sum(duplicated(dailyActivity_merged))
+sleep_day <- dailyActivity_merged[!duplicated(dailyActivity_merged), ]
+sum(duplicated(dailyActivity_merged2))
+sleep_day <- dailyActivity_merged2[!duplicated(dailyActivity_merged2), ]
+
 ##sacar columnas innecesarias##
 
 dataActivity_sindistancia <- select(dailyActivity_merged, -LoggedActivitiesDistance, -VeryActiveDistance, 
