@@ -66,6 +66,14 @@ write_csv(dataActivity_SD_big, file = "dataActivity_SD_big.csv")
 ## numeros Id por mes ##
 n_distinct(dataActivity_SD_big$Id)
 
+#### CREACION DE COLUMNAS PARA DIAS DE LA SEMANA 
+
+dataActivity_sindistancia <- dataActivity_sindistancia %>% 
+  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+dataActivity_sindistancia2 <- dataActivity_sindistancia2 %>% 
+  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+
+
 #Exportar cada uno para analizar solo el dataactivity_sindistancia2 porque es el que tiene mas datos #
 
 write_csv(dataActivity_sindistancia, file = "dataActivity_sindistancia.csv")
