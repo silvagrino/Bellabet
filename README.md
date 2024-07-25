@@ -71,6 +71,8 @@ promedio de total steps por dia
 
 ![](imagenes/daily/Promedio_activity_date_total_steps2.png)
 
+Solo se ocupara el 2do mes por :
+![](imagenes/daily/Data_recolectada_por_fecha.png)
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
 
