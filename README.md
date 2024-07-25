@@ -76,6 +76,16 @@ promedio de total steps por dia
 
 # Imagenes de Tableau de otros 
 
+![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
+
+![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Calorias_por_semana.png)
+
+
+
 
 
 ## HOURLY
