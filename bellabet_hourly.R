@@ -118,4 +118,3 @@ hourlySteps_BIG <- hourlySteps_BIG %>%
 
 write.csv(hourlyCalories_BIG, "hourlyCalories_BIG.csv")
 write.csv(hourlySteps_BIG, "hourlySteps_BIG.csv")
- save.image(hourly_finaldata.Rdata)
