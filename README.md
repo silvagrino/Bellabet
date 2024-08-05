@@ -4,20 +4,20 @@
 
 ## Escenario
 
-Empresa: Bellabeat, fundada en 2013, es una compañía pequeña de alta tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
+ Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 
-Productos: Aplicación Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
+Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
 
-Objetivo: Convertirse en una de las compañias más grande en el mercado global de dispositivos inteligentes.
+Su Objetivo es Convertirse en una de las compañias más grande en el mercado global de dispositivos inteligentes.
 
-Tarea del equipo: Analizar datos de dispositivos inteligentes para obtener información sobre el uso de estos dispositivos por parte de los consumidores y guiar la estrategia de marketing.
+La tarea del equipo: Analizar datos de dispositivos inteligentes para obtener información sobre el uso de estos dispositivos por parte de los consumidores y guiar la estrategia de marketing.
 
 # 1. Tarea
 Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
 
-Interesados principales: Urška Sršen y Sando Mur, miembros del equipo ejecutivo.
+Stakeholders principales: Urška Sršen y Sando Mur, miembros del equipo ejecutivo.
 
-Interesados secundarios: Equipo de análisis de marketing de Bellabeat.
+Stakeholders secundarios: Equipo de análisis de marketing de Bellabeat.
 
 # 2. Preparar
 Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle. Constituido por n°11 archivos para el primer mes, 18 para el segundo, abarcando un periodo de 2 meses.
@@ -28,9 +28,9 @@ Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuenc
 
 **R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
-**O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios.
+**O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios desde sus dispositivos inteligentes.
 
-**C**omprehensive/Integralidad: Datos detallados, pero con un tamaño de muestra pequeño e inconsistente, registrados en ciertos días de la semana. Especialmente en el 1er mes, hay menos datos que en el 2do mes.
+**C**omprehensive/Integralidad: Datos detallados y extensos pero con un tamaño de muestra pequeño e inconsistente, registrados en ciertos días de la semana. Especialmente en el 1er mes, hay menos datos que en el 2do mes.
 
 **C**urrent/Actuales: Datos de marzo a mayo de 2016, no reflejan necesariamente los hábitos actuales de los usuarios.
 
@@ -53,13 +53,22 @@ Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuenc
 # 3. Process 
 
 ## DAILY
-  solo data activity
+
+Hago analsisi exploratorio inicial viendo numero de columnas y filas, filas distintas, buscando duplicados
+
+Resumen general
+
+Numeros Id's unicos por mes
+
+buscando duplicados, elimnando valores nulos
 
 Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de columnas
 
 LLEVAR A TABLEAU
 
 porque no voy a ocupar el 1er dataset del primer mes, evidenciando que hay pocos datos :
+
+Llevare a tableau las tablas para tener una mirada general a la cantidad de datos a traves de los 2 archivos
 
 Promedio :
 ![](imagenes/1y2/promedio_daily_total_steps_1y2.png)
