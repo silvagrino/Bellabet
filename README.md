@@ -20,34 +20,34 @@ Stakeholders principales: Urška Sršen y Sando Mur, miembros del equipo ejecuti
 Stakeholders secundarios: Equipo de análisis de marketing de Bellabeat.
 
 # 2. Preparar
-Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle. Constituido por n°11 archivos para el primer mes, 18 para el segundo, abarcando un periodo de 2 meses.
+Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle. https://www.kaggle.com/datasets/arashnic/fitbit
+
+Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses.
 
 Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
-## Enfoque ROCCC:
+Para preparar los datos tengo que aplicar un Enfoque ROCCC:
 
 **R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
 **O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios desde sus dispositivos inteligentes.
 
-**C**omprehensive/Integralidad: Datos detallados y extensos pero con un tamaño de muestra pequeño e inconsistente, registrados en ciertos días de la semana. Especialmente en el 1er mes, hay menos datos que en el 2do mes.
+**C**omprehensive/Integralidad: Datos detallados y extensos pero con un tamaño de muestra pequeño e inconsistente, registrados en ciertos días de la semana. Sobre todo en el 1er mes, hay menos datos que en el 2do mes.
 
-**C**urrent/Actuales: Datos de marzo a mayo de 2016, no reflejan necesariamente los hábitos actuales de los usuarios.
+**C**urrent/Actuales: Datos de marzo a mayo de 2016.
 
-**C**ited/Citación: Desconocida.
+**C**ited/Citación: No encontrado.
 
 
-## Limitaciones del conjunto de datos:
+## El conjunto de datos ademas tiene limitaciones:
 
 * El Tamaño de la muestra son solo 30 usuarios, lo cual es pequeño para un análisis conclusivo y robusto.
 
 * Inconsistencia en distribución de datos en numero de usuarios; 33 usuarios para actividad diaria, 24 para sueño y 8 para peso, con algunas inconsistencias en el registro de datos.
 
-
 * Método de registro del peso: 5 usuarios ingresaron manualmente su peso y 3 lo registraron a través de un dispositivo wifi.
 
 * Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes, el primer mes no se puede considerar para hacer un analisis preciso con datos tan dispersos e inconsistentes. Ademas la mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
-
 
 
 # 3. Process 
