@@ -58,29 +58,45 @@ Para preparar los datos se aplicará un Enfoque ROCCC:
 
 ## DAILY
 
-Hago analisis exploratorio inicial viendo numero de columnas y filas, filas distintas, buscando duplicados
+Hago analisis exploratorio inicial viendo columnas y numero filas, filas distintas, buscando duplicados
+```
+colnames(dailyActivity_merged)
+colnames(dailyActivity_merged2)
+nrow(dailyActivity_merged)
+nrow(dailyActivity_merged2)
+n_distinct(dailyActivity_merged)
+n_distinct(dailyActivity_merged2)
+```
+FOTO DE CODIGO APLICADO
 
 Resumen general
+```
+###### Summary ######
+summary(dailyActivity_merged %>%
+          select(-Id, -ActivityDate))
+summary(dailyActivity_merged2 %>%
+          select(-Id, -ActivityDate))
+```
+FOTO DE RESUMEN GENERAL
 
 Numeros Id's unicos por mes
-
-Ejemplo de cita
-
->Este es un **fragmento con comillas**.
->El fragmento continúa aquí.
->Este es otro **fragmento con comillas**.
-Este fragmento continúa en la siguiente línea.
-Esta línea ya no está sangrada.
-
-
- `Coomo se ve esto?`
-
+```
+n_distinct(dataActivity_sindistancia$Id)
+n_distinct(dataActivity_sindistancia2$Id)
 ```
 
-Esto deberia ser una linea de codigo 
+Para el 1er mes 457. Para el 2do son 940. Hay que chequear, la diferencia es significativa. Son mucho menos datos en el 1er mes.
 
+
+
+Los Id's registrados en los meses on 33 para el 1er mes y 35 para el 2do
+
+
+Convertir la columna de fechas a tipo Date
 ```
-
+dataActivity_sind_week$ActivityDate <- as.Date(dataActivity_sind_week$ActivityDate, format="%m/%d/%Y")
+dataActivity_sind_week2$ActivityDate <- as.Date(dataActivity_sind_week2$ActivityDate, format="%m/%d/%Y")
+```
 buscando duplicados, elimnando valores nulos
 
 Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de columnas
