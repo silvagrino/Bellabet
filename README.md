@@ -15,18 +15,22 @@ La tarea del equipo: Analizar datos de dispositivos inteligentes para obtener in
 # 1. Tarea
 Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
 
-Stakeholders principales: Urška Sršen y Sando Mur, miembros del equipo ejecutivo.
+Estos datos seran presentados a los stakeholders principales Urška Sršen y Sando Mur, miembros del equipo ejecutivo y stakeholders secundarios conformados por el equipo de análisis de marketing de Bellabeat.
 
-Stakeholders secundarios: Equipo de análisis de marketing de Bellabeat.
+Se puede resumir la tarea por delante en 3 preguntas claves para desarrollar este analisis:
+1.¿Cuáles son algunas tendencias en el uso de dispositivos inteligentes?
+2.¿Cómo podrían aplicarse estas tendencias a los clientes de Bellabeat?
+3.¿Cómo podrían estas tendencias influir en la estrategia de marketing de Bellabeat?
 
 # 2. Preparar
-Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos de Kaggle. https://www.kaggle.com/datasets/arashnic/fitbit
+
+Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos desde Kaggle. https://www.kaggle.com/datasets/arashnic/fitbit
 
 Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses.
 
 Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
-Para preparar los datos tengo que aplicar un Enfoque ROCCC:
+Para preparar los datos se aplicará un Enfoque ROCCC:
 
 **R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
@@ -54,11 +58,20 @@ Para preparar los datos tengo que aplicar un Enfoque ROCCC:
 
 ## DAILY
 
-Hago analsisi exploratorio inicial viendo numero de columnas y filas, filas distintas, buscando duplicados
+Hago analisis exploratorio inicial viendo numero de columnas y filas, filas distintas, buscando duplicados
 
 Resumen general
 
 Numeros Id's unicos por mes
+
+Ejemplo de cita
+
+>Este es un **fragmento con comillas**.
+>El fragmento continúa aquí.
+>Este es otro **fragmento con comillas**.
+Este fragmento continúa en la siguiente línea.
+Esta línea ya no está sangrada.
+
 
 buscando duplicados, elimnando valores nulos
 
