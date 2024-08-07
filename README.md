@@ -75,6 +75,12 @@ Esta línea ya no está sangrada.
 
  `Coomo se ve esto?`
 
+```
+
+Esto deberia ser una linea de codigo 
+
+```
+
 buscando duplicados, elimnando valores nulos
 
 Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de columnas
