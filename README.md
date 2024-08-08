@@ -58,7 +58,7 @@ Para preparar los datos se aplicará un Enfoque ROCCC:
 
 ## DAILY
 
-Hago analisis exploratorio inicial viendo columnas y numero filas, filas distintas, buscando duplicados
+Hago analisis exploratorio inicial viendo columnas y numero de filas, filas distintas, buscando duplicados y valores nulos.
 ```
 colnames(dailyActivity_merged)
 colnames(dailyActivity_merged2)
@@ -66,8 +66,13 @@ nrow(dailyActivity_merged)
 nrow(dailyActivity_merged2)
 n_distinct(dailyActivity_merged)
 n_distinct(dailyActivity_merged2)
+sum(duplicated(dailyActivity_merged))
+sum(duplicated(dailyActivity_merged2))
+sum(is.na(dailyActivity_merged))
+sum(is.na(dailyActivity_merged2))
+
 ```
-FOTO DE CODIGO APLICADO
+Para el 1er mes 457. Para el 2do son 940. Hay que chequear, la diferencia es significativa. Son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
 
 Resumen general
 ```
@@ -77,7 +82,8 @@ summary(dailyActivity_merged %>%
 summary(dailyActivity_merged2 %>%
           select(-Id, -ActivityDate))
 ```
-FOTO DE RESUMEN GENERAL
+Resumen general para analizar el macro. Tendre que eliminar los "distance", son irrelevantes para este analisis.
+
 
 Numeros Id's unicos por mes
 ```
@@ -85,11 +91,7 @@ n_distinct(dataActivity_sindistancia$Id)
 n_distinct(dataActivity_sindistancia2$Id)
 ```
 
-Para el 1er mes 457. Para el 2do son 940. Hay que chequear, la diferencia es significativa. Son mucho menos datos en el 1er mes.
-
-
-
-Los Id's registrados en los meses on 33 para el 1er mes y 35 para el 2do
+Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do
 
 
 Convertir la columna de fechas a tipo Date
@@ -97,7 +99,9 @@ Convertir la columna de fechas a tipo Date
 dataActivity_sind_week$ActivityDate <- as.Date(dataActivity_sind_week$ActivityDate, format="%m/%d/%Y")
 dataActivity_sind_week2$ActivityDate <- as.Date(dataActivity_sind_week2$ActivityDate, format="%m/%d/%Y")
 ```
-buscando duplicados, elimnando valores nulos
+Elimnando valores nulos
+
+
 
 Puedo tambien calcular los minutos activos para ponerlos aqui, hacer una suma de columnas
 
@@ -118,24 +122,41 @@ promedio de total steps por dia
 ![](imagenes/daily/Promedio_activity_date_total_steps2.png)
 
 Solo se ocupara el 2do mes por :
+
+```
+ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
+  geom_bar(fill="steelblue")+
+  labs(title="Data recolectada por fecha")
+```
+
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-# Imagen del grafico de piza y evidenciar el uso de R con su codigo.
+CREACION DE COLUMNAS PARA DIAS DE LA SEMANA 
 
-# Imagenes de Tableau de otros 
+```
+dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
+  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+```
+
+########################### analisis###############################
+
+# Imagen del grafico de piza y evidenciar el uso de R con su codigo.
+```
+plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
+  layout(title = 'Minutos de nivel de actividad',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+```
 
 ![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
+
+# Imagenes de Tableau de otros 
 
 ![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
 
 ![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
 
 ![](imagenes/daily/Calorias_por_semana.png)
-
-
-
-
-
 ## HOURLY
 
 dos dataset : calories y steps para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia
