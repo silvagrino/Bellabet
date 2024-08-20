@@ -68,6 +68,8 @@ sum(duplicated(dailyActivity_merged2))
 sum(is.na(dailyActivity_merged))
 sum(is.na(dailyActivity_merged2))
 ```
+
+
 Para el 1er mes 457. Para el 2do son 940. [QUE?] Hay que chequear, la diferencia es significativa. Son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
 
 
@@ -182,7 +184,7 @@ Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS.
 
 convertir los dataset separando hora y fecha.
 
-Comprobando el tipo de dato en que esta el apartado fecha “class” .Todos son carácter, hay qe convertirlos.
+Comprobando el tipo de dato en que esta el apartado fecha `class()` .Todos son carácter, hay qe convertirlos.
 
 
 ######### MERGE #############
