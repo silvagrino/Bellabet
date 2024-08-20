@@ -1,7 +1,7 @@
 
 ## Escenario
 
- Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
+Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 
 Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
 
@@ -40,7 +40,7 @@ Para preparar los datos se aplicará un Enfoque ROCCC:
 **C**ited/Citación: No encontrado.
 
 
-## El conjunto de datos ademas tiene limitaciones:
+## El dataset tiene limitaciones:
 
 * El Tamaño de la muestra son solo 30 usuarios, lo cual es pequeño para un análisis conclusivo y robusto.
 
@@ -101,7 +101,10 @@ n_distinct(dataActivity_sindistancia2$Id)
 
 Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do
 
-## Hago merge de los dos meses y convierto la columna de fechas a tipo Date
+
+ Hago merge de los dos meses y convierto la columna de fechas a tipo Date
+
+
 ```
 dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
 dataActivity_SD_big$ActivityDate <- as.Date(dataActivity_SD_big$ActivityDate, format="%m/%d/%Y")
@@ -135,8 +138,8 @@ promedio de total steps por dia
 
 ![](imagenes/daily/Promedio_activity_date_total_steps2.png)
 ----------------------------------------------------------------------
-Para que crear días de la semana?
-################### análisis #######################
+
+## Análisis ####
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
 ```
@@ -168,13 +171,15 @@ Los llevo a Tableau
 dos dataset : calories y steps para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia
 Cantidad de pasos y calorías gastadas cada hora del día . 
 
-# Renombrar para ordenar : calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
+## Renombrar para ordenar : calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
 
 
-Lo mismo qe la anterior daily, 33 y 34.  Sin vaores nulos.  VER DUPLICADOS.
+Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS.
 
 # Resumen general
-################ IMAGEN SUMMARY ######################
+
+![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
+
 convertir los dataset separando hora y fecha.
 
 Comprobando el tipo de dato en que esta el apartado fecha “class” .Todos son carácter, hay qe convertirlos.
