@@ -99,6 +99,7 @@ Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do Por lo
 
 
  Hago merge de los dos meses y convierto la columna de fechas a tipo Date
+Comprobando el tipo de dato que tiene la columna fecha con `class()` . Es “character”, hay qe convertirla.
 
 
 ```
@@ -147,7 +148,8 @@ CREACION DE COLUMNAS PARA DIAS DE LA SEMANA
 dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
-Para que crear días de la semana?
+Crearé una columna adicional para los días de la semana. 
+Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
 
 QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD?
 Los llevo a Tableau
@@ -157,25 +159,25 @@ Los llevo a Tableau
 ![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
 
 ![](imagenes/daily/Calorias_por_semana.png)
-
+###########################################
 Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
 Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
 Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
- 
+ ##########################################################
 ## HOURLY
 
 Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps 
 Evaluaré la actividad diaria en funcionde de pasos y calorías gastadas cada hora del día . 
 
-## Renombrar para ordenar : calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
+## Renombrar:
+ calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
 
 # Resumen general
 
 ![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
 
-Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS.
+Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS. EDITAR ##########################
 
-Comprobando el tipo de dato en que esta el apartado fecha `class()` .Todos son carácter, hay qe convertirlos.
 
 ######### MERGE #############
 
