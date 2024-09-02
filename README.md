@@ -65,29 +65,24 @@ sum(is.na(dailyActivity_merged))
 sum(is.na(dailyActivity_merged2))
 ```
 
-Para el 1er mes 457. Para el 2do son 940. [QUE?] Hay que chequear, la diferencia es significativa. Son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
+Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas. Hay que corroborar la cantidad de datos, la diferencia es significativa, son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
 
 
-Resumen general
-```
-summary(dailyActivity_merged %>%
-          select(-Id, -ActivityDate))
-summary(dailyActivity_merged2 %>%
-          select(-Id, -ActivityDate))
-```
-Eliminare los datos "distance", son irrelevantes para el análisis que haré.
+Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 
-Que me dice la data?[ ……………..] Sacar conclusiones en cuanto a la diferencia de los dos meses. Minimos máximos promedios y medias.
 
  ## Numero de datos segun mes ##############################
 
-Destaca la diferencia entre el 1er y 2do mes. Me interesa analizar la variable de pasos así que llevare los dos meses a tableau para una breve vista donde podre analizar la diferencia entre estos dos meses :
-
+Destaca la diferencia entre el 1er y 2do mes. Me interesa analizar la variable de pasos mas adelante, así que llevare los pasos totales de los dos meses para analizarlos en Tableau
 Suma total:
 ![](imagenes/1y2/suma_total_steps_1y2.png)
+
+promedio de total steps por dia 
+
+![](imagenes/daily/Promedio_activity_date_total_steps2.png)
+
 Teniendo en cuenta solo la variable step, se debería descartar el 1er mes ya que es considerable la diferencia con el 2do mes.
-Aun así para estar seguro compararé la cantidad de datos totales de los 2 meses.
-Primero :
+Aun así ahora compararé la cantidad de datos totales registrados de los 2 meses.
 
 Numeros Id's unicos por mes
 ```
@@ -97,9 +92,8 @@ n_distinct(dataActivity_sindistancia2$Id)
 
 Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do Por lo tanto la diferencia de datos no se debe a que menos ID’s  se hayan registrado.
 
-
- Hago merge de los dos meses y convierto la columna de fechas a tipo Date
 Comprobando el tipo de dato que tiene la columna fecha con `class()` . Es “character”, hay qe convertirla.
+Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
 
 
 ```
@@ -118,19 +112,35 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 ```
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Solo se ocupara el 2do mes por :
-
-Descartaré el 1er mes. Para fines prácticos de este análisis solo ocupare el mes 2 ( … - ….)
+Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. Ocupar el 1er mes haria mas sesgada(edit) el analisis.
 
 
 ------------------------------------------------------------------
 
-promedio de total steps por dia 
-
-![](imagenes/daily/Promedio_activity_date_total_steps2.png)
 ----------------------------------------------------------------------
 
 ## Análisis ####
+
+Resumen general
+```
+summary(dailyActivity_merged2 %>%
+          select(-Id, -ActivityDate))
+```
+
+S
+# DATOS SEGUN DIA DE LA SEMANA 
+
+```
+ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
+  geom_bar(stat="identity", fill="steelblue") +
+  labs(title="Cantidad de Datos Totales por Día de la Semana",
+       x="Día de la Semana",
+       y="Cantidad de Registros") +
+  theme_minimal()
+```
+
+IMAGEN : Cantidadededatostotalesdiasemana ###########
+
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
 ```
