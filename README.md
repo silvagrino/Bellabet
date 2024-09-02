@@ -122,12 +122,21 @@ Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grand
 ## Análisis ####
 
 Resumen general
+
 ```
 summary(dailyActivity_merged2 %>%
           select(-Id, -ActivityDate))
 ```
+![](imagenes/daily/summary_mes_2.png)
 
-S
+
+El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
+
+Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
+
+El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo.
+
+
 # DATOS SEGUN DIA DE LA SEMANA 
 
 ```
@@ -138,8 +147,11 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
        y="Cantidad de Registros") +
   theme_minimal()
 ```
+![](imagenes/daily/registros_dias_semana.png)
 
 IMAGEN : Cantidadededatostotalesdiasemana ###########
+
+![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
 
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
