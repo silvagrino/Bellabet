@@ -135,7 +135,7 @@ Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los out
 Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
 Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
 
-
+#### Tengo que poner los sedentary minutes en promedio o en suma? en el dataset son la cantidad de minutos por dia en sedentario. Grafico los otros "minutes"?
 
 # DATOS SEGUN DIA DE LA SEMANA 
 
