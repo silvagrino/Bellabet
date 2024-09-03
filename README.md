@@ -114,6 +114,45 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 
 Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a sacar analisis y conclusiones erradas.
 
+CREACION DE COLUMNAS PARA DIAS DE LA SEMANA 
+```
+dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
+  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+```
+Crearé una columna adicional para los días de la semana. 
+Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
+
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD?
+Los llevo a Tableau
+
+![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Calorias_por_semana.png)
+###########################################
+Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
+Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
+Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
+
+
+
+# DATOS SEGUN DIA DE LA SEMANA 
+
+```
+ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
+  geom_bar(stat="identity", fill="steelblue") +
+  labs(title="Cantidad de Datos Totales por Día de la Semana",
+       x="Día de la Semana",
+       y="Cantidad de Registros") +
+  theme_minimal()
+```
+![](imagenes/daily/registros_dias_semana.png)
+
+IMAGEN : Cantidadededatostotalesdiasemana ###########
+
+![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
+
 
 ------------------------------------------------------------------
 
@@ -137,22 +176,6 @@ Además, los minutos de actividad intensa y moderada reflejan que, aunque la may
 El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo.
 
 
-# DATOS SEGUN DIA DE LA SEMANA 
-
-```
-ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
-  geom_bar(stat="identity", fill="steelblue") +
-  labs(title="Cantidad de Datos Totales por Día de la Semana",
-       x="Día de la Semana",
-       y="Cantidad de Registros") +
-  theme_minimal()
-```
-![](imagenes/daily/registros_dias_semana.png)
-
-IMAGEN : Cantidadededatostotalesdiasemana ###########
-
-![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
-
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
 ```
@@ -165,26 +188,7 @@ plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textpositio
 ![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
 
 
-CREACION DE COLUMNAS PARA DIAS DE LA SEMANA 
-```
-dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
-  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
-```
-Crearé una columna adicional para los días de la semana. 
-Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
 
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD?
-Los llevo a Tableau
-
-![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Calorias_por_semana.png)
-###########################################
-Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
-Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
-Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
  ##########################################################
 ## HOURLY
 
