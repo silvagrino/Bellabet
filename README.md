@@ -79,7 +79,7 @@ Suma total:
 
 promedio de total steps por dia 
 
-![](imagenes/daily/Promedio_activity_date_total_steps2.png)
+<img src="imagenes/daily/Promedio_activity_date_total_steps2.png" width="700" height="600">
 
 Teniendo en cuenta solo la variable step, se debería descartar el 1er mes ya que es considerable la diferencia con el 2do mes.
 Aun así ahora compararé la cantidad de datos totales registrados de los 2 meses.
