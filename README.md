@@ -79,7 +79,7 @@ Suma total:
 
 promedio de total steps por dia 
 
-<img src="imagenes/daily/Promedio_activity_date_total_steps2.png" width="650" height="550">
+<img src="imagenes/daily/Promedio_activity_date_total_steps2.png" width="650" height="500">
 
 Teniendo en cuenta solo la variable step, se debería descartar el 1er mes ya que es considerable la diferencia con el 2do mes.
 Aun así ahora compararé la cantidad de datos totales registrados de los 2 meses.
@@ -92,7 +92,7 @@ n_distinct(dataActivity_sindistancia2$Id)
 
 Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do Por lo tanto la diferencia de datos no se debe a que menos ID’s  se hayan registrado.
 
-Comprobando el tipo de dato que tiene la columna fecha con `class()` . Es “character”, hay qe convertirla.
+Graficaré los datos totales por fecha por lo cual lo primero que hare será comporbar el tipo de dato que tiene la columna fecha con `class()` . Es “character” por lo tanto hay qe convertirla.
 Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
 
 
@@ -112,7 +112,7 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 ```
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. Ocupar el 1er mes haria mas sesgada(edit) el analisis.
+Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a sacar analisis y conclusiones erradas.
 
 
 ------------------------------------------------------------------
