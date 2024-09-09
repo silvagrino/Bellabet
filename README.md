@@ -92,7 +92,7 @@ n_distinct(dataActivity_sindistancia2$Id)
 
 Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do Por lo tanto la diferencia de datos no se debe a que menos ID’s  se hayan registrado.
 
-Graficaré los datos totales por fecha por lo cual lo primero que hare será comporbar el tipo de dato que tiene la columna fecha con `class()` . Es “character” por lo tanto hay qe convertirla.
+Graficaré los datos totales por fecha por lo cual lo primero que hare será comprobar el tipo de dato que tiene la columna fecha con `class()` . Es “character” por lo tanto hay qe convertirla.
 Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
 
 
@@ -112,30 +112,9 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 ```
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a sacar analisis y conclusiones erradas.
+Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a tener analisis y conclusiones erradas.
 
-CREACION DE COLUMNAS PARA DIAS DE LA SEMANA 
-```
-dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
-  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
-```
-Crearé una columna adicional para los días de la semana. 
-Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
-
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD?
-Los llevo a Tableau
-
-![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Calorias_por_semana.png)
-###########################################
-Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
-Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
-Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
-
-#### Tengo que poner los sedentary minutes en promedio o en suma? en el dataset son la cantidad de minutos por dia en sedentario. Grafico los otros "minutes"?
+DIAS DE LA SEMANA 
 
 # DATOS SEGUN DIA DE LA SEMANA 
 
@@ -152,6 +131,37 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 IMAGEN : Cantidadededatostotalesdiasemana ###########
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
+
+
+
+
+```
+dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
+  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+```
+
+Crearé una columna adicional para los días de la semana. 
+Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
+
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD?
+Los llevo a Tableau
+
+![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Calorias_por_semana.png)
+###########################################
+Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
+Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
+Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
+
+LOS MARTES HAY MAS DATOS REGISTRADOS POR ESO TENGO QUE REEVALUAR ESTA SECCION, PARA HACERLA CON PROMEDIOS. PRIMERO DEMOSTRAR LA DIFERENCIA DE DATA ENTRE DIAS DE LA SEMANA.
+
+si bien el cambio es sustancial, no se puede concluir que tenga unra relacion directa. Se lleva a concluir que los dias con mas steps y gasto calorico, tambien hay mas minutos sedentarios en conpensacion de la atividad que se esta ahaciendo. En cambio en los dias que hay menos actividad, se tiende a mantener una actividad mas estable sin tanta fluctuacion tan drastica entre los minutos sedentarios y la actividad diaria mas vigorosa. Estas diferencias tambien se deben a que hay mas datos registrados los martes.
+EDIT. LO QUE ESTOY MIDIENDO.
+
+#### Tengo que poner los sedentary minutes en promedio o en suma? en el dataset son la cantidad de minutos por dia en sedentario. Grafico los otros "minutes"?
 
 
 ------------------------------------------------------------------
