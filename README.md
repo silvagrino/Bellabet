@@ -49,7 +49,8 @@ Para preparar los datos se aplicará un Enfoque ROCCC:
 
 # 3. Procesar
 
-Para ayudarme en esta etapa de procesar voy a dividir en “hourly” y “daily” los dataset que tienen registros diarios o por hora. Dependiendo del análisis que haga con ellos . 
+Voy a dividir en “hourly” y “daily” los dataset que tienen registros diarios o por hora. Dependiendo del análisis usare unos u otros. 
+
 ## DAILY
 Hago analisis exploratorio inicial viendo columnas y numero de filas, filas distintas, buscando duplicados y valores nulos.
 ```
@@ -65,13 +66,28 @@ sum(is.na(dailyActivity_merged))
 sum(is.na(dailyActivity_merged2))
 ```
 
-Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas. Hay que corroborar la cantidad de datos, la diferencia es significativa, son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
-
+Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas. La diferencia es significativa, son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
 
 Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 
+## HOURLY (calories 1/step_1, Calories_2/Steps_2)
+
+Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps 
+Evaluaré la actividad diaria en función de de pasos y calorías gastadas cada hora del día . 
+
+## Renombrar:
+ calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
+
+# Resumen general
+
+![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
+
+Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS. EDITAR ##########################
+
 
  ## Numero de datos segun mes ##############################
+
+# DAILY (dailyActivity_merged, dailyActivity_merged2)
 
 Destaca la diferencia entre el 1er y 2do mes. Me interesa analizar la variable de pasos mas adelante, así que llevare los pasos totales de los dos meses para analizarlos en Tableau
 Suma total:
@@ -112,11 +128,51 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 ```
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Definitivamente solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a tener analisis y conclusiones erradas.
+Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a tener un analisis impreciso y conclusiones erradas.
 
-DIAS DE LA SEMANA 
 
-# DATOS SEGUN DIA DE LA SEMANA 
+##################################################################################################################################################################
+# HOURLY 
+
+######### MERGE #############
+
+######## CANTIDAD DE DATOS MES 1 Y 2 #################
+
+
+```
+ggplot(data=hourlyCalories_BIG, aes(x=date))+
+  geom_bar(fill="steelblue")+
+ labs(title="Data recolectada por fecha")
+
+ggplot(data=hourlySteps_BIG, aes(x=date))+
+  geom_bar(fill="steelblue")+
+  labs(title="Data recolectada por fecha")
+
+```
+###### IMAGEN ########
+
+data_recolectada_por_fecha_hourly.png
+
+Si ocupare los dos meses, dado que la diferencia no es significativa.
+
+
+########### OTRO PASO ##### MANIPULANDO LOS DATOS ######
+
+################################################################################################################################3
+
+
+
+# DIAS DE LA SEMANA  
+
+# DAILY
+
+Crearé una columna adicional para los días de la semana. Buscando si hay alguna inconsistencia con dias de la semana con  mas registros.
+
+
+```
+dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
+  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+```
 
 ```
 ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
@@ -128,33 +184,35 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 ```
 ![](imagenes/daily/registros_dias_semana.png)
 
-IMAGEN : Cantidadededatostotalesdiasemana ###########
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
 
 
-
-
-```
-dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
-  mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
-```
-
-Crearé una columna adicional para los días de la semana. 
-Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
-
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD?
-Los llevo a Tableau
+##########################
 
 ![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
 
 ![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
 
 ![](imagenes/daily/Calorias_por_semana.png)
+
+Diferencia entre suma de datos y promedios, ahora la diferencia entre minutos sedentarios y steps y calories no es tanta. Las diferencias son mayores en la de la sumas porque hay mas datos algunos dias que otros, los dias martes con la mayor cantidad. 
+
+
+![](imagenes/daily/Promedio_totalsteps_semana.png) promedio total steps
+
+![](imagenes/daily/Promedio_calories_semana.png) promedio calories
+
+![](imagenes/daily/Promedio_sedentary_semana.png) Promedio sedentary
+
+MALA MANERA DE GRAFICAR. PROBAR ALGO MAS. AL LLEVAR A PROMEDIOS LAS DIFERENCIAS NO SON TANTAS COMO EN SUMA. 
 ###########################################
+
 Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
 Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
 Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
+
+La
 
 LOS MARTES HAY MAS DATOS REGISTRADOS POR ESO TENGO QUE REEVALUAR ESTA SECCION, PARA HACERLA CON PROMEDIOS. PRIMERO DEMOSTRAR LA DIFERENCIA DE DATA ENTRE DIAS DE LA SEMANA.
 
@@ -162,6 +220,44 @@ si bien el cambio es sustancial, no se puede concluir que tenga unra relacion di
 EDIT. LO QUE ESTOY MIDIENDO.
 
 #### Tengo que poner los sedentary minutes en promedio o en suma? en el dataset son la cantidad de minutos por dia en sedentario. Grafico los otros "minutes"?
+
+#########################################################################################################################################
+
+
+
+######### MERGE #############
+convertir los dataset separando hora y fecha.
+
+## Creando columnas de fecha y tiempo 
+```
+hourlyCalories_BIG$ActivityHour <- mdy_hms(hourlyCalories_BIG$ActivityHour)
+hourlyCalories_BIG$time <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%H:%M:%S")
+hourlyCalories_BIG$date <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%d/%m/%y")
+
+hourlySteps_BIG$ActivityHour <- mdy_hms(hourlySteps_BIG$ActivityHour)
+hourlySteps_BIG$time <- as.Date(hourlySteps_BIG$ActivityHour, format = "%H:%M:%S")
+hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y")
+
+```
+#### Creacion de columna para dia de la semana
+
+
+# HOURLY
+```
+hourlyCalories_BIG <- hourlyCalories_BIG %>% 
+  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
+
+hourlySteps_BIG <- hourlySteps_BIG %>% 
+  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
+```
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
+
+
+Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
+
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?
+
+############################################################################################################################################
 
 
 ------------------------------------------------------------------
@@ -183,11 +279,19 @@ El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de 
 
 Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
 
-El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo.
+#### DIAS Y HORAS EN DONDE HUBO MAS ACTIVIDAD ######
+
+El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
+
+
 
 
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
+
+Graficaré el total de minutos de actividad de las 4 categorias: very active, fairly active, lightly active y sedentary
+
+
 ```
 plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
   layout(title = 'Minutos de nivel de actividad',
@@ -198,70 +302,15 @@ plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textpositio
 ![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
 
 
+Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica, por lo tanto habra que medir la actividad fuera del horario laboral tipico. EDIT Hay que considerar los datos de actividad mas activa, y exponerlos a la informacion de las recomendaciones de actividad fisica. Desde ya se ve que esta al debe  EDIT.
+
+
 
  ##########################################################
-## HOURLY
-
-Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps 
-Evaluaré la actividad diaria en funcionde de pasos y calorías gastadas cada hora del día . 
-
-## Renombrar:
- calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
-
-# Resumen general
-
-![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
-
-Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS. EDITAR ##########################
 
 
-######### MERGE #############
 
-######## CANTIDAD DE DATOS MES 1 Y 2 #################
-
-```
-ggplot(data=hourlyCalories_BIG, aes(x=date))+
-  geom_bar(fill="steelblue")+
- labs(title="Data recolectada por fecha")
-
-ggplot(data=hourlySteps_BIG, aes(x=date))+
-  geom_bar(fill="steelblue")+
-  labs(title="Data recolectada por fecha")
-
-```
-###### IMAGEN ########
-
-data_recolectada_por_fecha_hourly.png
-
-Si ocupare los dos meses, dado que la diferencia no es significativa.
-
-
-########### OTRO PASO ##### MANIPULANDO LOS DATOS ######
-
-
-######### MERGE #############
-convertir los dataset separando hora y fecha.
-
-## Creando columnas de fecha y tiempo 
-```
-hourlyCalories_BIG$ActivityHour <- mdy_hms(hourlyCalories_BIG$ActivityHour)
-hourlyCalories_BIG$time <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%H:%M:%S")
-hourlyCalories_BIG$date <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%d/%m/%y")
-
-hourlySteps_BIG$ActivityHour <- mdy_hms(hourlySteps_BIG$ActivityHour)
-hourlySteps_BIG$time <- as.Date(hourlySteps_BIG$ActivityHour, format = "%H:%M:%S")
-hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y")
-
-```
-#### Creacion de columna para dia de la semana
-```
-hourlyCalories_BIG <- hourlyCalories_BIG %>% 
-  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
-
-hourlySteps_BIG <- hourlySteps_BIG %>% 
-  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
-```
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
+# HOURLY 
 
 # CALORIES
 calorias en un marco de 24 horas :
