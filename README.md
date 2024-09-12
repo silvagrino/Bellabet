@@ -76,28 +76,32 @@ Selecionaré dos dataset para analizar la cantidad de actividad y energia gastad
 Evaluaré la actividad diaria en función de de pasos y calorías gastadas cada hora del día . 
 
 ## Renombrar:
- calories 1/step_1 para los dataset del 3/12/15 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
+ calories 1/step_1 para los dataset del 3/12/16 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
 
 # Resumen general
 
 ![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
 
-Lo mismo qe la anterior daily, 33 y 34.  Sin valores nulos.  VER DUPLICADOS. EDITAR ##########################
+Lo mismo qe la anterior daily, 34 id's distintos (calories1/steps1) y 33 (calories2/steps2). Sin valores nulos ni duplicados.
 
 
- ## Numero de datos segun mes ##############################
+# Numero de datos segun mes 
 
-# DAILY (dailyActivity_merged, dailyActivity_merged2)
+Evaluaré si hay alguna diferencia en la cantidad de datos en los 2 datasets del primer (3/12/16 al 4/11/16) y segundo mes (4/12/16 al 5/12/16).
 
-Destaca la diferencia entre el 1er y 2do mes. Me interesa analizar la variable de pasos mas adelante, así que llevare los pasos totales de los dos meses para analizarlos en Tableau
-Suma total:
+## DAILY (dailyActivity_merged, dailyActivity_merged2)
+
+dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
+
+Al llevar los datos a Tableau de los pasos totales destaca la diferencia entre el 1er y 2do mes. 
+Suma de pasos totales por dia: 
 ![](imagenes/1y2/suma_total_steps_1y2.png)
 
-promedio de total steps por dia 
+promedio de pasos totales por dia:
 
 <img src="imagenes/daily/Promedio_activity_date_total_steps2.png" width="650" height="500">
 
-Teniendo en cuenta solo la variable step, se debería descartar el 1er mes ya que es considerable la diferencia con el 2do mes.
+En este caso solo he cosiderado la variable de pasos totales por lo que se debería descartar el 1er mes al haber una gran diferencia en la cantidad de registros en comparación al 2do mes.
 Aun así ahora compararé la cantidad de datos totales registrados de los 2 meses.
 
 Numeros Id's unicos por mes
@@ -111,9 +115,7 @@ Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do Por lo
 Graficaré los datos totales por fecha por lo cual lo primero que hare será comprobar el tipo de dato que tiene la columna fecha con `class()` . Es “character” por lo tanto hay qe convertirla.
 Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
 
-
 ```
-dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
 dataActivity_SD_big$ActivityDate <- as.Date(dataActivity_SD_big$ActivityDate, format="%m/%d/%Y")
 dataActivity_sind_week$ActivityDate <- as.Date(dataActivity_sind_week$ActivityDate, format="%m/%d/%Y")
 dataActivity_sind_week2$ActivityDate <- as.Date(dataActivity_sind_week2$ActivityDate, format="%m/%d/%Y")
@@ -128,15 +130,14 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 ```
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a tener un analisis impreciso y conclusiones erradas.
+Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso y a sacar conclusiones erradas.
 
 
-##################################################################################################################################################################
-# HOURLY 
+## HOURLY 
 
-######### MERGE #############
+Hago un merge de los dataset de calories y steps respectivamente
 
-######## CANTIDAD DE DATOS MES 1 Y 2 #################
+## CANTIDAD DE DATOS MES 1 Y 2 
 
 
 ```
