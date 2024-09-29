@@ -191,6 +191,8 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 ##########################
 
+Este sedentarismo hay que sacarlo. Son la cantidad total de minutos, Tengo que llegar al promedio por usuario de tiempo sedentario por dia 
+
 ![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
 
 ![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
