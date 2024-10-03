@@ -21,6 +21,19 @@ Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obte
 
 Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses.
 
+Elegi los archivos por la cantidad de ids distintos. 
+
+Ocupo `n_distinct()` para comprobar los ids unicos de cada dataset.
+
+ Checking consistency before merge datasets¶
+1.	Check observations by unique ids in each dataset
+•	The check shows unique ids...
+	33 in: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
+	24 in: minuteSleep_merged and sleepDay_merged
+	14 in: heartrate_seconds_merged
+	8 in: weightLogInfo_merged
+
+
 Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
 Para preparar los datos se aplicará un Enfoque ROCCC:
@@ -84,6 +97,7 @@ Evaluaré la actividad diaria en función de de pasos y calorías gastadas cada 
 
 Lo mismo qe la anterior daily, 34 id's distintos (calories1/steps1) y 33 (calories2/steps2). Sin valores nulos ni duplicados.
 
+No eliminare valores 0. No hay horas donde se gaste 0 calorias y las horas donde hay 0 pasos sirven para el analisis.
 
 # Numero de datos segun mes 
 
