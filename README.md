@@ -17,29 +17,33 @@ Se puede resumir la tarea por delante en 3 preguntas claves para desarrollar est
 
 # 2. Preparar
 
-Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos desde Kaggle. https://www.kaggle.com/datasets/arashnic/fitbit
+Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos desde Kaggle. https://www.kaggle.com/datasets/arashnic/fitbit.
+
 Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
 Ocupo `n_distinct()` para comprobar los id's unicos de cada dataset buscando consistencia en los dataset.
 
  33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
-	24 ID: minuteSleep_merged and sleepDay_merged
-	14 ID: heartrate_seconds_merged
- 8 ID: weightLogInfo_merged
 
-Debido a la poca cantidad de usuarios en los dataset de frecuencia cardiaca y peso los descartaré.
+24 ID: minuteSleep_merged and sleepDay_merged
 
-Para preparar los datos se aplicará un Enfoque ROCCC:
+14 ID: heartrate_seconds_merged
 
-**R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
+8 ID: weightLogInfo_merged
 
-**O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios desde sus dispositivos inteligentes.
+Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso
 
-**C**omprehensive/Integralidad: Datos detallados y extensos pero con un tamaño de muestra pequeño e inconsistente, registrados en ciertos días de la semana. Sobre todo en el 1er mes, hay menos datos que en el 2do mes.
+## Para preparar los datos aplicaré un Enfoque ROCCC:
 
-**C**urrent/Actuales: Datos de marzo a mayo de 2016.
+* **R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
-**C**ited/Citación: No encontrado.
+* **O**riginal/Originalidad: Datos originales obtenidos directamente de los usuarios desde sus dispositivos inteligentes.
+
+* **C**omprehensive/Integralidad: Datos detallados y extensos pero con un tamaño de muestra pequeño e inconsistente, registrados en ciertos días de la semana. Sobre todo en el 1er mes, hay menos datos que en el 2do mes.
+
+* **C**urrent/Actuales: Datos de marzo a mayo de 2016.
+
+* **C**ited/Citación: No encontrado.
 
 
 ## El dataset tiene limitaciones:
