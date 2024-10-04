@@ -18,23 +18,16 @@ Se puede resumir la tarea por delante en 3 preguntas claves para desarrollar est
 # 2. Preparar
 
 Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obtenidos desde Kaggle. https://www.kaggle.com/datasets/arashnic/fitbit
+Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
-Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses.
+Ocupo `n_distinct()` para comprobar los id's unicos de cada dataset buscando consistencia en los dataset.
 
-Elegi los archivos por la cantidad de ids distintos. 
+ 33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
+	24 ID: minuteSleep_merged and sleepDay_merged
+	14 ID: heartrate_seconds_merged
+ 8 ID: weightLogInfo_merged
 
-Ocupo `n_distinct()` para comprobar los ids unicos de cada dataset.
-
- Checking consistency before merge datasets¶
-1.	Check observations by unique ids in each dataset
-•	The check shows unique ids...
-	33 in: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
-	24 in: minuteSleep_merged and sleepDay_merged
-	14 in: heartrate_seconds_merged
-	8 in: weightLogInfo_merged
-
-
-Contenido de los datos: 18 archivos CSV con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
+Debido a la poca cantidad de usuarios en los dataset de frecuencia cardiaca y peso los descartaré.
 
 Para preparar los datos se aplicará un Enfoque ROCCC:
 
@@ -57,12 +50,12 @@ Para preparar los datos se aplicará un Enfoque ROCCC:
 
 * Método de registro del peso: 5 usuarios ingresaron manualmente su peso y 3 lo registraron a través de un dispositivo wifi.
 
-* Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes no se puede considerar para hacer un analisis preciso con datos tan dispersos e inconsistentes. Ademas la mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
+* Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes no se puede considerar para hacer un analisis preciso con datos dispersos e inconsistentes.
+
+* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
 
 
 # 3. Procesar
-
-Voy a dividir en “hourly” y “daily” los dataset que tienen registros diarios o por hora. Dependiendo del análisis usare unos u otros. 
 
 ## DAILY
 Hago analisis exploratorio inicial viendo columnas y numero de filas, filas distintas, buscando duplicados y valores nulos.
@@ -86,18 +79,18 @@ Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 ## HOURLY (calories 1/step_1, Calories_2/Steps_2)
 
 Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps 
-Evaluaré la actividad diaria en función de de pasos y calorías gastadas cada hora del día . 
+Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hora del día . 
 
 ## Renombrar:
  calories 1/step_1 para los dataset del 3/12/16 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
 
-# Resumen general
+# Resumen
 
 ![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
 
-Lo mismo qe la anterior daily, 34 id's distintos (calories1/steps1) y 33 (calories2/steps2). Sin valores nulos ni duplicados.
+Lo mismo qe el dataset anterior daily, 34 id's distintos (calories1/steps1) y 33 (calories2/steps2). Sin valores nulos ni duplicados.
 
-No eliminare valores 0. No hay horas donde se gaste 0 calorias y las horas donde hay 0 pasos sirven para el analisis.
+No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
 
 # Numero de datos segun mes 
 
@@ -115,8 +108,8 @@ promedio de pasos totales por dia:
 
 <img src="imagenes/daily/Promedio_activity_date_total_steps2.png" width="650" height="500">
 
-En este caso solo he cosiderado la variable de pasos totales por lo que se debería descartar el 1er mes al haber una gran diferencia en la cantidad de registros en comparación al 2do mes.
-Aun así ahora compararé la cantidad de datos totales registrados de los 2 meses.
+En este caso solo he considerado la variable de pasos totales por lo que se debería descartar el 1er mes al haber una gran diferencia en la cantidad de registros en comparación al 2do mes.
+Aun así ahora voy a comparar la cantidad de datos totales registrados de los 2 meses.
 
 Numeros Id's unicos por mes
 ```
@@ -124,7 +117,7 @@ n_distinct(dataActivity_sindistancia$Id)
 n_distinct(dataActivity_sindistancia2$Id)
 ```
 
-Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do Por lo tanto la diferencia de datos no se debe a que menos ID’s  se hayan registrado.
+Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do. Por lo tanto la diferencia de datos no se debe a que menos ID’s se hayan registrado.
 
 Graficaré los datos totales por fecha por lo cual lo primero que hare será comprobar el tipo de dato que tiene la columna fecha con `class()` . Es “character” por lo tanto hay qe convertirla.
 Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
@@ -135,7 +128,7 @@ dataActivity_sind_week$ActivityDate <- as.Date(dataActivity_sind_week$ActivityDa
 dataActivity_sind_week2$ActivityDate <- as.Date(dataActivity_sind_week2$ActivityDate, format="%m/%d/%Y")
 ```
 
-Grafica de cantidad de datos por fecha:
+Grafico de cantidad de datos por fecha:
 
 ```
 ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
@@ -144,7 +137,7 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 ```
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso y a sacar conclusiones erradas.
+Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso y a tener conclusiones erradas.
 
 
 ## HOURLY 
