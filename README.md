@@ -31,7 +31,7 @@ Ocupo `n_distinct()` para comprobar los id's unicos de cada dataset buscando con
 
 8 ID: weightLogInfo_merged
 
-Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso
+Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso.
 
 ## Para preparar los datos aplicaré un Enfoque ROCCC:
 
@@ -68,8 +68,6 @@ colnames(dailyActivity_merged)
 colnames(dailyActivity_merged2)
 nrow(dailyActivity_merged)
 nrow(dailyActivity_merged2)
-n_distinct(dailyActivity_merged)
-n_distinct(dailyActivity_merged2)
 sum(duplicated(dailyActivity_merged))
 sum(duplicated(dailyActivity_merged2))
 sum(is.na(dailyActivity_merged))
@@ -87,6 +85,8 @@ Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hor
 
 ## Renombrar:
  calories 1/step_1 para los dataset del 3/12/16 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
+
+ ####### PONER CODIGO DE R ############
 
 # Resumen
 
@@ -170,21 +170,26 @@ Si ocupare los dos meses, dado que la diferencia no es significativa.
 
 ########### OTRO PASO ##### MANIPULANDO LOS DATOS ######
 
-################################################################################################################################3
+###############################################################################################################################
+
+## SLEEP 
+
+##### CANTIDAD DE DATOS POR MES ##########
 
 
+## DIAS DE LA SEMANA  
 
-# DIAS DE LA SEMANA  
+## DAILY
 
-# DAILY
+Crearé una columna adicional para los días de la semana.
 
-Crearé una columna adicional para los días de la semana. Buscando si hay alguna inconsistencia con dias de la semana con  mas registros.
-
+############ HACERLO PARA TODOS LOS DATASET : DAILY STEPS CALORIES SLEEP
 
 ```
 dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
+###### MOVER DESDE AQUI A ANALISIS ESTO ES SOLO PROCESAR #######
 
 ```
 ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
@@ -194,6 +199,7 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
        y="Cantidad de Registros") +
   theme_minimal()
 ```
+
 ![](imagenes/daily/registros_dias_semana.png)
 
 
