@@ -149,13 +149,11 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 
 Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso y a tener conclusiones erradas.
 
-
 ## HOURLY 
 
 Hago un merge de los dataset de calories y steps respectivamente
 
 ## CANTIDAD DE DATOS MES 1 Y 2 
-
 
 ```
 ggplot(data=hourlyCalories_BIG, aes(x=date))+
@@ -165,22 +163,22 @@ ggplot(data=hourlyCalories_BIG, aes(x=date))+
 ggplot(data=hourlySteps_BIG, aes(x=date))+
   geom_bar(fill="steelblue")+
   labs(title="Data recolectada por fecha")
-
 ```
+
 ###### IMAGEN ########
 
-data_recolectada_por_fecha_hourly.png
+![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
 Si ocupare los dos meses, dado que la diferencia no es significativa.
 
-
 ########### OTRO PASO ##### MANIPULANDO LOS DATOS ######
 
-###############################################################################################################################
+#################################################################
 
 ## SLEEP 
 
 ##### CANTIDAD DE DATOS POR MES ##########
+
 
 
 ## DIAS DE LA SEMANA  
