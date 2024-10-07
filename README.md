@@ -80,11 +80,17 @@ Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 
 ## HOURLY (calories 1/step_1, Calories_2/Steps_2)
 
-Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps 
-Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hora del día . 
+Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps
+Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hora del día. 
 
 ## Renombrar:
- calories 1/step_1 para los dataset del 3/12/16 al 4/11/16 y  Calories_2/Steps_2 para los dataset del 4/12/16 al 5/12/16
+
+```
+Calories_1 <- hourlyCalories_merged_3_12_16_4_11_16
+Calories_2 <- hourlyCalories_merged_4_12_16_5_12_16
+Steps_1 <- hourlySteps_merged_3_12_16_4_11_16
+Steps_2 <- hourlySteps_merged_4_12_16_5_12_16
+```
 
  ####### PONER CODIGO DE R ############
 
