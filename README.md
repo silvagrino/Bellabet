@@ -307,6 +307,65 @@ Además, los minutos de actividad intensa y moderada reflejan que, aunque la may
 
 El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
 
+######################### ULTIMOS ANALISIS #########################################
+
+## # Promedio de pasos por dia de la semana.
+
+```
+ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  geom_text(aes(label = round(AvgSteps, 0)), vjust = -0.3, size = 3)
+  labs(title = "Promedio de pasos por día de la semana",
+       x = "Día de la semana",
+       y = "Pasos promedio") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](imagenes/daily/pasos_por_dias_de_la_semana_mes_1y2.png)
+
+
+##  Grafica de correlacion pasos totales y calorias 
+
+# Crear el gráfico de dispersión entre calorías y pasos totales
+
+```
+ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
+  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
+  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
+  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
+       x = "Total de Pasos",
+       y = "Calorías") +
+  theme_minimal()
+```
+![](imagenes/daily/Relacion_pasos_calorias.png)
+
+Explicar que los outliers podrían ser por el matebolismo basal/ cantidad de masa muscular . Ej: Gente que tiene muchos pasos y gasta poco o gente que tiene pocos pasos y gasta harto. 
+
+## SLEEP
+
+-	Diferencia entre tiempo en cama y tiempo dormido, para así sacar cuanto tiempo demora cada usuario en quedarse dormido. Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
+
+####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido
+```
+sleepDay_merged <- sleepDay_merged %>%
+  mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
+```
+
+# Crear el gráfico de barras del tiempo promedio de sueño por día de la semana
+
+```
+ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
+  geom_bar(stat = "identity", fill = "lightblue") +
+  geom_text(aes(label = round(AvgMinutesAsleep, 0)), vjust = -0.3, size = 3) + 
+  labs(title = "Promedio de minutos de sueño por día de la semana",
+       x = "Día de la semana",
+       y = "Minutos promedio de sueño") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
 
 
