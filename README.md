@@ -92,13 +92,9 @@ Steps_1 <- hourlySteps_merged_3_12_16_4_11_16
 Steps_2 <- hourlySteps_merged_4_12_16_5_12_16
 ```
 
- ####### PONER CODIGO DE R ############
-
 # Resumen
 
 ![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
-
-Lo mismo qe el dataset anterior daily, 34 id's distintos (calories1/steps1) y 33 (calories2/steps2). Sin valores nulos ni duplicados.
 
 No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
 
@@ -175,11 +171,6 @@ Si ocupare los dos meses, dado que la diferencia no es significativa.
 
 #################################################################
 
-## SLEEP 
-
-##### CANTIDAD DE DATOS POR MES ##########
-
-
 
 ## DIAS DE LA SEMANA  
 
@@ -193,7 +184,10 @@ Crearé una columna adicional para los días de la semana.
 dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
-###### MOVER DESDE AQUI A ANALISIS ESTO ES SOLO PROCESAR #######
+
+
+
+![](imagenes/daily/registros_dias_semana.png)
 
 ```
 ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
@@ -203,9 +197,6 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
        y="Cantidad de Registros") +
   theme_minimal()
 ```
-
-![](imagenes/daily/registros_dias_semana.png)
-
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
 
@@ -299,7 +290,7 @@ summary(dailyActivity_merged2 %>%
 ![](imagenes/daily/summary_mes_2.png)
 
 
-El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
+El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel bajo-moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
 
 Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
 
@@ -324,6 +315,10 @@ ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
 
 ![](imagenes/daily/pasos_por_dias_de_la_semana_mes_1y2.png)
 
+Podemos observar que el dia con mas pasos es el sabado, dia en que probablemente los usuarios hagan mas actividades recreativas que durante la semana laboral donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. EDIT : DIA MARTES EL DIA CON MAS REGISTROS? CHECKEAR.
+El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
+
+
 
 ##  Grafica de correlacion pasos totales y calorias 
 
@@ -340,11 +335,15 @@ ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
 ```
 ![](imagenes/daily/Relacion_pasos_calorias.png)
 
-Explicar que los outliers podrían ser por el matebolismo basal/ cantidad de masa muscular . Ej: Gente que tiene muchos pasos y gasta poco o gente que tiene pocos pasos y gasta harto. 
+Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
+Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, osea gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
+EDIT########
+
 
 ## SLEEP
 
 -	Diferencia entre tiempo en cama y tiempo dormido, para así sacar cuanto tiempo demora cada usuario en quedarse dormido. Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
+
 
 ####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido
 ```
@@ -367,7 +366,7 @@ ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
 
 ![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
-
+La diferencia entre los dias se da de manera muy marcada entre los dias laborales y los fines de semana. Domingo tiene el dia con mas horas de sueño como cabria esperar seguida del sabado. Dentro de la semana que se mantiene constante destaca el dia miercoles, osea justo la mitad de la semana donde quizas los usuarios tienden a dormir un poco mas para seguir con la semana de manera mas productiva EDIT ##########3
 
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
