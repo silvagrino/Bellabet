@@ -21,17 +21,6 @@ Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obte
 
 Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
-Ocupo `n_distinct()` para comprobar los id's unicos de cada dataset buscando consistencia en los dataset.
-
- 33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
-
-24 ID: minuteSleep_merged and sleepDay_merged
-
-14 ID: heartrate_seconds_merged
-
-8 ID: weightLogInfo_merged
-
-Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso.
 
 ## Para preparar los datos aplicaré un Enfoque ROCCC:
 
@@ -56,13 +45,33 @@ Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia card
 
 * Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes no se puede considerar para hacer un analisis preciso con datos dispersos e inconsistentes.
 
-* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
+* La mayoria de los registros son de martes a jueves,(COMPROBAR) lo que podría no ser suficiente para un análisis preciso.
 
 
-# 3. Procesar
+# 3. Procesar ############################################################################################################################################
+Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y teniendo en cuenta que podria darme mayores insgiht para compartir con la campaña de marketing, datos usables (EDIT)
+Comprobaré cuantos ID's diferentes hay registrados en todos los dataset
+Para esto voy a usar `n_distinct()` para comprobar los id's unicos de cada dataset.
+
+33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
+
+24 ID: minuteSleep_merged and sleepDay_merged
+
+14 ID: heartrate_seconds_merged
+
+8 ID: weightLogInfo_merged
+
+Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso.
+
+Seleccionaré los dataset 
+dailyActivity_merged porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
+hourlyCalories_merged y hourlySteps_merged por que me dan el detalle de cada hora de calorias gastadas y pasos dados 
+sleepDay_merged para poder analizar el patron de sueño diario de los usuarios.
+
 
 ## DAILY
 Hago analisis exploratorio inicial viendo columnas y numero de filas, filas distintas, buscando duplicados y valores nulos.
+
 ```
 colnames(dailyActivity_merged)
 colnames(dailyActivity_merged2)
@@ -83,8 +92,6 @@ Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps
 Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hora del día. 
 
-## Renombrar:
-
 ```
 Calories_1 <- hourlyCalories_merged_3_12_16_4_11_16
 Calories_2 <- hourlyCalories_merged_4_12_16_5_12_16
@@ -98,24 +105,20 @@ Steps_2 <- hourlySteps_merged_4_12_16_5_12_16
 
 No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
 
+
+#####################################################################################################################################################
+
 # Numero de datos segun mes 
 
-Evaluaré si hay alguna diferencia en la cantidad de datos en los 2 datasets del primer (3/12/16 al 4/11/16) y segundo mes (4/12/16 al 5/12/16).
+Como acabo de ver hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes. Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas.
+Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1er mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
 
 ## DAILY (dailyActivity_merged, dailyActivity_merged2)
 
+Uno los meses en un unico archivo.
+```
 dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
-
-Al llevar los datos a Tableau de los pasos totales destaca la diferencia entre el 1er y 2do mes. 
-Suma de pasos totales por dia: 
-![](imagenes/1y2/suma_total_steps_1y2.png)
-
-promedio de pasos totales por dia:
-
-<img src="imagenes/daily/Promedio_activity_date_total_steps2.png" width="650" height="500">
-
-En este caso solo he considerado la variable de pasos totales por lo que se debería descartar el 1er mes al haber una gran diferencia en la cantidad de registros en comparación al 2do mes.
-Aun así ahora voy a comparar la cantidad de datos totales registrados de los 2 meses.
+```
 
 Numeros Id's unicos por mes
 ```
@@ -125,7 +128,8 @@ n_distinct(dataActivity_sindistancia2$Id)
 
 Los Id's registrados en los meses son 33 para el 1er mes y 35 para el 2do. Por lo tanto la diferencia de datos no se debe a que menos ID’s se hayan registrado.
 
-Graficaré los datos totales por fecha por lo cual lo primero que hare será comprobar el tipo de dato que tiene la columna fecha con `class()` . Es “character” por lo tanto hay qe convertirla.
+Graficaré los datos totales por fecha por lo cual lo primero será comprobar el tipo de dato que tiene la columna fecha con `class()` .
+Es “character” por lo tanto hay qe convertirla.
 Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
 
 ```
@@ -165,18 +169,14 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
 
 ![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
-Si ocupare los dos meses, dado que la diferencia no es significativa.
-
-########### OTRO PASO ##### MANIPULANDO LOS DATOS ######
-
-#################################################################
+Si ocupare los dos meses en este caso, dado que la diferencia no es significativa.
 
 
-## DIAS DE LA SEMANA  
+## DIAS DE LA SEMANA  #################################################################################################################################
 
 ## DAILY
 
-Crearé una columna adicional para los días de la semana.
+Crearé una columna adicional para los días de la semana en todos el conjunto de datos.
 
 ############ HACERLO PARA TODOS LOS DATASET : DAILY STEPS CALORIES SLEEP
 
@@ -185,7 +185,121 @@ dataActivity_sind_week2 <- dataActivity_sindistancia2 %>%
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
 
+#### Creacion de columna para dia de la semana
 
+
+# HOURLY
+```
+hourlyCalories_BIG <- hourlyCalories_BIG %>% 
+  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
+
+hourlySteps_BIG <- hourlySteps_BIG %>% 
+  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
+```
+
+# SLEEP
+
+```
+sleepDay_merged_week <- sleepDay_merged %>% 
+  mutate(Weekday = weekdays(as.Date(SleepDay, "%m/%d/%Y"))) 
+```
+
+
+
+
+#########################################################################################################################################
+
+##### findiasdela semana #############################################################################################################################
+
+Uno cada uno de los archivos de steps y calories, ya he comprobado que es mas consistente esta data que la da daily (EDIT)
+```
+hourlySteps_BIG <- merge(Steps_1, Steps_2, all = TRUE)
+hourlyCalories_BIG <- merge(Calories_1, Calories_2, all = TRUE)
+```
+
+Convertir los dataset separando hora y fecha.
+
+## Creando columnas de fecha y tiempo 
+```
+hourlyCalories_BIG$ActivityHour <- mdy_hms(hourlyCalories_BIG$ActivityHour)
+hourlyCalories_BIG$time <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%H:%M:%S")
+hourlyCalories_BIG$date <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%d/%m/%y")
+
+hourlySteps_BIG$ActivityHour <- mdy_hms(hourlySteps_BIG$ActivityHour)
+hourlySteps_BIG$time <- as.Date(hourlySteps_BIG$ActivityHour, format = "%H:%M:%S")
+hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y")
+
+```
+
+
+
+## Análisis ##########################################################################################################################################
+
+Resumen general
+
+```
+summary(dailyActivity_merged2 %>%
+          select(-Id, -ActivityDate))
+```
+![](imagenes/daily/summary_mes_2.png)
+
+
+El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel bajo-moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
+
+Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
+
+#### DIAS Y HORAS EN DONDE HUBO MAS ACTIVIDAD ######
+
+El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
+
+
+## # Promedio de pasos por dia de la semana.#########################################################################################################
+
+```
+ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  geom_text(aes(label = round(AvgSteps, 0)), vjust = -0.3, size = 3)
+  labs(title = "Promedio de pasos por día de la semana",
+       x = "Día de la semana",
+       y = "Pasos promedio") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](imagenes/daily/pasos_por_dias_de_la_semana_mes_1y2.png)
+
+Podemos observar que el dia con mas pasos es el sabado, dia en que probablemente los usuarios hagan mas actividades recreativas que durante la semana laboral donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. EDIT : DIA MARTES EL DIA CON MAS REGISTROS? CHECKEAR.
+El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
+
+
+
+##  Grafica de correlacion pasos totales y calorias 
+
+Al llevar los datos a Tableau de los pasos totales destaca la diferencia entre el 1er y 2do mes. 
+Suma de pasos totales por dia: 
+
+![](imagenes/1y2/suma_total_steps_1y2.png)
+
+Ocuparé solo el 2do mes.
+
+# Crear el gráfico de dispersión entre calorías y pasos totales
+
+```
+ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
+  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
+  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
+  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
+       x = "Total de Pasos",
+       y = "Calorías") +
+  theme_minimal()
+```
+![](imagenes/daily/Relacion_pasos_calorias.png)
+
+Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
+Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, osea gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
+EDIT########
+
+###### ANALISIS DONDE SE EMPIEZA CON LOS DIAS DE LA SEMANA ############################################################################################
 
 ![](imagenes/daily/registros_dias_semana.png)
 
@@ -201,7 +315,8 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 ![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
 
 
-##########################
+
+########################## EVALUAR ###################################################################################################################
 
 Este sedentarismo hay que sacarlo. Son la cantidad total de minutos, Tengo que llegar al promedio por usuario de tiempo sedentario por dia 
 
@@ -236,35 +351,7 @@ EDIT. LO QUE ESTOY MIDIENDO.
 
 #### Tengo que poner los sedentary minutes en promedio o en suma? en el dataset son la cantidad de minutos por dia en sedentario. Grafico los otros "minutes"?
 
-#########################################################################################################################################
 
-
-
-######### MERGE #############
-convertir los dataset separando hora y fecha.
-
-## Creando columnas de fecha y tiempo 
-```
-hourlyCalories_BIG$ActivityHour <- mdy_hms(hourlyCalories_BIG$ActivityHour)
-hourlyCalories_BIG$time <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%H:%M:%S")
-hourlyCalories_BIG$date <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%d/%m/%y")
-
-hourlySteps_BIG$ActivityHour <- mdy_hms(hourlySteps_BIG$ActivityHour)
-hourlySteps_BIG$time <- as.Date(hourlySteps_BIG$ActivityHour, format = "%H:%M:%S")
-hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y")
-
-```
-#### Creacion de columna para dia de la semana
-
-
-# HOURLY
-```
-hourlyCalories_BIG <- hourlyCalories_BIG %>% 
-  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
-
-hourlySteps_BIG <- hourlySteps_BIG %>% 
-  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
-```
 QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
 
 
@@ -272,73 +359,8 @@ Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
 
 QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?
 
-############################################################################################################################################
-
-
-------------------------------------------------------------------
-
-----------------------------------------------------------------------
-
-## Análisis ####
-
-Resumen general
-
-```
-summary(dailyActivity_merged2 %>%
-          select(-Id, -ActivityDate))
-```
-![](imagenes/daily/summary_mes_2.png)
-
-
-El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel bajo-moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
-
-Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
-
-#### DIAS Y HORAS EN DONDE HUBO MAS ACTIVIDAD ######
-
-El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
-
-######################### ULTIMOS ANALISIS #########################################
-
-## # Promedio de pasos por dia de la semana.
-
-```
-ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
-  geom_bar(stat = "identity", fill = "skyblue") +
-  geom_text(aes(label = round(AvgSteps, 0)), vjust = -0.3, size = 3)
-  labs(title = "Promedio de pasos por día de la semana",
-       x = "Día de la semana",
-       y = "Pasos promedio") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-![](imagenes/daily/pasos_por_dias_de_la_semana_mes_1y2.png)
-
-Podemos observar que el dia con mas pasos es el sabado, dia en que probablemente los usuarios hagan mas actividades recreativas que durante la semana laboral donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. EDIT : DIA MARTES EL DIA CON MAS REGISTROS? CHECKEAR.
-El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
-
-
-
-##  Grafica de correlacion pasos totales y calorias 
-
-# Crear el gráfico de dispersión entre calorías y pasos totales
-
-```
-ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
-  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
-  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
-  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
-       x = "Total de Pasos",
-       y = "Calorías") +
-  theme_minimal()
-```
-![](imagenes/daily/Relacion_pasos_calorias.png)
-
-Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
-Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, osea gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
-EDIT########
-
+##### ORGANIZAR DONDE VA EL ANALISIS DE DIAS DE LA SEMANA CON MAS DATA ###########################################################################
+######################################################################################################################################################
 
 ## SLEEP
 
