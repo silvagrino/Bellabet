@@ -301,6 +301,37 @@ EDIT########
 
 ###### ANALISIS DONDE SE EMPIEZA CON LOS DIAS DE LA SEMANA ############################################################################################
 
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
+
+Vizualizo los dias de la semana en función de
+ sedentarismo 
+ pasos y
+  calorías.
+
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?s
+
+
+EMPEZAR esta seccion demostrando las sumas y como no hacen sentido que los martes miercoles y jueves se tenga lo mismo. Poner las sumas , luego plantearse si habra mas datos registrados esos dias por eso la fluctuacion tan cuadrada.
+Luego poner la cantidad total de datos y registros por dia de la semana. Luego poner los promedios.
+
+##################
+
+
+Voy a graficar ciertas variables por dia de la semana. Esta es la suma total de datos. 
+
+![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Calorias_por_semana.png)
+
+Hay algo que destaca y es que en todas las graficas martes, miercoles y jueves
+tienen los dias con mas minutos sedentarios, pasos totales y calorias. Quiza esto se deba a que hay mas datos registrados estos dias en el dataset y no que ...)
+
+Tendre que comprobar los datos totales por dia de la semana para corroborar si esta fluctuacion tan cuadrada se debe a una mayor cantidad de registros
+en esos dias especificos
+
+
 ![](imagenes/daily/registros_dias_semana.png)
 
 ```
@@ -314,20 +345,9 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
 
+Efectivamente se ven asi los graficos de suma porque hay mas datos registrados los martes miercoles y jueves como comprobe en el grafico anterior
 
-
-########################## EVALUAR ###################################################################################################################
-
-Este sedentarismo hay que sacarlo. Son la cantidad total de minutos, Tengo que llegar al promedio por usuario de tiempo sedentario por dia 
-
-![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Calorias_por_semana.png)
-
-Diferencia entre suma de datos y promedios, ahora la diferencia entre minutos sedentarios y steps y calories no es tanta. Las diferencias son mayores en la de la sumas porque hay mas datos algunos dias que otros, los dias martes con la mayor cantidad. 
-
+PROMEDIOS 
 
 ![](imagenes/daily/Promedio_totalsteps_semana.png) promedio total steps
 
@@ -335,29 +355,10 @@ Diferencia entre suma de datos y promedios, ahora la diferencia entre minutos se
 
 ![](imagenes/daily/Promedio_sedentary_semana.png) Promedio sedentary
 
-MALA MANERA DE GRAFICAR. PROBAR ALGO MAS. AL LLEVAR A PROMEDIOS LAS DIFERENCIAS NO SON TANTAS COMO EN SUMA. 
-###########################################
 
-Estan medids en datos totales. Hay que hacerlo en promedios y fijarme en los outliers
-Hay el mismo patron de días con mas gasto calorico y el de los días con mas minutos sedentarios. Domingo el mas bajo y empieza a subir hasta el martes el día con mas (calorías gastadas y minutos sedentarios) y luego comienza a bajar grdualmente hasta el domingo. Esto no hace sentido.
-Hay que comprobar la cantidad de datos por día de la semana, probablemente los martes hay mas data registrada.
-
-La
-
-LOS MARTES HAY MAS DATOS REGISTRADOS POR ESO TENGO QUE REEVALUAR ESTA SECCION, PARA HACERLA CON PROMEDIOS. PRIMERO DEMOSTRAR LA DIFERENCIA DE DATA ENTRE DIAS DE LA SEMANA.
-
-si bien el cambio es sustancial, no se puede concluir que tenga unra relacion directa. Se lleva a concluir que los dias con mas steps y gasto calorico, tambien hay mas minutos sedentarios en conpensacion de la atividad que se esta ahaciendo. En cambio en los dias que hay menos actividad, se tiende a mantener una actividad mas estable sin tanta fluctuacion tan drastica entre los minutos sedentarios y la actividad diaria mas vigorosa. Estas diferencias tambien se deben a que hay mas datos registrados los martes.
-EDIT. LO QUE ESTOY MIDIENDO.
-
-#### Tengo que poner los sedentary minutes en promedio o en suma? en el dataset son la cantidad de minutos por dia en sedentario. Grafico los otros "minutes"?
+########################## EVALUAR ###################################################################################################################
 
 
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
-
-
-Vizualizo los dias de la semana en función de sedentarismo pasos y calorías.
-
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?
 
 ##### ORGANIZAR DONDE VA EL ANALISIS DE DIAS DE LA SEMANA CON MAS DATA ###########################################################################
 ######################################################################################################################################################
@@ -366,8 +367,8 @@ QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?
 
 -	Diferencia entre tiempo en cama y tiempo dormido, para así sacar cuanto tiempo demora cada usuario en quedarse dormido. Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
 
-
 ####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido
+
 ```
 sleepDay_merged <- sleepDay_merged %>%
   mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
