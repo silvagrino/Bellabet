@@ -206,25 +206,26 @@ sleepDay_merged_week <- sleepDay_merged %>%
 
 Voy a comprobar cuantos registros hay para los dias de la semana ya que al llevar las tablas a tableau ya noto 
 
-Si bien llevare los datos a promedios, ya en las sumas se nota una tendencia por los dias martes, miercoles y jueves en diferentes tablas.
-
-Al ver estas variables por dia de la semana de la suma total de datos destacan ....
-Voy a graficar ciertas variables por dia de la semana. Esta es la suma total de datos. 
-
-
+Si bien trabajaré los datos en promedios, ya en las sumas se nota una tendencia en los dias martes, miercoles y jueves en diferentes variables. 
 
 <img src="imagenes/daily/Sedentarismo_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Pasos_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Calorias_por_semana.png" alt="Descripción de la imagen" width="300">
 
+¿Como es posible que martes y miercoles sean los dias con mas pasos y calorias gastadas y al mismo tiempo sean los dias con mas minutos sedentarios?
+Voy a comprobar los datos totales por dia de la semana para saber si esta fluctuacion se debe a una mayor cantidad de registros en esos dias especificos.
 
 
-Hay algo que destaca y es que en todas las graficas martes, miercoles y jueves
-tienen los dias con mas minutos sedentarios, pasos totales y calorias. Quiza esto se deba a que hay mas datos registrados estos dias en el dataset y no que ...)
 
-Tendre que comprobar los datos totales por dia de la semana para corroborar si esta fluctuacion tan cuadrada se debe a una mayor cantidad de registros
-en esos dias especificos
+registros_por_dia_sleep <- sleepDay_merged_week %>%
+  group_by(Weekday) %>%
+  summarise(TotalRegistros = n())
+
+# Visualizar la cantidad de registros por día de la semana
+
+#daily
+
+![](imagenes/daily/totalregistrosdaily.png)   ![](imagenes/daily/Totalregistrossleep.png) 
 
 
-![](imagenes/daily/registros_dias_semana.png)
 
 ```
 ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
@@ -235,7 +236,9 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
   theme_minimal()
 ```
 
-![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
+![](imagenes/daily/Cantidadededatostotalesdiasemanadaily.png)
+
+![](imagenes/daily/Cantidadededatostotalesdiasemanasleep.png)
 
 Efectivamente se ven asi los graficos de suma porque hay mas datos registrados los martes miercoles y jueves como comprobe en el grafico anterior
 
