@@ -174,6 +174,8 @@ Si ocupare los dos meses en este caso, dado que la diferencia no es significativ
 
 ## DIAS DE LA SEMANA  #################################################################################################################################
 
+#### Creacion de columna para dia de la semana
+
 ## DAILY
 
 Crearé una columna adicional para los días de la semana en todos el conjunto de datos.
@@ -184,8 +186,6 @@ Crearé una columna adicional para los días de la semana en todos el conjunto d
 dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
-
-#### Creacion de columna para dia de la semana
 
 
 # HOURLY
@@ -204,6 +204,40 @@ sleepDay_merged_week <- sleepDay_merged %>%
   mutate(Weekday = weekdays(as.Date(SleepDay, "%m/%d/%Y"))) 
 ```
 
+Voy a comprobar cuantos registros hay para los dias de la semana ya que al llevar las tablas a tableau ya noto 
+
+Si bien llevare los datos a promedios, ya en las sumas se nota una tendencia por los dias martes, miercoles y jueves en diferentes tablas.
+
+Al ver estas variables por dia de la semana de la suma total de datos destacan ....
+Voy a graficar ciertas variables por dia de la semana. Esta es la suma total de datos. 
+
+![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
+
+![](imagenes/daily/Calorias_por_semana.png)
+
+Hay algo que destaca y es que en todas las graficas martes, miercoles y jueves
+tienen los dias con mas minutos sedentarios, pasos totales y calorias. Quiza esto se deba a que hay mas datos registrados estos dias en el dataset y no que ...)
+
+Tendre que comprobar los datos totales por dia de la semana para corroborar si esta fluctuacion tan cuadrada se debe a una mayor cantidad de registros
+en esos dias especificos
+
+
+![](imagenes/daily/registros_dias_semana.png)
+
+```
+ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
+  geom_bar(stat="identity", fill="steelblue") +
+  labs(title="Cantidad de Datos Totales por Día de la Semana",
+       x="Día de la Semana",
+       y="Cantidad de Registros") +
+  theme_minimal()
+```
+
+![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
+
+Efectivamente se ven asi los graficos de suma porque hay mas datos registrados los martes miercoles y jueves como comprobe en el grafico anterior
 
 
 
@@ -271,7 +305,7 @@ ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
 Podemos observar que el dia con mas pasos es el sabado, dia en que probablemente los usuarios hagan mas actividades recreativas que durante la semana laboral donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. EDIT : DIA MARTES EL DIA CON MAS REGISTROS? CHECKEAR.
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
-
+# sabado. esto puede deberse a ... # ->
 
 ##  Grafica de correlacion pasos totales y calorias 
 
@@ -317,35 +351,6 @@ Luego poner la cantidad total de datos y registros por dia de la semana. Luego p
 ##################
 
 
-Voy a graficar ciertas variables por dia de la semana. Esta es la suma total de datos. 
-
-![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
-
-![](imagenes/daily/Calorias_por_semana.png)
-
-Hay algo que destaca y es que en todas las graficas martes, miercoles y jueves
-tienen los dias con mas minutos sedentarios, pasos totales y calorias. Quiza esto se deba a que hay mas datos registrados estos dias en el dataset y no que ...)
-
-Tendre que comprobar los datos totales por dia de la semana para corroborar si esta fluctuacion tan cuadrada se debe a una mayor cantidad de registros
-en esos dias especificos
-
-
-![](imagenes/daily/registros_dias_semana.png)
-
-```
-ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalRegistros)) +
-  geom_bar(stat="identity", fill="steelblue") +
-  labs(title="Cantidad de Datos Totales por Día de la Semana",
-       x="Día de la Semana",
-       y="Cantidad de Registros") +
-  theme_minimal()
-```
-
-![](imagenes/daily/Cantidadededatostotalesdiasemana.png)
-
-Efectivamente se ven asi los graficos de suma porque hay mas datos registrados los martes miercoles y jueves como comprobe en el grafico anterior
 
 PROMEDIOS 
 
@@ -373,6 +378,9 @@ PROMEDIOS
 sleepDay_merged <- sleepDay_merged %>%
   mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
 ```
+
+############################################ CREAR TOTAL DE MINUTOS DORMIDO SUMA DURING THE WEEK ################## Ahi deberia comprobar que tambien hay mas datos en 
+martes miercoles y jueves .#####################################################################################################
 
 # Crear el gráfico de barras del tiempo promedio de sueño por día de la semana
 
