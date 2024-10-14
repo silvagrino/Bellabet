@@ -211,11 +211,11 @@ Si bien llevare los datos a promedios, ya en las sumas se nota una tendencia por
 Al ver estas variables por dia de la semana de la suma total de datos destacan ....
 Voy a graficar ciertas variables por dia de la semana. Esta es la suma total de datos. 
 
-![](imagenes/daily/Sedentarismo_por_dias_de_la_semana.png)
 
-![](imagenes/daily/Pasos_por_dias_de_la_semana.png)
 
-![](imagenes/daily/Calorias_por_semana.png)
+<img src="imagenes/daily/Sedentarismo_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Pasos_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Calorias_por_semana.png" alt="Descripción de la imagen" width="300">
+
+
 
 Hay algo que destaca y es que en todas las graficas martes, miercoles y jueves
 tienen los dias con mas minutos sedentarios, pasos totales y calorias. Quiza esto se deba a que hay mas datos registrados estos dias en el dataset y no que ...)
