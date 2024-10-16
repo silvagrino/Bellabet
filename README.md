@@ -221,10 +221,12 @@ registros_por_dia_sleep <- sleepDay_merged_week %>%
 
 # Visualizar la cantidad de registros por día de la semana
 
-#daily
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?s
+
+
+                Daily                                             Sleep
 
 ![](imagenes/daily/totalregistrosdaily.png)   ![](imagenes/daily/Totalregistrossleep.png) 
-
 
 
 ```
@@ -236,25 +238,21 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
   theme_minimal()
 ```
 
+
 ![](imagenes/daily/Cantidadededatostotalesdiasemanadaily.png)
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemanasleep.png)
 
-Efectivamente se ven asi los graficos de suma porque hay mas datos registrados los martes miercoles y jueves como comprobe en el grafico anterior
-
+Hay mas datos registrados los martes, miercoles y jueves, por eso se debe la diferencia en las tablas anteriores. Graficaré con promedios.
 
 
 #########################################################################################################################################
 
 ##### findiasdela semana #############################################################################################################################
 
-Uno cada uno de los archivos de steps y calories, ya he comprobado que es mas consistente esta data que la da daily (EDIT)
-```
-hourlySteps_BIG <- merge(Steps_1, Steps_2, all = TRUE)
-hourlyCalories_BIG <- merge(Calories_1, Calories_2, all = TRUE)
-```
+## Hourly
 
-Convertir los dataset separando hora y fecha.
+Prepararé los dataset medidos en horas separando fechas y horas en columnas diferentes.
 
 ## Creando columnas de fecha y tiempo 
 ```
@@ -285,15 +283,14 @@ El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de 
 
 Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
 
+El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. 
+
 #### DIAS Y HORAS EN DONDE HUBO MAS ACTIVIDAD ######
-
-El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
-
-
+QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? 
 ## # Promedio de pasos por dia de la semana.#########################################################################################################
 
 ```
-ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
+ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
   geom_bar(stat = "identity", fill = "skyblue") +
   geom_text(aes(label = round(AvgSteps, 0)), vjust = -0.3, size = 3)
   labs(title = "Promedio de pasos por día de la semana",
@@ -303,21 +300,16 @@ ggplot(avg_steps_per_day2, aes(x = Weekday, y = AvgSteps)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-![](imagenes/daily/pasos_por_dias_de_la_semana_mes_1y2.png)
+![](imagenes/daily/pasos_por_dias_de_la_semana_mes2.png)
 
-Podemos observar que el dia con mas pasos es el sabado, dia en que probablemente los usuarios hagan mas actividades recreativas que durante la semana laboral donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. EDIT : DIA MARTES EL DIA CON MAS REGISTROS? CHECKEAR.
+Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aun siendo martes,miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado, por lo tanto es un dato a tener en cuenta.
+
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
-# sabado. esto puede deberse a ... # ->
 
 ##  Grafica de correlacion pasos totales y calorias 
 
-Al llevar los datos a Tableau de los pasos totales destaca la diferencia entre el 1er y 2do mes. 
-Suma de pasos totales por dia: 
 
-![](imagenes/1y2/suma_total_steps_1y2.png)
-
-Ocuparé solo el 2do mes.
 
 # Crear el gráfico de dispersión entre calorías y pasos totales
 
@@ -333,25 +325,17 @@ ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
 ![](imagenes/daily/Relacion_pasos_calorias.png)
 
 Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
-Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, osea gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
+Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
 EDIT########
 
 ###### ANALISIS DONDE SE EMPIEZA CON LOS DIAS DE LA SEMANA ############################################################################################
 
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
+
 
 Vizualizo los dias de la semana en función de
  sedentarismo 
  pasos y
   calorías.
-
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?s
-
-
-EMPEZAR esta seccion demostrando las sumas y como no hacen sentido que los martes miercoles y jueves se tenga lo mismo. Poner las sumas , luego plantearse si habra mas datos registrados esos dias por eso la fluctuacion tan cuadrada.
-Luego poner la cantidad total de datos y registros por dia de la semana. Luego poner los promedios.
-
-##################
 
 
 
@@ -427,6 +411,7 @@ Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que
 
 
 # HOURLY 
+A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
 
 # CALORIES
 calorias en un marco de 24 horas :
@@ -442,4 +427,8 @@ Promedio de pasos dados en 24 horas:
 suma de pasos totales por hora:
 ![](imagenes/hourly/suma_steps_total_hourly.png)
 
+###
+ FINAL
+
+En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
 
