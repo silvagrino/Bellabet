@@ -357,7 +357,6 @@ PROMEDIOS
 
 ## SLEEP
 
--	Diferencia entre tiempo en cama y tiempo dormido, para así sacar cuanto tiempo demora cada usuario en quedarse dormido. Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
 
 ####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido
 
@@ -366,8 +365,10 @@ sleepDay_merged <- sleepDay_merged %>%
   mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
 ```
 
-############################################ CREAR TOTAL DE MINUTOS DORMIDO SUMA DURING THE WEEK ################## Ahi deberia comprobar que tambien hay mas datos en 
-martes miercoles y jueves .#####################################################################################################
+-	 Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
+
+
+
 
 # Crear el gráfico de barras del tiempo promedio de sueño por día de la semana
 
@@ -384,13 +385,12 @@ ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
 
 ![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
-La diferencia entre los dias se da de manera muy marcada entre los dias laborales y los fines de semana. Domingo tiene el dia con mas horas de sueño como cabria esperar seguida del sabado. Dentro de la semana que se mantiene constante destaca el dia miercoles, osea justo la mitad de la semana donde quizas los usuarios tienden a dormir un poco mas para seguir con la semana de manera mas productiva EDIT ##########3
+La diferencia entre los dias se da de manera muy marcada entre los dias laborales y los fines de semana. Domingo tiene el dia con mas horas de sueño como cabria esperar seguida del sabado. Dentro de la semana que se mantiene constante destaca el dia miercoles, osea justo la mitad de la semana donde quizas los usuarios tienden a dormir un poco mas para seguir con la semana de manera mas productiva EDIT #########
 
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
 
 Graficaré el total de minutos de actividad de las 4 categorias: very active, fairly active, lightly active y sedentary
-
 
 ```
 plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
@@ -406,16 +406,13 @@ Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que
 
 
 
- ##########################################################
-
+A continuación analizare las variables dentro de 24 horas. 
 
 
 # HOURLY 
 A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
 
 # CALORIES
-calorias en un marco de 24 horas :
-![](imagenes/hourly/calories_hourly.png)
 
 Promedio de calorias dentro de 24 horas:
 ![](imagenes/hourly/promedio_calories_hourly.png)
@@ -424,8 +421,8 @@ Promedio de calorias dentro de 24 horas:
 Promedio de pasos dados en 24 horas:
 ![](imagenes/hourly/promedio_hourly_steps.png)
 
-suma de pasos totales por hora:
-![](imagenes/hourly/suma_steps_total_hourly.png)
+
+
 
 ###
  FINAL
