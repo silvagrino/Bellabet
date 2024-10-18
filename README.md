@@ -45,7 +45,7 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 
 * Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes no se puede considerar para hacer un analisis preciso con datos dispersos e inconsistentes.
 
-* La mayoria de los registros son de martes a jueves,(COMPROBAR) lo que podría no ser suficiente para un análisis preciso.
+* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
 
 
 # 3. Procesar ############################################################################################################################################
@@ -64,9 +64,9 @@ Para esto voy a usar `n_distinct()` para comprobar los id's unicos de cada datas
 Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso.
 
 Seleccionaré los dataset 
-dailyActivity_merged porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
-hourlyCalories_merged y hourlySteps_merged por que me dan el detalle de cada hora de calorias gastadas y pasos dados 
-sleepDay_merged para poder analizar el patron de sueño diario de los usuarios.
+"dailyActivity_merged" porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
+hourlyCalories_merged y hourlySteps_merged por que me dan el detalle de cada hora de calorias gastadas y pasos dados.
+"sleepDay_merged" para poder analizar el patron de sueño diario de los usuarios.
 
 
 ## DAILY
@@ -88,6 +88,10 @@ Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas. La diferencia es s
 Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 
 ## HOURLY (calories 1/step_1, Calories_2/Steps_2)
+
+##########################
+###### exploratorio para hourly y sleepDay_merged
+#####################################
 
 Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps
 Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hora del día. 
@@ -116,6 +120,7 @@ Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1er mes(3/12/
 ## DAILY (dailyActivity_merged, dailyActivity_merged2)
 
 Uno los meses en un unico archivo.
+
 ```
 dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
 ```
@@ -243,18 +248,17 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemanasleep.png)
 
-Hay mas datos registrados los martes, miercoles y jueves, por eso se debe la diferencia en las tablas anteriores. Graficaré con promedios.
+Hay mas datos registrados los martes, miercoles y jueves, por esto se debe la diferencia en las tablas anteriores. Graficaré con promedios.
 
 
-#########################################################################################################################################
-
-##### findiasdela semana #############################################################################################################################
+##### findiasdela semana
 
 ## Hourly
 
 Prepararé los dataset medidos en horas separando fechas y horas en columnas diferentes.
 
 ## Creando columnas de fecha y tiempo 
+
 ```
 hourlyCalories_BIG$ActivityHour <- mdy_hms(hourlyCalories_BIG$ActivityHour)
 hourlyCalories_BIG$time <- as.Date(hourlyCalories_BIG$ActivityHour, format = "%H:%M:%S")
@@ -278,6 +282,10 @@ summary(dailyActivity_merged2 %>%
 ```
 ![](imagenes/daily/summary_mes_2.png)
 
+########################################
+###### y los otros dataset?
+######################################
+
 
 El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel bajo-moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
 
@@ -285,9 +293,8 @@ Además, los minutos de actividad intensa y moderada reflejan que, aunque la may
 
 El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. 
 
-#### DIAS Y HORAS EN DONDE HUBO MAS ACTIVIDAD ######
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD? 
-## # Promedio de pasos por dia de la semana.#########################################################################################################
+
+## Promedio de pasos por dia de la semana.#########################################################################################################
 
 ```
 ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
@@ -305,6 +312,10 @@ ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
 Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aun siendo martes,miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado, por lo tanto es un dato a tener en cuenta.
 
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
+
+####################################
+###### y promedios por dia de la semana de las otras variables? Porque pasos?
+##########################################
 
 
 ##  Grafica de correlacion pasos totales y calorias 
@@ -331,14 +342,6 @@ EDIT########
 ###### ANALISIS DONDE SE EMPIEZA CON LOS DIAS DE LA SEMANA ############################################################################################
 
 
-
-Vizualizo los dias de la semana en función de
- sedentarismo 
- pasos y
-  calorías.
-
-
-
 PROMEDIOS 
 
 ![](imagenes/daily/Promedio_totalsteps_semana.png) promedio total steps
@@ -347,8 +350,12 @@ PROMEDIOS
 
 ![](imagenes/daily/Promedio_sedentary_semana.png) Promedio sedentary
 
+#####################################
+###### y las otras variables?
+##########################################
 
-########################## EVALUAR ###################################################################################################################
+
+########################## EVALUAR #################################################################################
 
 
 
@@ -420,6 +427,7 @@ Promedio de calorias dentro de 24 horas:
 # STEPS
 Promedio de pasos dados en 24 horas:
 ![](imagenes/hourly/promedio_hourly_steps.png)
+
 
 
 
