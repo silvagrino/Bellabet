@@ -423,7 +423,6 @@ Promedio de pasos dados en 24 horas:
 
 
 
-
 ###
  FINAL
 
