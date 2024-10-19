@@ -49,6 +49,7 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 
 
 # 3. Procesar ############################################################################################################################################
+
 Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y teniendo en cuenta que podria darme mayores insgiht para compartir con la campaña de marketing, datos usables (EDIT)
 Comprobaré cuantos ID's diferentes hay registrados en todos los dataset
 Para esto voy a usar `n_distinct()` para comprobar los id's unicos de cada dataset.
@@ -87,14 +88,13 @@ Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas. La diferencia es s
 
 Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 
-## HOURLY (calories 1/step_1, Calories_2/Steps_2)
+## HOURLY 
 
 ##########################
 ###### exploratorio para hourly y sleepDay_merged
 #####################################
 
-Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada en las diferentes horas del dia: calories y steps
-Evaluaré la actividad diaria en función de pasos y calorías gastadas cada hora del día. 
+Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada por horas del dia: calories y steps
 
 ```
 Calories_1 <- hourlyCalories_merged_3_12_16_4_11_16
@@ -105,10 +105,40 @@ Steps_2 <- hourlySteps_merged_4_12_16_5_12_16
 
 # Resumen
 
-![](imagenes/hourly/RStudio_13-08-2024_14_33_18.png)
+Aplico una analisis exploratorio
+
+```
+ `colnames `
+ `nrow `
+ `sum(duplicated(_) `
+ `sum(is.na(_)`
+ `n_distinct `
+ `summary `
+ `class `
+```
+Sin valores duplicados ni valores nulos. En la cantidad de ID hay solo diferencia de 1, de 33 a 34. En la cantidad de filas hay una diferencia que voy a analizar si es significativa al graficar la cantidad de datos totales por mes.
+
+
+![](imagenes/hourly/nrowshourly.png)
+
+
 
 No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
 
+
+
+###############################
+##
+#################
+
+colnames
+nrow
+sum(duplicated(_)
+sum(is.na(_)
+n_distinct
+summary
+class
+has_na <- anyNA(_)
 
 #####################################################################################################################################################
 
@@ -157,6 +187,10 @@ Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes ti
 ## HOURLY 
 
 Hago un merge de los dataset de calories y steps respectivamente
+
+hourlySteps_BIG <- merge(Steps_1, Steps_2, all = TRUE)
+
+hourlyCalories_BIG <- merge(Calories_1, Calories_2, all = TRUE)
 
 ## CANTIDAD DE DATOS MES 1 Y 2 
 
@@ -292,6 +326,19 @@ El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de 
 Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
 
 El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. 
+
+
+### hourly 
+ 
+ # Resumen
+
+![](imagenes/hourly/summaryhourly.png)
+
+
+
+##### Sleep
+
+
 
 
 ## Promedio de pasos por dia de la semana.#########################################################################################################
