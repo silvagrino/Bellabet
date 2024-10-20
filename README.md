@@ -127,18 +127,17 @@ No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta 
 
 
 
-###############################
-##
-#################
+## Sleep
 
-colnames
-nrow
-sum(duplicated(_)
-sum(is.na(_)
-n_distinct
-summary
-class
-has_na <- anyNA(_)
+colnames(sleepDay_merged)
+nrow(sleepDay_merged)
+sum(duplicated(sleepDay_merged))
+sum(is.na(sleepDay_merged))
+n_distinct(sleepDay_merged)
+summary(sleepDay_merged      %>%
+          select(-Id, -SleepDay, -TotalSleepRecords))
+
+
 
 #####################################################################################################################################################
 
@@ -211,23 +210,21 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
 Si ocupare los dos meses en este caso, dado que la diferencia no es significativa.
 
 
-## DIAS DE LA SEMANA  #################################################################################################################################
+# DIAS DE LA SEMANA  
 
-#### Creacion de columna para dia de la semana
-
-## DAILY
+# Creacion de columna para dia de la semana
 
 Crearé una columna adicional para los días de la semana en todos el conjunto de datos.
 
-############ HACERLO PARA TODOS LOS DATASET : DAILY STEPS CALORIES SLEEP
+## DAILY
 
 ```
 dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
 
+## HOURLY
 
-# HOURLY
 ```
 hourlyCalories_BIG <- hourlyCalories_BIG %>% 
   mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
@@ -236,7 +233,7 @@ hourlySteps_BIG <- hourlySteps_BIG %>%
   mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
 ```
 
-# SLEEP
+## SLEEP
 
 ```
 sleepDay_merged_week <- sleepDay_merged %>% 
