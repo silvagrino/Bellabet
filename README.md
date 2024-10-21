@@ -71,6 +71,7 @@ hourlyCalories_merged y hourlySteps_merged por que me dan el detalle de cada hor
 
 
 ## DAILY
+
 Hago analisis exploratorio inicial viendo columnas y numero de filas, filas distintas, buscando duplicados y valores nulos.
 
 ```
@@ -90,9 +91,8 @@ Eliminare los datos de distancia, son irrelevantes para mi ruta de análisis.
 
 ## HOURLY 
 
-##########################
-###### exploratorio para hourly y sleepDay_merged
-#####################################
+#### exploratorio para hourly y sleepDay_merged
+
 
 Selecionaré dos dataset para analizar la cantidad de actividad y energia gastada por horas del dia: calories y steps
 
@@ -103,8 +103,6 @@ Steps_1 <- hourlySteps_merged_3_12_16_4_11_16
 Steps_2 <- hourlySteps_merged_4_12_16_5_12_16
 ```
 
-# Resumen
-
 Aplico una analisis exploratorio
 
 ```
@@ -113,42 +111,40 @@ Aplico una analisis exploratorio
  `sum(duplicated(_)`
  `sum(is.na(_)`
  `n_distinct`
- `summary`
  `class`
 ```
-Sin valores duplicados ni valores nulos. En la cantidad de ID hay solo diferencia de 1, de 33 a 34. En la cantidad de filas hay una diferencia que voy a analizar si es significativa al graficar la cantidad de datos totales por mes.
+
+Sin valores duplicados ni valores nulos. En la cantidad de ID hay de 33 a 34. En la cantidad de filas hay una diferencia de 1.985 entre los datos del 1er y el 2do mes que voy a analizar si es significativa al graficar la cantidad de datos totales por mes.
 
 
 ![](imagenes/hourly/nrowshourly.png)
 
 
 
-No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
+No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas en donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
 
 
-
-## Sleep
+### Sleep 
 
 colnames(sleepDay_merged)
 nrow(sleepDay_merged)
 sum(duplicated(sleepDay_merged))
 sum(is.na(sleepDay_merged))
 n_distinct(sleepDay_merged)
-summary(sleepDay_merged      %>%
-          select(-Id, -SleepDay, -TotalSleepRecords))
 
 
+################## resultados ##########
 
-#####################################################################################################################################################
 
 # Numero de datos segun mes 
 
-Como acabo de ver hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes. Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas.
+Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes. Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas.
 Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1er mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
+Medire los datos segun mes de todos los dataset para saber con cuales trabajaré.
 
 ## DAILY (dailyActivity_merged, dailyActivity_merged2)
 
-Uno los meses en un unico archivo.
+Hago merge de los meses en un unico archivo.
 
 ```
 dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
@@ -172,13 +168,14 @@ dataActivity_sind_week$ActivityDate <- as.Date(dataActivity_sind_week$ActivityDa
 dataActivity_sind_week2$ActivityDate <- as.Date(dataActivity_sind_week2$ActivityDate, format="%m/%d/%Y")
 ```
 
-Grafico de cantidad de datos por fecha:
+Plot cantidad de datos por fecha:
 
 ```
 ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
   geom_bar(fill="steelblue")+
   labs(title="Data recolectada por fecha")
 ```
+
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
 Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes tiene datos mas consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso y a tener conclusiones erradas.
@@ -187,9 +184,10 @@ Solo ocupare el 2do mes, la diferencia de datos totales es grande. El 2do mes ti
 
 Hago un merge de los dataset de calories y steps respectivamente
 
+```
 hourlySteps_BIG <- merge(Steps_1, Steps_2, all = TRUE)
-
 hourlyCalories_BIG <- merge(Calories_1, Calories_2, all = TRUE)
+```
 
 ## CANTIDAD DE DATOS MES 1 Y 2 
 
@@ -203,16 +201,12 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
   labs(title="Data recolectada por fecha")
 ```
 
-###### IMAGEN ########
 
 ![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
 Si ocupare los dos meses en este caso, dado que la diferencia no es significativa.
 
-
-# DIAS DE LA SEMANA  
-
-# Creacion de columna para dia de la semana
+## Creacion de columna para dia de la semana
 
 Crearé una columna adicional para los días de la semana en todos el conjunto de datos.
 
@@ -223,7 +217,7 @@ dataActivity_sind_week2 <- dataActivity_sindistancia2 %>%
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
 
-## HOURLY
+# HOURLY
 
 ```
 hourlyCalories_BIG <- hourlyCalories_BIG %>% 
@@ -233,16 +227,16 @@ hourlySteps_BIG <- hourlySteps_BIG %>%
   mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
 ```
 
-## SLEEP
+# SLEEP
 
 ```
 sleepDay_merged_week <- sleepDay_merged %>% 
-  mutate(Weekday = weekdays(as.Date(SleepDay, "%m/%d/%Y"))) 
+  mutate(Weekday = weekdays(as.Date(SleepDay, "%m/%d/%Y")))
 ```
 
-Voy a comprobar cuantos registros hay para los dias de la semana ya que al llevar las tablas a tableau ya noto 
+Voy a comprobar cuantos registros hay para los dias de la semana ya que al llevar las tablas a tableau ya noto incongruencias
 
-Si bien trabajaré los datos en promedios, ya en las sumas se nota una tendencia en los dias martes, miercoles y jueves en diferentes variables. 
+Si bien trabajaré los datos en promedios, ya en las sumas de datos destaca una tendencia en los dias martes, miercoles y jueves en diferentes variables. 
 
 <img src="imagenes/daily/Sedentarismo_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Pasos_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Calorias_por_semana.png" alt="Descripción de la imagen" width="300">
 
@@ -250,14 +244,12 @@ Si bien trabajaré los datos en promedios, ya en las sumas se nota una tendencia
 Voy a comprobar los datos totales por dia de la semana para saber si esta fluctuacion se debe a una mayor cantidad de registros en esos dias especificos.
 
 
-
 registros_por_dia_sleep <- sleepDay_merged_week %>%
   group_by(Weekday) %>%
   summarise(TotalRegistros = n())
 
-# Visualizar la cantidad de registros por día de la semana
+## Visualizar la cantidad de registros por día de la semana
 
-QUE DIAS DE LA SEMANA HAY MAS ACTIVIDAD registrada?s
 
 
                 Daily                                             Sleep
@@ -281,14 +273,11 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 Hay mas datos registrados los martes, miercoles y jueves, por esto se debe la diferencia en las tablas anteriores. Graficaré con promedios.
 
-
-##### findiasdela semana
+## Creando columnas de fecha y tiempo 
 
 ## Hourly
 
-Prepararé los dataset medidos en horas separando fechas y horas en columnas diferentes.
-
-## Creando columnas de fecha y tiempo 
+Prepararé los dataset de horas separando fechas y horas en columnas diferentes.
 
 ```
 hourlyCalories_BIG$ActivityHour <- mdy_hms(hourlyCalories_BIG$ActivityHour)
@@ -302,20 +291,15 @@ hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y
 ```
 
 
-
 ## Análisis ##########################################################################################################################################
 
-Resumen general
+## summary
 
 ```
 summary(dailyActivity_merged2 %>%
           select(-Id, -ActivityDate))
 ```
 ![](imagenes/daily/summary_mes_2.png)
-
-########################################
-###### y los otros dataset?
-######################################
 
 
 El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel bajo-moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
@@ -327,18 +311,42 @@ El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea
 
 ### hourly 
  
- # Resumen
+# Resumen
 
 ![](imagenes/hourly/summaryhourly.png)
 
+Se mamtienen estables los datos en los 2 meses. Una media de pasos un poco mas elevada el 2do mes.
+
+######  CHAT GPT ######################
 
 
-##### Sleep
+#### Sleep
 
+```
+summary(sleepDay_merged      %>%
+          select(-Id, -SleepDay, -TotalSleepRecords))
+```
+![](imagenes/daily/summarysleep.png)
 
+ La mayoría de las personas duermen entre 6 y 8 horas (observando el 1er y 3er cuartil: 361 - 490 minutos).
+ quizás por problemas de conciliación del sueño o despertares nocturnos).
 
+ TimeToFallAsleep
 
-## Promedio de pasos por dia de la semana.#########################################################################################################
+Rango: Va de 0 a 371 minutos (más de 6 horas).
+Promedio (mean): 39.17 minutos.
+Mediana (median): 25 minutos.
+Distribución: La media es mayor que la mediana, lo que sugiere que algunas personas tardan mucho en quedarse dormidas (sesgo positivo).
+Conclusión: Aunque la mayoría de las personas parecen conciliar el sueño en menos de 30 minutos (observando los cuartiles), hay casos extremos que podrían reflejar insomnio o problemas para dormir.
+
+Promedio vs Mediana: En la mayoría de las columnas, los valores promedio (mean) están cerca de la mediana, indicando que los datos probablemente están distribuidos de manera relativamente uniforme, excepto en el tiempo para conciliar el sueño.
+
+Agrupar por categorías (como "sueño eficiente" vs "ineficiente") para entender mejor los patrones.
+Este análisis sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
+
+## Promedio de pasos por dia de la semana #####################################################################################################
+
+##  Daily
 
 ```
 ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
@@ -361,63 +369,25 @@ El dia domingo destaca como el dia con menos pasos probablemente porque es un di
 ###### y promedios por dia de la semana de las otras variables? Porque pasos?
 ##########################################
 
+Sleep por dia de la semana ?##########
 
-##  Grafica de correlacion pasos totales y calorias 
+__minutes por dia de la semana #########
 
-
-
-# Crear el gráfico de dispersión entre calorías y pasos totales
-
-```
-ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
-  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
-  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
-  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
-       x = "Total de Pasos",
-       y = "Calorías") +
-  theme_minimal()
-```
-![](imagenes/daily/Relacion_pasos_calorias.png)
-
-Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
-Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
-EDIT########
-
-###### ANALISIS DONDE SE EMPIEZA CON LOS DIAS DE LA SEMANA ############################################################################################
 
 
 PROMEDIOS 
 
-![](imagenes/daily/Promedio_totalsteps_semana.png) promedio total steps
 
 ![](imagenes/daily/Promedio_calories_semana.png) promedio calories
 
 ![](imagenes/daily/Promedio_sedentary_semana.png) Promedio sedentary
 
-#####################################
-###### y las otras variables?
-##########################################
 
 
 ########################## EVALUAR #################################################################################
 
 
-
-##### ORGANIZAR DONDE VA EL ANALISIS DE DIAS DE LA SEMANA CON MAS DATA ###########################################################################
-######################################################################################################################################################
-
 ## SLEEP
-
-
-####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido
-
-```
-sleepDay_merged <- sleepDay_merged %>%
-  mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
-```
-
--	 Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
-
 
 
 
@@ -437,6 +407,50 @@ ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
 ![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
 La diferencia entre los dias se da de manera muy marcada entre los dias laborales y los fines de semana. Domingo tiene el dia con mas horas de sueño como cabria esperar seguida del sabado. Dentro de la semana que se mantiene constante destaca el dia miercoles, osea justo la mitad de la semana donde quizas los usuarios tienden a dormir un poco mas para seguir con la semana de manera mas productiva EDIT #########
+
+############################## summary con las nuevas columnas de sleepDay_merged ######################################
+
+
+
+
+
+###### TIEMPO EN QUEDARSE DORMIDO ######## PARA QUE ? ##############
+
+
+####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido para tener el tiempo que se han demorado los usuarios en quedarse dormidos.
+
+```
+sleepDay_merged <- sleepDay_merged %>%
+  mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
+```
+
+-	 Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
+
+
+
+
+
+
+##  Grafica de correlacion pasos totales y calorias 
+
+
+# Crear el gráfico de dispersión entre calorías y pasos totales
+
+```
+ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
+  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
+  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
+  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
+       x = "Total de Pasos",
+       y = "Calorías") +
+  theme_minimal()
+```
+![](imagenes/daily/Relacion_pasos_calorias.png)
+
+Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
+Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
+EDIT########
+
 
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
