@@ -108,13 +108,13 @@ Steps_2 <- hourlySteps_merged_4_12_16_5_12_16
 Aplico una analisis exploratorio
 
 ```
- `colnames `
- `nrow `
- `sum(duplicated(_) `
+ `colnames`
+ `nrow`
+ `sum(duplicated(_)`
  `sum(is.na(_)`
- `n_distinct `
- `summary `
- `class `
+ `n_distinct`
+ `summary`
+ `class`
 ```
 Sin valores duplicados ni valores nulos. En la cantidad de ID hay solo diferencia de 1, de 33 a 34. En la cantidad de filas hay una diferencia que voy a analizar si es significativa al graficar la cantidad de datos totales por mes.
 
