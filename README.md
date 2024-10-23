@@ -6,6 +6,7 @@ Su Objetivo es Convertirse en una de las compañias más grande en el mercado gl
 La tarea del equipo: Analizar datos de dispositivos inteligentes para obtener información sobre el uso de estos dispositivos por parte de los consumidores y guiar la estrategia de marketing.
 
 # 1. Preguntar
+
 Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
 
 Estos datos seran presentados a los stakeholders principales Urška Sršen y Sando Mur, miembros del equipo ejecutivo y stakeholders secundarios conformados por el equipo de análisis de marketing de Bellabeat.
@@ -311,13 +312,16 @@ El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea
 
 ### hourly 
  
-# Resumen
+## Resumen
 
 ![](imagenes/hourly/summaryhourly.png)
 
-Se mamtienen estables los datos en los 2 meses. Una media de pasos un poco mas elevada el 2do mes.
+Se mantienen estables los datos en los 2 meses. Una media de pasos un poco mas elevada el 2do mes.
+
 
 ######  CHAT GPT ######################
+
+Hay una diferencia de 1985 registros entre el 1er y 2do mes. Steps_2 destaca con un promedio y una mediana mas elevada respecto a Step_1. Asi como tambien se puede observar en el 3er cuartil. Por lo tanto los usuarios del 2do mes deberian registrar mas tiempo dentro de actividad mas vigorosa.
 
 
 #### Sleep
@@ -328,21 +332,12 @@ summary(sleepDay_merged      %>%
 ```
 ![](imagenes/daily/summarysleep.png)
 
- La mayoría de las personas duermen entre 6 y 8 horas (observando el 1er y 3er cuartil: 361 - 490 minutos).
- quizás por problemas de conciliación del sueño o despertares nocturnos).
+La mayoría de las personas duermen entre 6 y 8 horas (observando el 1er y 3er cuartil: 361 - 490 minutos).
+Gracias a la columna de `TimeToFallAsleep` podemos saber el tiempo que los usuarios estan en cama sin dormir. Esto puede considerar el tiempo que se demora el usuario en quedarse dormido asi como tambien tiempos de insomnio o el tiempo que el usuario demora en levantarse de la cama en la mañana. Aunque la mayoría de las personas parecen conciliar el sueño en menos de 30 minutos (observando los cuartiles), hay casos donde podrian presentarse problemas de conciliación del sueño o despertares nocturnos. También hay casos extremos que podrían reflejar insomnio o problemas para dormir. 
 
- TimeToFallAsleep
+En la mayoría de las columnas, los valores promedio (mean) están cerca de la mediana, indicando que los datos probablemente están distribuidos de manera relativamente uniforme, excepto en el tiempo para conciliar el sueño.
 
-Rango: Va de 0 a 371 minutos (más de 6 horas).
-Promedio (mean): 39.17 minutos.
-Mediana (median): 25 minutos.
-Distribución: La media es mayor que la mediana, lo que sugiere que algunas personas tardan mucho en quedarse dormidas (sesgo positivo).
-Conclusión: Aunque la mayoría de las personas parecen conciliar el sueño en menos de 30 minutos (observando los cuartiles), hay casos extremos que podrían reflejar insomnio o problemas para dormir.
-
-Promedio vs Mediana: En la mayoría de las columnas, los valores promedio (mean) están cerca de la mediana, indicando que los datos probablemente están distribuidos de manera relativamente uniforme, excepto en el tiempo para conciliar el sueño.
-
-Agrupar por categorías (como "sueño eficiente" vs "ineficiente") para entender mejor los patrones.
-Este análisis sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
+Este análisis superficial sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
 
 ## Promedio de pasos por dia de la semana #####################################################################################################
 
