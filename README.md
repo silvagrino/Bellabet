@@ -360,22 +360,17 @@ Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que
 
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
-####################################
-###### y promedios por dia de la semana de las otras variables? Porque pasos?
-##########################################
 
-Sleep por dia de la semana ?##########
 
-__minutes por dia de la semana #########
+![](imagenes/daily/Caloriasporsemana.png)
 
 
 
-PROMEDIOS 
 
 
-![](imagenes/daily/Promedio_calories_semana.png) promedio calories
+![](imagenes/daily/minutossedentariosporsemana.png)
 
-![](imagenes/daily/Promedio_sedentary_semana.png) Promedio sedentary
+
 
 
 
