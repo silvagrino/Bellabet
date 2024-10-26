@@ -314,14 +314,16 @@ El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea
  
 ## Resumen
 
-![](imagenes/hourly/summaryhourly.png)
+
+<img src="imagenes/hourly/summaryhourly.png" alt="Descripción de la imagen" width="300">
+
 
 Se mantienen estables los datos en los 2 meses. Una media de pasos un poco mas elevada el 2do mes.
 
 
 ######  CHAT GPT ######################
 
-Hay una diferencia de 1985 registros entre el 1er y 2do mes. Steps_2 destaca con un promedio y una mediana mas elevada respecto a Step_1. Asi como tambien se puede observar en el 3er cuartil. Por lo tanto los usuarios del 2do mes deberian registrar mas tiempo dentro de actividad mas vigorosa.
+Hay una diferencia de 1985 registros entre el 1er y 2do mes. Steps_2 destaca con un promedio y una mediana mas elevada respecto a Step_1. Diferencia que también se hace visible al observar el 3er cuartil. Por lo tanto los usuarios del 2do mes deberian registrar mas tiempo destinado a actividad mas vigorosa.
 
 
 #### Sleep
@@ -361,12 +363,15 @@ Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
 
+Calorias por dia de la semana
+Jueves el dia con menos calorias gastadas. Martes y sabado como los dias con mas calorias .
+Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera que no hay una relacion directa con dias laborales y fines de semana.
 
 ![](imagenes/daily/Caloriasporsemana.png)
 
 
-
-
+Minutos sedentarios por dia de la semana.
+Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con menos, seguido del sabado . Same .
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
