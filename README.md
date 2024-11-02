@@ -140,7 +140,7 @@ Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged
 Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1er mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
 Medire los datos segun mes de todos los dataset para saber con cuales trabajaré.
 
-## DAILY (dailyActivity_merged, dailyActivity_merged2)
+### DAILY (dailyActivity_merged, dailyActivity_merged2)
 
 Hago merge de los meses en un unico archivo.
 
@@ -203,6 +203,12 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
 ![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
 Si ocupare los dos meses en este caso, dado que la diferencia no es significativa.
+
+### Sleep
+
+
+![](imagenes/daily/datarecolectadafechaSleep.png)
+
 
 ## Creacion de columna para dia de la semana
 
