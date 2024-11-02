@@ -209,6 +209,7 @@ Si ocupare los dos meses en este caso, dado que la diferencia no es significativ
 
 ![](imagenes/daily/datarecolectadafechaSleep.png)
 
+También ocupare los dos meses en esta caso, hay regularidad en los datos.
 
 ## Creacion de columna para dia de la semana
 
