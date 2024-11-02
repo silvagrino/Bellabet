@@ -49,7 +49,7 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 * La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
 
 
-# 3. Procesar ############################################################################################################################################
+# 3. Procesar 
 
 Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y teniendo en cuenta que podria darme mayores insgiht para compartir con la campaña de marketing, datos usables (EDIT)
 Comprobaré cuantos ID's diferentes hay registrados en todos los dataset
@@ -125,19 +125,16 @@ Sin valores duplicados ni valores nulos. En la cantidad de ID hay de 33 a 34. En
 No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta gastando algo y las horas en donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
 
 
-### Sleep 
+## Sleep 
 
-colnames(sleepDay_merged)
-nrow(sleepDay_merged)
-sum(duplicated(sleepDay_merged))
-sum(is.na(sleepDay_merged))
-n_distinct(sleepDay_merged)
+Aplico las mismas funciones al dataset de horas de sueño.
+Se encuentran 3 duplicados , los cuales se remueven.
 
-
-################## resultados ##########
+![](imagenes/daily/summarysleep.png)
 
 
-# Numero de datos segun mes 
+
+## Numero de datos segun mes 
 
 Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes. Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas.
 Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1er mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
@@ -169,7 +166,7 @@ dataActivity_sind_week$ActivityDate <- as.Date(dataActivity_sind_week$ActivityDa
 dataActivity_sind_week2$ActivityDate <- as.Date(dataActivity_sind_week2$ActivityDate, format="%m/%d/%Y")
 ```
 
-Plot cantidad de datos por fecha:
+### Plot cantidad de datos por fecha:
 
 ```
 ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
@@ -190,7 +187,7 @@ hourlySteps_BIG <- merge(Steps_1, Steps_2, all = TRUE)
 hourlyCalories_BIG <- merge(Calories_1, Calories_2, all = TRUE)
 ```
 
-## CANTIDAD DE DATOS MES 1 Y 2 
+### CANTIDAD DE DATOS MES 1 Y 2 
 
 ```
 ggplot(data=hourlyCalories_BIG, aes(x=date))+
@@ -211,14 +208,14 @@ Si ocupare los dos meses en este caso, dado que la diferencia no es significativ
 
 Crearé una columna adicional para los días de la semana en todos el conjunto de datos.
 
-## DAILY
+### DAILY
 
 ```
 dataActivity_sind_week2 <- dataActivity_sindistancia2 %>% 
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
 
-# HOURLY
+### HOURLY
 
 ```
 hourlyCalories_BIG <- hourlyCalories_BIG %>% 
@@ -228,7 +225,7 @@ hourlySteps_BIG <- hourlySteps_BIG %>%
   mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
 ```
 
-# SLEEP
+### SLEEP
 
 ```
 sleepDay_merged_week <- sleepDay_merged %>% 
@@ -244,10 +241,11 @@ Si bien trabajaré los datos en promedios, ya en las sumas de datos destaca una 
 ¿Como es posible que martes y miercoles sean los dias con mas pasos y calorias gastadas y al mismo tiempo sean los dias con mas minutos sedentarios?
 Voy a comprobar los datos totales por dia de la semana para saber si esta fluctuacion se debe a una mayor cantidad de registros en esos dias especificos.
 
-
+```
 registros_por_dia_sleep <- sleepDay_merged_week %>%
   group_by(Weekday) %>%
   summarise(TotalRegistros = n())
+```
 
 ## Visualizar la cantidad de registros por día de la semana
 
@@ -274,9 +272,11 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 Hay mas datos registrados los martes, miercoles y jueves, por esto se debe la diferencia en las tablas anteriores. Graficaré con promedios.
 
-## Creando columnas de fecha y tiempo 
+## Creación de columnas de fecha y tiempo 
 
-## Hourly
+Para poder preparar las vizualizaciones donde pueda analizar cada hora del dia primero tengo que dividir la columna de fecha y tiempo de los dataset "hourly"
+
+### Hourly
 
 Prepararé los dataset de horas separando fechas y horas en columnas diferentes.
 
@@ -292,9 +292,8 @@ hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y
 ```
 
 
-## Análisis ##########################################################################################################################################
+# 3. Análisis 
 
-## summary
 
 ```
 summary(dailyActivity_merged2 %>%
