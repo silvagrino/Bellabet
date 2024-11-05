@@ -128,10 +128,14 @@ No eliminare valores 0. No hay horas donde se gaste 0 calorias, siempre se esta 
 ## Sleep 
 
 Aplico las mismas funciones al dataset de horas de sueño.
-Se encuentran 3 duplicados , los cuales se remueven.
+Se encuentran 3 duplicados , los cuales remuevo.
 
-![](imagenes/daily/summarysleep.png)
+Cargo `sleepday_merged` y creo una columna con la diferencia de tiempo en cama y tiempo dormido para obtener el tiempo que se han tardado los usuarios dormir.
 
+```
+sleepDay_merged <- sleepDay_merged %>%
+  mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
+```
 
 
 ## Numero de datos segun mes 
@@ -341,6 +345,8 @@ En la mayoría de las columnas, los valores promedio (mean) están cerca de la m
 
 Este análisis superficial sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
 
+
+
 ## Promedio de pasos por dia de la semana 
 
 ###  Daily
@@ -358,7 +364,7 @@ ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
 
 ![](imagenes/daily/pasos_por_dias_de_la_semana_mes2.png)
 
-Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aún siendo martes, miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado con una diferencia significativa.
+Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aún siendo martes, miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado con una diferencia significativa, ahora que esta siendo representado en valores promedios.
 
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
@@ -371,20 +377,19 @@ Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera
 ![](imagenes/daily/Caloriasporsemana.png)
 
 
-### Minutos sedentarios por dia de la semana.
+## Minutos sedentarios por dia de la semana.
 
 Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con menos, seguido del sabado . Same .
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
 
+##################################################################### EDIT #########################################
 
 
-## SLEEP
+### SLEEP
 
-
-
-## Crear el gráfico de barras del tiempo promedio de sueño por día de la semana
+## Tiempo de sueño por dia de la semana
 
 ```
 ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
@@ -399,35 +404,11 @@ ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
 
 ![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
-La diferencia entre los dias se da de manera muy marcada entre los dias laborales y los fines de semana. Domingo tiene el dia con mas horas de sueño como cabria esperar seguida del sabado. Dentro de la semana que se mantiene constante destaca el dia miercoles, osea justo la mitad de la semana donde quizas los usuarios tienden a dormir un poco mas para seguir con la semana de manera mas productiva EDIT #########
-
-############################## summary con las nuevas columnas de sleepDay_merged ######################################
-
+La diferencia entre los dias laborales y fines de semana se ve muy marcada. Domingo tiene el dia con mas horas de sueño como cabria esperar de un dia de descanso, seguido del sabado. Dentro de los dias laborales, que se mantienen muy constantes, destaca el dia miercoles, justo en mitad de la semana donde quizas los usuarios necesitan dormir un poco mas para seguir con la semana de manera mas productiva. 
+Si bien hay diferencias entre los dias el promedio se mantiene constante, por lo que se podria decir que hay una buena higiene de sueño entre los usuarios. Lo que contribuye a una vida mas sana y productiva.
 
 
-
-
-###### TIEMPO EN QUEDARSE DORMIDO ######## PARA QUE ? ##############
-
-
-####### cargo sleepday_merged y creo una columna con la diferencia de tiempo en cama y tiempo dormido para tener el tiempo que se han demorado los usuarios en quedarse dormidos.
-
-```
-sleepDay_merged <- sleepDay_merged %>%
-  mutate(TimeToFallAsleep = TotalTimeInBed - TotalMinutesAsleep)
-```
-
--	 Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
-
-
-
-
-
-
-##  Grafica de correlacion pasos totales y calorias 
-
-
-# Crear el gráfico de dispersión entre calorías y pasos totales
+## Gráfico de dispersión entre calorías y pasos totales
 
 ```
 ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
@@ -487,3 +468,6 @@ Promedio de pasos dados en 24 horas:
 
 En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de actividad que incluye tanto momentos de alta actividad como periodos de inactividad, ofreciendo oportunidades para promover una mayor actividad física y reducir el sedentarismo. EDIT : Esto va mas en conclusiones, esto es analisis.
 
+## sleep
+
+-	 Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
