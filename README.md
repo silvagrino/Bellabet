@@ -209,7 +209,7 @@ Si ocupare los dos meses en este caso, dado que la diferencia no es significativ
 
 ![](imagenes/daily/datarecolectadafechaSleep.png)
 
-También ocupare los dos meses en esta caso, hay regularidad en los datos.
+También ocupare los dos meses de las horas de sueño, hay regularidad en los datos.
 
 ## Creacion de columna para dia de la semana
 
@@ -301,6 +301,7 @@ hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y
 
 # 3. Análisis 
 
+### Daily
 
 ```
 summary(dailyActivity_merged2 %>%
@@ -311,28 +312,21 @@ summary(dailyActivity_merged2 %>%
 
 El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros. Estos datos indican un nivel bajo-moderado de actividad física diaria, con variabilidad entre los días en que los usuarios estaban más activos y aquellos en los que estuvieron menos activos.
 
-Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse.
+Además, los minutos de actividad intensa y moderada reflejan que, aunque la mayoría de los días los usuarios no participaron en actividades de alta intensidad, hubo momentos en los que sí lo hicieron, alcanzando hasta 210 minutos de actividad intensa en un solo día. Los minutos sedentarios promedio fueron altos, con una media cercana a los 991 minutos por día, lo que sugiere que los usuarios pasaron una parte significativa de su día sin moverse. Pero también hay qe considerar que los minutos sedentarios tambien son tiempo de sueño, lo que representa 419 minutos en promedio por dia (6,9 horas) como se expone en el analisis de horas de sueño.
 
 El gasto calórico medio fue de 2,304 calorías por día, lo que está en línea con un nivel moderado de actividad física. 
 
 
-### hourly 
+### Hourly 
  
-## Resumen
-
 
 <img src="imagenes/hourly/summaryhourly.png" alt="Descripción de la imagen" width="300">
 
 
-Se mantienen estables los datos en los 2 meses. Una media de pasos un poco mas elevada el 2do mes.
-
-
-######  CHAT GPT ######################
-
 Hay una diferencia de 1985 registros entre el 1er y 2do mes. Steps_2 destaca con un promedio y una mediana mas elevada respecto a Step_1. Diferencia que también se hace visible al observar el 3er cuartil. Por lo tanto los usuarios del 2do mes deberian registrar mas tiempo destinado a actividad mas vigorosa.
 
 
-#### Sleep
+### Sleep
 
 ```
 summary(sleepDay_merged      %>%
@@ -341,15 +335,15 @@ summary(sleepDay_merged      %>%
 ![](imagenes/daily/summarysleep.png)
 
 La mayoría de las personas duermen entre 6 y 8 horas (observando el 1er y 3er cuartil: 361 - 490 minutos).
-Gracias a la columna de `TimeToFallAsleep` podemos saber el tiempo que los usuarios estan en cama sin dormir. Esto puede considerar el tiempo que se demora el usuario en quedarse dormido asi como tambien tiempos de insomnio o el tiempo que el usuario demora en levantarse de la cama en la mañana. Aunque la mayoría de las personas parecen conciliar el sueño en menos de 30 minutos (observando los cuartiles), hay casos donde podrian presentarse problemas de conciliación del sueño o despertares nocturnos. También hay casos extremos que podrían reflejar insomnio o problemas para dormir. 
+Gracias a la columna de `TimeToFallAsleep` podemos saber el tiempo que los usuarios estan en cama sin dormir. Esto puede considerar el tiempo que se demora el usuario en quedarse dormido asi como tambien tiempos de insomnio o el tiempo que el usuario tarda en levantarse de la cama en la mañana. Aunque la mayoría de las personas parecen conciliar el sueño en menos de 30 minutos (observando los cuartiles), hay casos donde podrian presentarse problemas de conciliación del sueño o despertares nocturnos. También hay casos extremos que podrían reflejar insomnio o problemas para dormir. 
 
 En la mayoría de las columnas, los valores promedio (mean) están cerca de la mediana, indicando que los datos probablemente están distribuidos de manera relativamente uniforme, excepto en el tiempo para conciliar el sueño.
 
 Este análisis superficial sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
 
-## Promedio de pasos por dia de la semana #####################################################################################################
+## Promedio de pasos por dia de la semana 
 
-##  Daily
+###  Daily
 
 ```
 ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
@@ -364,19 +358,21 @@ ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
 
 ![](imagenes/daily/pasos_por_dias_de_la_semana_mes2.png)
 
-Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aun siendo martes,miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado, por lo tanto es un dato a tener en cuenta.
+Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aún siendo martes, miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado con una diferencia significativa.
 
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
 
-Calorias por dia de la semana
+## Calorias por dia de la semana
+
 Jueves el dia con menos calorias gastadas. Martes y sabado como los dias con mas calorias .
 Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera que no hay una relacion directa con dias laborales y fines de semana.
 
 ![](imagenes/daily/Caloriasporsemana.png)
 
 
-Minutos sedentarios por dia de la semana.
+### Minutos sedentarios por dia de la semana.
+
 Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con menos, seguido del sabado . Same .
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
@@ -384,15 +380,11 @@ Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con
 
 
 
-
-########################## EVALUAR #################################################################################
-
-
 ## SLEEP
 
 
 
-# Crear el gráfico de barras del tiempo promedio de sueño por día de la semana
+## Crear el gráfico de barras del tiempo promedio de sueño por día de la semana
 
 ```
 ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
