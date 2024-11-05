@@ -422,7 +422,10 @@ ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
 ![](imagenes/daily/Relacion_pasos_calorias.png)
 
 Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
-Aun asi hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado.
+
+Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
+
+Mientras mas pasos se den el el dia, mayor será el gasto calorico.
 EDIT########
 
 
@@ -441,7 +444,9 @@ plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textpositio
 ![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
 
 
-Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica, por lo tanto habra que medir la actividad fuera del horario laboral tipico. EDIT Hay que considerar los datos de actividad mas activa, y exponerlos a la informacion de las recomendaciones de actividad fisica. Desde ya se ve que esta al debe  EDIT.
+Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica,
+por lo tanto habra que medir la actividad fuera del horario laboral tipico.
+EDIT Hay que considerar los datos de actividad mas activa, y exponerlos a la informacion de las recomendaciones de actividad fisica. Desde ya se ve que esta al debe  EDIT.
 
 
 
@@ -456,11 +461,13 @@ A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
 Promedio de calorias dentro de 24 horas:
 ![](imagenes/hourly/promedio_calories_hourly.png)
 
+Como es de esperar en los horarios de sueño hay muy poco gasto energetico. Desde las 5 de la mañana al mediodia hay un aumento gradual y constante, para mantenerse dentro de las proximas horas del dia sin mayor fluctuacion. De 17:00 a 19:00 hras destacan como las horas con mayor gasto energetico, probablemente por que marca el fin de la jornada laboral y los usuarios se enfocan en otras actividades que traen consigo una mayor activación fisica. 
+
 # STEPS
 Promedio de pasos dados en 24 horas:
 ![](imagenes/hourly/promedio_hourly_steps.png)
 
-
+Los pasos comienzan a ser mas elevados cuando los usuarios despiertan hasta las 8:00, destacando esta hora como un pico en la mañana, probablemente por que hay mas movimiento para llegar al trabajo, luego baja gradualmente hasta las 12:00 donde vuelve a haber una ventana que se extiende hasta las 14:00 donde los pasos se elevan, marcando la hora de almuerzo. En la tarde se va aumentando gradualmente hasta alcanzar un maximo de pasos del dia a las 19:00, que se asume debe ser el horario de mas actividad . EDIT ################
 
 
 ###
