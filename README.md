@@ -427,7 +427,7 @@ Como cabria esperar hay una correlación positiva entre los pasos totales y las 
 Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
 
 
-# Imagen del grafico de piza y evidenciar el uso de R con su codigo.
+## Imagen del grafico de pizza y evidenciar el uso de R con su codigo.
 
 Graficaré el total de minutos de actividad de las 4 categorias: very active, fairly active, lightly active y sedentary
 
@@ -443,8 +443,13 @@ plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textpositio
 
 Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica,
 por lo tanto habra que medir la actividad fuera del horario laboral tipico.
+
+La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas.
+
 EDIT Hay que considerar los datos de actividad mas activa, y exponerlos a la informacion de las recomendaciones de actividad fisica. Desde ya se ve que esta al debe  EDIT.
 
+
+Hacer un promedio semanal de minutos de actividad ? o solo ocupar los minutos diarios calculados?
 
 
 A continuación analizare las variables dentro de 24 horas. 
@@ -453,14 +458,14 @@ A continuación analizare las variables dentro de 24 horas.
 # HOURLY 
 A QUE HORAS SE PRODUCEN MAS STEPS Y CALORIES?
 
-# CALORIES
+## CALORIES
 
 Promedio de calorias dentro de 24 horas:
 ![](imagenes/hourly/promedio_calories_hourly.png)
 
 Como es de esperar en los horarios de sueño hay muy poco gasto energetico. Desde las 5 de la mañana al mediodia hay un aumento gradual y constante, para mantenerse dentro de las proximas horas del dia sin mayor fluctuacion. De 17:00 a 19:00 hras destacan como las horas con mayor gasto energetico, probablemente por que marca el fin de la jornada laboral y los usuarios se enfocan en otras actividades que traen consigo una mayor activación fisica. 
 
-# STEPS
+## STEPS
 Promedio de pasos dados en 24 horas:
 ![](imagenes/hourly/promedio_hourly_steps.png)
 
