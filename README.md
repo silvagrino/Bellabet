@@ -405,7 +405,7 @@ ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
 ![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
 La diferencia entre los dias laborales y fines de semana se ve muy marcada. Domingo tiene el dia con mas horas de sueño como cabria esperar de un dia de descanso, seguido del sabado. Dentro de los dias laborales, que se mantienen muy constantes, destaca el dia miercoles, justo en mitad de la semana donde quizas los usuarios necesitan dormir un poco mas para seguir con la semana de manera mas productiva. 
-Si bien hay diferencias entre los dias el promedio se mantiene constante, por lo que se podria decir que hay una buena higiene de sueño entre los usuarios. Lo que contribuye a una vida mas sana y productiva.
+Si bien hay diferencias entre los dias el promedio se mantiene constante, por lo que se podria decir que hay una buena higiene de sueño entre los usuarios. 
 
 
 ## Gráfico de dispersión entre calorías y pasos totales
@@ -419,15 +419,12 @@ ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
        y = "Calorías") +
   theme_minimal()
 ```
+
 ![](imagenes/daily/Relacion_pasos_calorias.png)
 
-Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan aumenta el gasto calorico de los usuarios.
+Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan a traves del duia aumenta el gasto calorico de los usuarios.
 
 Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
-
-Mientras mas pasos se den el el dia, mayor será el gasto calorico.
-EDIT########
-
 
 
 # Imagen del grafico de piza y evidenciar el uso de R con su codigo.
