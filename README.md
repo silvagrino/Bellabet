@@ -446,6 +446,9 @@ por lo tanto habra que medir la actividad fuera del horario laboral tipico.
 
 La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas.
 
+osea de 21.4  a 42,8 minutos diarios de intensidad moderada. O de 10,7 a 21,4 minutos de intensidad vigorosa. 
+
+
 EDIT Hay que considerar los datos de actividad mas activa, y exponerlos a la informacion de las recomendaciones de actividad fisica. Desde ya se ve que esta al debe  EDIT.
 
 
