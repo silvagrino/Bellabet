@@ -346,6 +346,52 @@ En la mayoría de las columnas, los valores promedio (mean) están cerca de la m
 Este análisis superficial sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
 
 
+## grafico de pizza de minutos de actividad.
+
+Graficaré el total de minutos de actividad de las 4 categorias: very active, fairly active, lightly active y sedentary
+
+```
+plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
+  layout(title = 'Minutos de nivel de actividad',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+```
+
+![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
+
+
+Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica,
+por lo tanto habra que medir la actividad fuera del horario laboral tipico.
+
+La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas. Lo cual equivale a 21,4 a 42,8 minutos diarios de intensidad moderada o de 10,7 a 21,4 minutos de intensidad vigorosa. 
+
+
+Evaluar cuantos usuarios cumplen con ese promedio? eso seria copiar. como lo modifico? analizo otra cosa?
+
+
+## MINUTOS X SEMANA
+Actividad moderada 
+
+
+![](imagenes/daily/FairlyActiveMinutesporsemana.png)
+
+
+
+![](imagenes/daily/VeryActiveMinutesporsemana.png)
+
+
+
+
+## Minutos sedentarios por dia de la semana.
+
+Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con menos, seguido del sabado . Same .
+
+![](imagenes/daily/minutossedentariosporsemana.png)
+
+
+##################################################################### EDIT #########################################
+
+#  SEMANA
 
 ## Promedio de pasos por dia de la semana 
 
@@ -377,14 +423,7 @@ Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera
 ![](imagenes/daily/Caloriasporsemana.png)
 
 
-## Minutos sedentarios por dia de la semana.
 
-Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con menos, seguido del sabado . Same .
-
-![](imagenes/daily/minutossedentariosporsemana.png)
-
-
-##################################################################### EDIT #########################################
 
 
 ### SLEEP
@@ -427,27 +466,6 @@ Como cabria esperar hay una correlación positiva entre los pasos totales y las 
 Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
 
 
-## Imagen del grafico de pizza y evidenciar el uso de R con su codigo.
-
-Graficaré el total de minutos de actividad de las 4 categorias: very active, fairly active, lightly active y sedentary
-
-```
-plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
-  layout(title = 'Minutos de nivel de actividad',
-         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-```
-
-![](imagenes/daily/R_minutos_de_nivel_de_actividad.png)
-
-
-Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica,
-por lo tanto habra que medir la actividad fuera del horario laboral tipico.
-
-La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas. Lo cual equivale a 21,4 a 42,8 minutos diarios de intensidad moderada o de 10,7 a 21,4 minutos de intensidad vigorosa. 
-
-
-Evaluar cuantos usuarios cumplen con ese promedio? eso seria copiar. como lo modifico? analizo otra cosa?
 
 
 A continuación analizare las variables dentro de 24 horas. 
