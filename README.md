@@ -375,7 +375,7 @@ En promedio los usuarios no alcanzan la recomendacion dada para minutos de activ
 
 ![](imagenes/daily/FairlyActiveMinutesporsemana.png)
 
-Todos los usuarios en pormedio alcanzan la recomendacion, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, ya que pueden deberse a efectos del stress laboral o bien actividad fisica concentrada. aproposito ( EDIT)
+Todos los usuarios en pormedio alcanzan la recomendación, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, ya que pueden deberse a efectos del stress laboral o bien actividad fisica concentrada. aproposito ( EDIT)
 
  10,7 a 21,4 minutos de intensidad vigorosa. 
 
@@ -384,13 +384,15 @@ Todos los usuarios en pormedio alcanzan la recomendacion, incluso superando el m
 
 
 Asi que comprobamos cuantos de los usuarios cumplen con las recomendaciones de actividad.
-
 ```
 active_users <- daily_activity %>%
   filter(FairlyActiveMinutes >= 21.4 | VeryActiveMinutes>=10.7) %>% 
   group_by(Id) %>% 
   count(Id) 
 ```
+
+En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 minutos de actividad física aeróbica de intensidad moderada y un mínimo de 75 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas semanalmente.
+
 
 ## Minutos sedentarios por dia de la semana.
 
@@ -399,7 +401,7 @@ Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
 
-##################################################################### EDIT #########################################
+############################## EDIT #########################################
 
 #  SEMANA
 
