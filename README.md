@@ -371,16 +371,26 @@ Evaluar cuantos usuarios cumplen con ese promedio? eso seria copiar. como lo mod
 
 ## MINUTOS X SEMANA
 Actividad moderada 
-
+En promedio los usuarios no alcanzan la recomendacion dada para minutos de actividad moderada de 21,3 a 42,8 minutos
 
 ![](imagenes/daily/FairlyActiveMinutesporsemana.png)
 
+Todos los usuarios en pormedio alcanzan la recomendacion, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, ya que pueden deberse a efectos del stress laboral o bien actividad fisica concentrada. aproposito ( EDIT)
 
+ 10,7 a 21,4 minutos de intensidad vigorosa. 
 
 ![](imagenes/daily/VeryActiveMinutesporsemana.png)
 
 
 
+Asi que comprobamos cuantos de los usuarios cumplen con las recomendaciones de actividad.
+
+```
+active_users <- daily_activity %>%
+  filter(FairlyActiveMinutes >= 21.4 | VeryActiveMinutes>=10.7) %>% 
+  group_by(Id) %>% 
+  count(Id) 
+```
 
 ## Minutos sedentarios por dia de la semana.
 
