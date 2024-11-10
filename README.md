@@ -366,13 +366,13 @@ por lo tanto habra que medir la actividad fuera del horario laboral tipico.
 La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas. Lo cual equivale a 21,4 a 42,8 minutos diarios de intensidad moderada o de 10,7 a 21,4 minutos de intensidad vigorosa. 
 
 
-### Minutos de actividad por dias de la semana
+## Minutos de actividad por dias de la semana
 
 ### Actividad moderada 
 
-En promedio los usuarios no alcanzan la recomendacion dada para minutos de actividad moderada de 21,3 a 42,8 minutos. El dia con mas actividad dentro de este rango es el sabado, pero en general los dias de la semana se mantienen estables.
-
 ![](imagenes/daily/FairlyActiveMinutesporsemana.png)
+
+En promedio los usuarios no alcanzan la recomendacion dada para minutos de actividad moderada de 21,3 a 42,8 minutos. El dia con mas actividad dentro de este rango es el sabado, pero en general los dias de la semana se mantienen estables.
 
 ### Actividad vigorosa
 
@@ -400,8 +400,6 @@ Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con
 
 
 ############################## EDIT #########################################
-
-#  SEMANA
 
 ## Promedio de pasos por dia de la semana 
 
