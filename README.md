@@ -444,15 +444,10 @@ plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textpositio
 Los minutos sedentarios son la gran mayoria con un 81,3%. Hay que considerar que estos datos se miden a traves de las 24 horas del dia, incluyendo las horas de sueño. Se infiere que la actividad en los dias laborales se asocia a trabajos de baja demanda fisica,
 por lo tanto habra que medir la actividad fuera del horario laboral tipico.
 
-La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas.
-
-osea de 21.4  a 42,8 minutos diarios de intensidad moderada. O de 10,7 a 21,4 minutos de intensidad vigorosa. 
+La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, o una combinación de ambas. Lo cual equivale a 21,4 a 42,8 minutos diarios de intensidad moderada o de 10,7 a 21,4 minutos de intensidad vigorosa. 
 
 
-EDIT Hay que considerar los datos de actividad mas activa, y exponerlos a la informacion de las recomendaciones de actividad fisica. Desde ya se ve que esta al debe  EDIT.
-
-
-Hacer un promedio semanal de minutos de actividad ? o solo ocupar los minutos diarios calculados?
+Evaluar cuantos usuarios cumplen con ese promedio? eso seria copiar. como lo modifico? analizo otra cosa?
 
 
 A continuación analizare las variables dentro de 24 horas. 
