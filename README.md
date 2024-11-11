@@ -394,12 +394,10 @@ En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 
 
 ## Minutos sedentarios por dia de la semana.
 
-Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves el dia con menos, seguido del sabado . Same .
-
+Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves y sabado los dias con menos minutos sedentarios. 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
-
-############################## EDIT #########################################
+Seria interesante ahora analizar los pasos por dia, para comprobar que esten los dias con mayor o menos actividad asociado a la actividad fisica(pasos) y no a factores de estres por ejemplo ( EDIT )
 
 ## Promedio de pasos por dia de la semana 
 
@@ -430,6 +428,7 @@ Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera
 
 ![](imagenes/daily/Caloriasporsemana.png)
 
+Minutos sedentarios por dia de la semana x  Promedio de pasos por dia de la semana x Calorias por dia de la semana
 
 
 
@@ -469,11 +468,9 @@ ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
 
 ![](imagenes/daily/Relacion_pasos_calorias.png)
 
-Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan a traves del duia aumenta el gasto calorico de los usuarios.
+Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan a traves del dia aumenta el gasto calorico de los usuarios.
 
 Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
-
-
 
 
 A continuación analizare las variables dentro de 24 horas. 
