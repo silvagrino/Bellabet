@@ -372,13 +372,14 @@ La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen a
 
 ![](imagenes/daily/FairlyActiveMinutesporsemana.png)
 
-En promedio los usuarios no alcanzan la recomendacion dada para minutos de actividad moderada de 21,3 a 42,8 minutos. El dia con mas actividad dentro de este rango es el sabado, pero en general los dias de la semana se mantienen estables.
+En promedio los usuarios no alcanzan la recomendacion diaria de minutos de actividad moderada (21,3 a 42,8 minutos) . El dia con mas actividad dentro de este rango es el sabado, los dias laborales de la semana se mantienen estables.
+
 
 ### Actividad vigorosa
 
 ![](imagenes/daily/VeryActiveMinutesporsemana.png)
 
-Todos los usuarios en promedio alcanzan la recomendación, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, ya que pueden deberse a efectos del stress laboral o bien actividad fisica focalizada. Analizaré la actividad por horas.
+Todos los usuarios en promedio alcanzan la recomendación, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, sabiendo asi si se produce esta actividad en horarios tipicamente laborales o fuera de la jornada. Analizaré mas adelante la actividad por horas.
 
 Compruebo cuantos de los usuarios cumplen con las recomendaciones de actividad de la OMS.
 
@@ -394,10 +395,11 @@ En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 
 
 ## Minutos sedentarios por dia de la semana.
 
-Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves y sabado los dias con menos minutos sedentarios. 
+Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves y sabado los dias con menos minutos sedentarios.
+
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
-Seria interesante ahora analizar los pasos por dia, para comprobar que esten los dias con mayor o menos actividad asociado a la actividad fisica(pasos) y no a factores de estres por ejemplo ( EDIT )
+Ahora analizaré los pasos por dia, para comprobar si los dias con mayor o menos actividad estan asociado a la actividad fisica(pasos) o a factores de estres por ejemplo (mayores pulsaciones, mayor gasto calorico)
 
 ## Promedio de pasos por dia de la semana 
 
@@ -420,6 +422,7 @@ Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que
 
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
 
+#################### COMO SE RELACIONA ESTO CON LO ANTERIOR? PASOS POR DIA DE LA SEMANA, MINUTOS SEDENTARIOS? ###########
 
 ## Calorias por dia de la semana
 
