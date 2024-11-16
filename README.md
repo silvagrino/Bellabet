@@ -398,14 +398,16 @@ En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 
 
 ## Minutos sedentarios por dia de la semana.
 
-Lunes destaca como el dia con mas minutos sedentarios. 
-Jueves es el dia con menos minutos sedentarios. Pero eso se relacionará con tener mas actividad fisica?
+Lunes destaca como el dia con mas minutos sedentarios y jueves como el dia con menos. Pero esto ultimo se relacionará con tener mas actividad fisica?
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
-Ahora analizaré los pasos por dia, para comprobar si los dias con mayor o menos actividad estan asociado a la actividad fisica(pasos) o a otros factores de estres por ejemplo (mayores pulsaciones, mayor gasto calorico)
+A continuación analizaré los pasos por dia, para comprobar si los dias con mayor o menor actividad estan asociados a la actividad fisica(pasos) o a otros factores de estres que podrian aumentar el gasto calorico(mayores pulsaciones, mayor gasto calorico)
 
-
+###############
+Esto podría deberse a que las calorías quemadas pueden incluir actividades sedentarias con bajo impacto, como ciertas formas de ejercicio ligero.
+Las calorías quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su relación con el sedentarismo.
+#################
 
 ## Promedio de pasos por dia de la semana 
 
@@ -487,7 +489,6 @@ En el gráfico de pasos, los datos están más concentrados en torno a valores b
 En el gráfico de calorías, aunque hay una tendencia negativa, los puntos están más dispersos, reflejando una mayor variabilidad en la relación entre estos indicadores.
 
 Pasos totales son una métrica más específica y directa para evaluar el impacto de la actividad física en el tiempo sedentario. Las calorías quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su relación con el sedentarismo.
-
 
 
 
