@@ -420,9 +420,8 @@ ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
 
 Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aún siendo martes, miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado con una diferencia significativa, ahora que esta siendo representado en valores promedios.
 
-El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios ocupan para descansar y prepararse para una nueva semana laboral.
+El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios descansan y se preparan para una nueva semana laboral.
 
-#################### COMO SE RELACIONA ESTO CON LO ANTERIOR? PASOS POR DIA DE LA SEMANA, MINUTOS SEDENTARIOS? ###########
 
 ## Calorias por dia de la semana
 
@@ -479,8 +478,35 @@ Como cabria esperar hay una correlación positiva entre los pasos totales y las 
 
 Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
 
-###### MISMO GRAFICO DE DEISPERSION PERO CON OTRAS DOS VARIABLES QUE DEBERIAN SER PROPORCIONALMENTE OPUESTAS. CALORIES Y SEDENTARY MINUTES. O STEPS Y SEDENTARY MINUTES.
-###### MIENTRAS SEAN COMPARADAS CON SEDENTARY MINUTES DEBERIA ANDAR BIEN.
+
+## Relación entre Calorías Quemadas y Minutos sedentarios
+
+![](imagenes/daily/RelaciónentreCaloríasQuemadasyMinutossedentarios.png)
+
+#### EDITAR ############
+
+3. Relación:
+Existe una tendencia negativa débil entre calorías quemadas y minutos sedentarios. Es decir, a medida que las calorías quemadas aumentan, los minutos sedentarios tienden a disminuir.
+La línea roja es una línea de regresión que representa esta relación negativa.
+El sombreado gris alrededor de la línea indica el intervalo de confianza, que muestra la incertidumbre sobre dónde se encuentra la verdadera relación.
+4. Detalles específicos:
+La mayoría de los puntos se concentran en un rango de 1000 a 2500 calorías quemadas y entre 500 a 1200 minutos sedentarios.
+Aunque hay cierta dispersión, se observa que en valores altos de calorías quemadas (>3000), los minutos sedentarios son generalmente más bajos.
+5. Interpretación general:
+Personas que queman más calorías parecen pasar menos tiempo sedentarias, lo cual es coherente con un estilo de vida más activo.
+Sin embargo, la relación no es muy fuerte, ya que hay puntos con alta variabilidad (por ejemplo, algunas personas queman pocas calorías pero aún tienen pocos minutos sedentarios, y viceversa).
+6. Posibles preguntas para explorar:
+¿Qué factores podrían influir en esta relación? Por ejemplo, actividades físicas específicas o características demográficas.
+¿La relación varía según otros factores, como el día de la semana o el género?
+¿Cuánto del tiempo sedentario incluye actividades que consumen calorías (como trabajo de pie)?
+
+
+## Relación entre Pasos totales y Minutos sedentarios
+
+![](imagenes/daily/RelaciónentrePasostotalesyMinutossedentarios.png)
+
+
+
 
 
 A continuación analizare las variables dentro de 24 horas. 
