@@ -434,6 +434,10 @@ Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera
 Minutos sedentarios por dia de la semana x  Promedio de pasos por dia de la semana x Calorias por dia de la semana
 
 
+Procedo a hacer una escalacion de los datos del 1-10 para que las diferencias sean mas notorias
+
+Destaca el ver que el dia jueves es el dia mas bajo en las 3 variables. Numero de data? pero lo saque en promedio? Ver el registro de data por dia de la semana.
+
 
 
 ### SLEEP
@@ -474,6 +478,9 @@ ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
 Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan a traves del dia aumenta el gasto calorico de los usuarios.
 
 Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
+
+###### MISMO GRAFICO DE DEISPERSION PERO CON OTRAS DOS VARIABLES QUE DEBERIAN SER PROPORCIONALMENTE OPUESTAS. CALORIES Y SEDENTARY MINUTES. O STEPS Y SEDENTARY MINUTES.
+###### MIENTRAS SEAN COMPARADAS CON SEDENTARY MINUTES DEBERIA ANDAR BIEN.
 
 
 A continuación analizare las variables dentro de 24 horas. 
