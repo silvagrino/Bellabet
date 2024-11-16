@@ -483,33 +483,63 @@ Hay que destacar la presencia de outliers. Por un lado estan quienes probablemen
 
 ![](imagenes/daily/RelaciónentreCaloríasQuemadasyMinutossedentarios.png)
 
-#### EDITAR ############
-
-3. Relación:
 Existe una tendencia negativa débil entre calorías quemadas y minutos sedentarios. Es decir, a medida que las calorías quemadas aumentan, los minutos sedentarios tienden a disminuir.
-La línea roja es una línea de regresión que representa esta relación negativa.
-El sombreado gris alrededor de la línea indica el intervalo de confianza, que muestra la incertidumbre sobre dónde se encuentra la verdadera relación.
-4. Detalles específicos:
 La mayoría de los puntos se concentran en un rango de 1000 a 2500 calorías quemadas y entre 500 a 1200 minutos sedentarios.
 Aunque hay cierta dispersión, se observa que en valores altos de calorías quemadas (>3000), los minutos sedentarios son generalmente más bajos.
-5. Interpretación general:
+
 Personas que queman más calorías parecen pasar menos tiempo sedentarias, lo cual es coherente con un estilo de vida más activo.
 Sin embargo, la relación no es muy fuerte, ya que hay puntos con alta variabilidad (por ejemplo, algunas personas queman pocas calorías pero aún tienen pocos minutos sedentarios, y viceversa).
-6. Posibles preguntas para explorar:
-¿Qué factores podrían influir en esta relación? Por ejemplo, actividades físicas específicas o características demográficas.
-¿La relación varía según otros factores, como el día de la semana o el género?
-¿Cuánto del tiempo sedentario incluye actividades que consumen calorías (como trabajo de pie)?
+
+
+
+########### ¿Qué factores podrían influir en esta relación? Por ejemplo, actividades físicas específicas o características demográficas.
+
+################# ¿Cuánto del tiempo sedentario incluye actividades que consumen calorías (como trabajo de pie)?
 
 
 ## Relación entre Pasos totales y Minutos sedentarios
 
 ![](imagenes/daily/RelaciónentrePasostotalesyMinutossedentarios.png)
 
+Existe una relación negativa clara entre pasos totales y minutos sedentarios. Es decir, a medida que los pasos totales aumentan, los minutos sedentarios tienden a disminuir de forma más consistente. La línea de regresión muestra esta tendencia negativa.
+El intervalo de confianza, sugiere que la relación observada es relativamente confiable en todo el rango.
+Para valores altos de pasos totales (>20,000), los minutos sedentarios son generalmente bajos (<500), lo que indica que las personas más activas tienden a pasar menos tiempo en actividades sedentarias.
+Hay algunas observaciones dispersas, como puntos con muchos pasos totales pero minutos sedentarios moderados o puntos con pocos pasos y también pocos minutos sedentarios.
+Este gráfico refuerza la idea de que un mayor nivel de actividad física (medido en pasos totales) está asociado con una reducción significativa en el tiempo sedentario.
+La relación negativa es más fuerte que en el gráfico de calorías quemadas vs. minutos sedentarios, lo que sugiere que los pasos totales podrían ser un mejor indicador de actividad física que las calorías quemadas.
+
+##### Comparaciones entre los dos graficos#################################################
+
+1. Relación entre calorías quemadas, pasos totales y minutos sedentarios:
+
+En el gráfico de calorías quemadas vs. minutos sedentarios, la relación es débil, lo que sugiere que las calorías quemadas no siempre están directamente ligadas a una reducción significativa del tiempo sedentario.
+
+En el gráfico de pasos totales vs. minutos sedentarios, la relación negativa es más pronunciada, indicando que caminar más (mayor cantidad de pasos) está mucho más relacionado con una reducción del tiempo sedentario.
+
+3. Observaciones clave:
+Pasos totales como mejor predictor de tiempo activo.
+ Aumentar los pasos totales parece tener un impacto más directo en la reducción de los minutos sedentarios que simplemente quemar calorías. Esto podría deberse a que las calorías quemadas pueden incluir actividades sedentarias con bajo impacto, como ciertas formas de ejercicio ligero.
+Distribución de los datos:
+En el gráfico de pasos, los datos están más concentrados en torno a valores bajos de pasos y altos minutos sedentarios, pero muestran un patrón claro de disminución.
+En el gráfico de calorías, aunque hay una tendencia negativa, los puntos están más dispersos, reflejando una mayor variabilidad en la relación entre estos indicadores.
+
+Pasos totales son una métrica más específica y directa para evaluar el impacto de la actividad física en el tiempo sedentario. Las calorías quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su relación con el sedentarismo.
 
 
 
+
+
+## entre las calorias y pasos totales hay una diferencia. Las calorias se pueden medir pero los usuarios generan mas variablilidad, los pasos son una medida mas consistente que se relaciona inversamente proporcional a los minutos sedentarios. Las calorias pueden variar mas por un factor demografico, etc (edit) pero los pasos totales son una medida que se relaciona mas estrechamente con reducir el sedentarismo. Aun asi las dos son medidas que se tienen qe tener en cuenta para poder medir la actividad diaria. 
+
+La combinación de estos dos gráficos destaca que los pasos totales son un mejor indicador para predecir el tiempo sedentario. Sin embargo, incorporar las calorías quemadas podría complementar el análisis, especialmente si se consideran actividades físicas que no necesariamente involucran caminar. Los análisis sugeridos ayudarán a identificar patrones más profundos y útiles para promover la actividad física y reducir el sedentarismo. 
+
+
+
+######  1. Relación entre calorías quemadas y pasos totales: ###################################
 
 A continuación analizare las variables dentro de 24 horas. 
+
+
 
 
 # HOURLY 
