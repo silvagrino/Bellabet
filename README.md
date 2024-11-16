@@ -438,47 +438,6 @@ Procedo a hacer una escalacion de los datos del 1-10 para que las diferencias se
 Destaca el ver que el dia jueves es el dia mas bajo en las 3 variables. Numero de data? pero lo saque en promedio? Ver el registro de data por dia de la semana.
 
 
-
-### SLEEP
-
-## Tiempo de sueño por dia de la semana
-
-```
-ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
-  geom_bar(stat = "identity", fill = "lightblue") +
-  geom_text(aes(label = round(AvgMinutesAsleep, 0)), vjust = -0.3, size = 3) + 
-  labs(title = "Promedio de minutos de sueño por día de la semana",
-       x = "Día de la semana",
-       y = "Minutos promedio de sueño") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
-
-La diferencia entre los dias laborales y fines de semana se ve muy marcada. Domingo tiene el dia con mas horas de sueño como cabria esperar de un dia de descanso, seguido del sabado. Dentro de los dias laborales, que se mantienen muy constantes, destaca el dia miercoles, justo en mitad de la semana donde quizas los usuarios necesitan dormir un poco mas para seguir con la semana de manera mas productiva. 
-Si bien hay diferencias entre los dias el promedio se mantiene constante, por lo que se podria decir que hay una buena higiene de sueño entre los usuarios. 
-
-
-## Gráfico de dispersión entre calorías y pasos totales
-
-```
-ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
-  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
-  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
-  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
-       x = "Total de Pasos",
-       y = "Calorías") +
-  theme_minimal()
-```
-
-![](imagenes/daily/Relacion_pasos_calorias.png)
-
-Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan a traves del dia aumenta el gasto calorico de los usuarios.
-
-Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
-
-
 ## Relación entre Calorías Quemadas y Minutos sedentarios
 
 ![](imagenes/daily/RelaciónentreCaloríasQuemadasyMinutossedentarios.png)
@@ -536,6 +495,56 @@ La combinación de estos dos gráficos destaca que los pasos totales son un mejo
 
 
 ######  1. Relación entre calorías quemadas y pasos totales: ###################################
+
+
+
+
+
+
+
+
+
+### SLEEP
+
+## Tiempo de sueño por dia de la semana
+
+```
+ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
+  geom_bar(stat = "identity", fill = "lightblue") +
+  geom_text(aes(label = round(AvgMinutesAsleep, 0)), vjust = -0.3, size = 3) + 
+  labs(title = "Promedio de minutos de sueño por día de la semana",
+       x = "Día de la semana",
+       y = "Minutos promedio de sueño") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
+
+La diferencia entre los dias laborales y fines de semana se ve muy marcada. Domingo tiene el dia con mas horas de sueño como cabria esperar de un dia de descanso, seguido del sabado. Dentro de los dias laborales, que se mantienen muy constantes, destaca el dia miercoles, justo en mitad de la semana donde quizas los usuarios necesitan dormir un poco mas para seguir con la semana de manera mas productiva. 
+Si bien hay diferencias entre los dias el promedio se mantiene constante, por lo que se podria decir que hay una buena higiene de sueño entre los usuarios. 
+
+
+## Gráfico de dispersión entre calorías y pasos totales
+
+```
+ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
+  geom_point(color = "blue", alpha = 0.6) +  # Puntos en el gráfico
+  geom_smooth(method = "lm", col = "red") +  # Línea de regresión
+  labs(title = "Relación entre Pasos Totales y Calorías Quemadas",
+       x = "Total de Pasos",
+       y = "Calorías") +
+  theme_minimal()
+```
+
+![](imagenes/daily/Relacion_pasos_calorias.png)
+
+Como cabria esperar hay una correlación positiva entre los pasos totales y las calorias gastadas. Mientras mas pasos se dan a traves del dia aumenta el gasto calorico de los usuarios.
+
+Hay que destacar la presencia de outliers. Por un lado estan quienes probablemente tienen un gasto energetico poco comun por tener un metabolismo basal mas elevado, gastar mas energia en reposo. Estos usuarios pueden tener pocos pasos totales marcados pero tener un gasto calorico elevado. Asi mismo hay otros outliers a los cuales les pasa lo contrario. Dan muchos pasos pero no tienen un gasto calorico muy elevado. Aun asi no hay que perder la perspectiva de que estos son casos aislados. 
+
+
+
 
 A continuación analizare las variables dentro de 24 horas. 
 
