@@ -376,7 +376,7 @@ La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen a
 
 ### Actividad moderada y Actividad vigorosa
 
-<img src="imagenes/daily/FairlyActiveMinutesporsemana.png" alt="Descripción de la imagen" width="440">  <img src="imagenes/daily/VeryActiveMinutesporsemana.png" alt="Descripción de la imagen" width="440">
+<img src="imagenes/daily/FairlyActiveMinutesporsemana.png" alt="Descripción de la imagen" width="400">  <img src="imagenes/daily/VeryActiveMinutesporsemana.png" alt="Descripción de la imagen" width="400">
 
 
 En promedio los usuarios no alcanzan la recomendacion diaria de minutos de actividad moderada (21,3 a 42,8 minutos) . El dia con mas actividad dentro de este rango es el sabado, los dias laborales de la semana se mantienen estables.
