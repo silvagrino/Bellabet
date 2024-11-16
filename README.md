@@ -346,7 +346,13 @@ En la mayoría de las columnas, los valores promedio (mean) están cerca de la m
 Este análisis superficial sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
 
 
+
+############ HACER SUMMARY A LOS MINUTOS DE ACTIVIDAD ############# 
+Minutos sedentarios por dia de la semana x  Promedio de pasos por dia de la semana x Calorias por dia de la semana ############################
+############################# CANTIDAD DE REGISTROS DE ESTAS 3 VARIABLES. Y AHI EVALUAR SI OCUPAR EL GRAFICO DE 3 X.X.X
+
 ## Grafico de pizza de minutos de actividad.
+### Daily
 
 Graficaré el total de minutos de actividad de las 4 categorias: very active, fairly active, lightly active y sedentary
 
@@ -368,16 +374,13 @@ La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen a
 
 ## Minutos de actividad por dias de la semana
 
-### Actividad moderada 
+### Actividad moderada y Actividad vigorosa
 
-![](imagenes/daily/FairlyActiveMinutesporsemana.png)
+<img src="imagenes/daily/FairlyActiveMinutesporsemana.png" alt="Descripción de la imagen" width="500">  <img src="imagenes/daily/VeryActiveMinutesporsemana.png" alt="Descripción de la imagen" width="500">
+
 
 En promedio los usuarios no alcanzan la recomendacion diaria de minutos de actividad moderada (21,3 a 42,8 minutos) . El dia con mas actividad dentro de este rango es el sabado, los dias laborales de la semana se mantienen estables.
 
-
-### Actividad vigorosa
-
-![](imagenes/daily/VeryActiveMinutesporsemana.png)
 
 Todos los usuarios en promedio alcanzan la recomendación, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, sabiendo asi si se produce esta actividad en horarios tipicamente laborales o fuera de la jornada. Analizaré mas adelante la actividad por horas.
 
@@ -395,15 +398,16 @@ En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 
 
 ## Minutos sedentarios por dia de la semana.
 
-Lunes y martes y domingo los dias con mas minutos sedentarios. Jueves y sabado los dias con menos minutos sedentarios.
+Lunes destaca como el dia con mas minutos sedentarios. 
+Jueves es el dia con menos minutos sedentarios. Pero eso se relacionará con tener mas actividad fisica?
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
-Ahora analizaré los pasos por dia, para comprobar si los dias con mayor o menos actividad estan asociado a la actividad fisica(pasos) o a factores de estres por ejemplo (mayores pulsaciones, mayor gasto calorico)
+Ahora analizaré los pasos por dia, para comprobar si los dias con mayor o menos actividad estan asociado a la actividad fisica(pasos) o a otros factores de estres por ejemplo (mayores pulsaciones, mayor gasto calorico)
+
+
 
 ## Promedio de pasos por dia de la semana 
-
-###  Daily
 
 ```
 ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
@@ -418,7 +422,7 @@ ggplot(avg_steps_per_day, aes(x = Weekday, y = AvgSteps)) +
 
 ![](imagenes/daily/pasos_por_dias_de_la_semana_mes2.png)
 
-Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Que como ya he comprobado es el dia con mas registros. Pero aún siendo martes, miercoles y jueves los dias con mas cantidad de registros por parte de los usuarios, destaca el dia sabado con una diferencia significativa, ahora que esta siendo representado en valores promedios.
+Podemos observar que el dia con mas pasos es el sabado, esto puede deberse a que los usuarios hagan mas actividades recreativas en este dia a diferencia de los dias laborales donde les puede resultar mas complicado. Durante lunes a viernes la cantidad de pasos se mantiene constante, destacando el dia martes como el 2do dia con mas pasos de la semana. Destaca el dia sabado con una diferencia significativa respecto a los otros dias de la semana.
 
 El dia domingo destaca como el dia con menos pasos probablemente porque es un dia que los usuarios descansan y se preparan para una nueva semana laboral.
 
