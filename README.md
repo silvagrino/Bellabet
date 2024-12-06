@@ -1,4 +1,4 @@
-## Escenario
+# Bellabet
 
 Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
@@ -7,13 +7,17 @@ La tarea del equipo: Analizar datos de dispositivos inteligentes para obtener in
 
 # 1. Preguntar
 
-Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
+Objetivo de la empresa: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
 
 Estos datos seran presentados a los stakeholders principales Urška Sršen y Sando Mur, miembros del equipo ejecutivo y stakeholders secundarios conformados por el equipo de análisis de marketing de Bellabeat.
 
+
 Se puede resumir la tarea por delante en 3 preguntas claves para desarrollar este analisis:
-1.¿Cuáles son algunas tendencias en el uso de dispositivos inteligentes?
+
+1.¿Cuáles son algunas tendencias presentes en el uso de dispositivos inteligentes?
+
 2.¿Cómo podrían aplicarse estas tendencias a los clientes de Bellabeat?
+
 3.¿Cómo podrían estas tendencias influir en la estrategia de marketing de Bellabeat?
 
 # 2. Preparar
@@ -23,7 +27,7 @@ Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obte
 Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
 
-## Para preparar los datos aplicaré un Enfoque ROCCC:
+## Para preparar los datos aplicaré un Enfoque "ROCCC":
 
 * **R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
@@ -44,14 +48,14 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 
 * Método de registro del peso: 5 usuarios ingresaron manualmente su peso y 3 lo registraron a través de un dispositivo wifi.
 
-* Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes no se puede considerar para hacer un analisis preciso con datos dispersos e inconsistentes.
+* Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes presenta datos dispersos e inconsistentes por lo que no se puede considerar para hacer un analisis preceiso.
 
-* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
+* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis consistente.
 
 
 # 3. Procesar 
 
-Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y teniendo en cuenta que podria darme mayores insgiht para compartir con la campaña de marketing, datos usables (EDIT)
+Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y los datos que podrian darme mayores insgiht para compartir con la campaña de marketing.
 Comprobaré cuantos ID's diferentes hay registrados en todos los dataset
 Para esto voy a usar `n_distinct()` para comprobar los id's unicos de cada dataset.
 
