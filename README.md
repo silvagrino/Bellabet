@@ -1,4 +1,4 @@
-# Bellabet
+## Escenario
 
 Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
@@ -7,17 +7,13 @@ La tarea del equipo: Analizar datos de dispositivos inteligentes para obtener in
 
 # 1. Preguntar
 
-Objetivo de la empresa: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
+Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar la estrategia de marketing para el crecimiento global de Bellabeat.
 
 Estos datos seran presentados a los stakeholders principales Urška Sršen y Sando Mur, miembros del equipo ejecutivo y stakeholders secundarios conformados por el equipo de análisis de marketing de Bellabeat.
 
-
 Se puede resumir la tarea por delante en 3 preguntas claves para desarrollar este analisis:
-
-1.¿Cuáles son algunas tendencias presentes en el uso de dispositivos inteligentes?
-
+1.¿Cuáles son algunas tendencias en el uso de dispositivos inteligentes?
 2.¿Cómo podrían aplicarse estas tendencias a los clientes de Bellabeat?
-
 3.¿Cómo podrían estas tendencias influir en la estrategia de marketing de Bellabeat?
 
 # 2. Preparar
@@ -27,7 +23,7 @@ Fuente de datos: Datos de 30 participantes del rastreador de fitness FitBit obte
 Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un periodo total de 2 meses con datos de actividad física, frecuencia cardíaca y monitoreo del sueño minuto a minuto.
 
 
-## Para preparar los datos aplicaré un Enfoque "ROCCC":
+## Para preparar los datos aplicaré un Enfoque ROCCC:
 
 * **R**eliable/Confiablilidad: Datos de 30 usuarios de FitBit que consintieron en la presentación de sus datos.
 
@@ -48,16 +44,15 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 
 * Método de registro del peso: 5 usuarios ingresaron manualmente su peso y 3 lo registraron a través de un dispositivo wifi.
 
-* Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes presenta datos dispersos e inconsistentes por lo que no se puede considerar para hacer un analisis preceiso.
+* Fechas de registro inconsistente. La Mayoría de los datos estan registrados en el 2do mes. El primer mes no se puede considerar para hacer un analisis preciso con datos dispersos e inconsistentes.
 
-* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis consistente.
+* La mayoria de los registros son de martes a jueves, lo que podría no ser suficiente para un análisis preciso.
 
 
 # 3. Procesar 
 
-Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y los datos que podrian darme mayores insgiht para compartir con la campaña de marketing.
-Comprobaré cuantos ID's diferentes hay registrados en todos los dataset
-Para esto voy a usar `n_distinct()` para comprobar los id's unicos de cada dataset.
+Primero seleccionaré los dataset con los que voy a trabajar, para esto tendre en cuenta la consistencia de datos, cantidad de usuarios y potenciales insgiht que podria darme para compartir con la campaña de marketing.
+Comprobaré cuantos ID's diferentes hay registrados en todos los dataset. Para esto usaré `n_distinct()` dandome como resultado los id's unicos de cada dataset.
 
 33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
 
@@ -69,10 +64,10 @@ Para esto voy a usar `n_distinct()` para comprobar los id's unicos de cada datas
 
 Debido a la poca cantidad de usuarios descartaré los dataset de frecuencia cardiaca y peso.
 
-Seleccionaré los dataset 
-"dailyActivity_merged" porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
-hourlyCalories_merged y hourlySteps_merged por que me dan el detalle de cada hora de calorias gastadas y pasos dados.
-"sleepDay_merged" para poder analizar el patron de sueño diario de los usuarios.
+Seleccionaré los dataset:
+-"dailyActivity_merged" porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
+-"hourlyCalories_merged" y "hourlySteps_merged" por que me dan el detalle de cada hora de calorias gastadas y pasos dados.
+-"sleepDay_merged" para poder analizar el patron de sueño diario de los usuarios.
 
 
 ## DAILY
@@ -221,7 +216,7 @@ También ocupare los dos meses de las horas de sueño, hay regularidad en los da
 
 ## Creacion de columna para dia de la semana
 
-Crearé una columna adicional para los días de la semana en todos el conjunto de datos.
+Crearé una columna adicional para los días de la semana en todos el conjunto de datos; "dataActivity", "hourlyCalories", "hourlySteps", "sleepDay"
 
 ### DAILY
 
@@ -230,39 +225,14 @@ dataActivity_sind_week2 <- dataActivity_sindistancia2 %>%
   mutate(Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
 ```
 
-### HOURLY
 
-```
-hourlyCalories_BIG <- hourlyCalories_BIG %>% 
-  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
-
-hourlySteps_BIG <- hourlySteps_BIG %>% 
-  mutate(Weekday = weekdays(as.Date(date, "%d/%m/%Y")))
-```
-
-### SLEEP
-
-```
-sleepDay_merged_week <- sleepDay_merged %>% 
-  mutate(Weekday = weekdays(as.Date(SleepDay, "%m/%d/%Y")))
-```
-
-Voy a comprobar cuantos registros hay para los dias de la semana ya que al llevar las tablas a tableau ya noto incongruencias
-
-Si bien trabajaré los datos en promedios, ya en las sumas de datos destaca una tendencia en los dias martes, miercoles y jueves en diferentes variables. 
-
-<img src="imagenes/daily/Sedentarismo_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Pasos_por_dias_de_la_semana.png" alt="Descripción de la imagen" width="300"> <img src="imagenes/daily/Calorias_por_semana.png" alt="Descripción de la imagen" width="300">
-
-¿Como es posible que martes y miercoles sean los dias con mas pasos y calorias gastadas y al mismo tiempo sean los dias con mas minutos sedentarios?
-Voy a comprobar los datos totales por dia de la semana para saber si esta fluctuacion se debe a una mayor cantidad de registros en esos dias especificos.
+## Cantidad de registros por día de la semana
 
 ```
 registros_por_dia_sleep <- sleepDay_merged_week %>%
   group_by(Weekday) %>%
   summarise(TotalRegistros = n())
 ```
-
-## Visualizar la cantidad de registros por día de la semana
 
 
 
@@ -285,7 +255,7 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemanasleep.png)
 
-Hay mas datos registrados los martes, miercoles y jueves, por esto se debe la diferencia en las tablas anteriores. Graficaré con promedios.
+Hay mas datos registrados los martes, miercoles y jueves. Graficaré con promedios.
 
 ## Creación de columnas de fecha y tiempo 
 
@@ -350,11 +320,6 @@ En la mayoría de las columnas, los valores promedio (mean) están cerca de la m
 Este análisis superficial sugiere que la mayoría de las personas tienen buenos hábitos de sueño, pero hay algunos casos extremos que podrían requerir más investigación.
 
 
-
-############ HACER SUMMARY A LOS MINUTOS DE ACTIVIDAD ############# 
-Minutos sedentarios por dia de la semana x  Promedio de pasos por dia de la semana x Calorias por dia de la semana ############################
-############################# CANTIDAD DE REGISTROS DE ESTAS 3 VARIABLES. Y AHI EVALUAR SI OCUPAR EL GRAFICO DE 3 X.X.X
-
 ## Grafico de pizza de minutos de actividad.
 ### Daily
 
@@ -388,7 +353,7 @@ En promedio los usuarios no alcanzan la recomendacion diaria de minutos de activ
 
 Todos los usuarios en promedio alcanzan la recomendación, incluso superando el maximo sugerido. Los dias con mayor actividad se producen en Lunes y martes, dias laborales. Habra que ver en que horario se producen estos minutos mas activos, sabiendo asi si se produce esta actividad en horarios tipicamente laborales o fuera de la jornada. Analizaré mas adelante la actividad por horas.
 
-Compruebo cuantos de los usuarios cumplen con las recomendaciones de actividad de la OMS.
+#### Compruebo cuantos de los usuarios cumplen con las recomendaciones de actividad de la OMS.
 
 ```
 active_users <- daily_activity %>%
@@ -402,16 +367,12 @@ En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 
 
 ## Minutos sedentarios por dia de la semana.
 
-Lunes destaca como el dia con mas minutos sedentarios y jueves como el dia con menos. Pero esto ultimo se relacionará con tener mas actividad fisica?
+Lunes destaca como el dia con mas minutos sedentarios y jueves como el dia con menos. Pero esto se relacionará con tener mas actividad fisica? Una relacion inversamente proporcional?
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
-A continuación analizaré los pasos por dia, para comprobar si los dias con mayor o menor actividad estan asociados a la actividad fisica(pasos) o a otros factores de estres que podrian aumentar el gasto calorico(mayores pulsaciones, mayor gasto calorico)
+A continuación analizaré los pasos por dia, para comprobar si los dias con mayor o menor actividad estan asociados a la actividad fisica(pasos) o a otros factores de estres que podrian aumentar el gasto calorico(mayores pulsaciones y/o mayor gasto calorico)
 
-###############
-Esto podría deberse a que las calorías quemadas pueden incluir actividades sedentarias con bajo impacto, como ciertas formas de ejercicio ligero.
-Las calorías quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su relación con el sedentarismo.
-#################
 
 ## Promedio de pasos por dia de la semana 
 
@@ -440,13 +401,6 @@ Lunes como el segundo dia con mas calorias. A que se puede deber esto? Pareciera
 
 ![](imagenes/daily/Caloriasporsemana.png)
 
-Minutos sedentarios por dia de la semana x  Promedio de pasos por dia de la semana x Calorias por dia de la semana
-
-
-Procedo a hacer una escalacion de los datos del 1-10 para que las diferencias sean mas notorias
-
-Destaca el ver que el dia jueves es el dia mas bajo en las 3 variables. Numero de data? pero lo saque en promedio? Ver el registro de data por dia de la semana.
-
 
 ## Relación entre Calorías Quemadas y Minutos sedentarios
 
@@ -459,11 +413,11 @@ Aunque hay cierta dispersión, se observa que en valores altos de calorías quem
 Personas que queman más calorías parecen pasar menos tiempo sedentarias, lo cual es coherente con un estilo de vida más activo.
 Sin embargo, la relación no es muy fuerte, ya que hay puntos con alta variabilidad (por ejemplo, algunas personas queman pocas calorías pero aún tienen pocos minutos sedentarios, y viceversa).
 
-
+Esto podría deberse a que las calorías quemadas pueden incluir actividades sedentarias con bajo impacto, como ciertas formas de ejercicio ligero.
+Las calorías quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su relación con el sedentarismo.
 
 ########### ¿Qué factores podrían influir en esta relación? Por ejemplo, actividades físicas específicas o características demográficas.
 
-################# ¿Cuánto del tiempo sedentario incluye actividades que consumen calorías (como trabajo de pie)?
 
 
 ## Relación entre Pasos totales y Minutos sedentarios
