@@ -1,3 +1,21 @@
+# Bellabet
+
+
+## Tabla de Contenidos:
+
+[1. Preguntar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#1-preguntar)
+
+[2. Preparar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#2-preparar)
+
+[3. Procesar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#3-procesar)
+
+[4. Analisis](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#3-an%C3%A1lisis)
+
+[5. Compartir](https://github.com/silvagrino/Harry-Potter-text-mining?tab=readme-ov-file#5-compartir)
+
+[6. Actuar](https://github.com/silvagrino/Harry-Potter-text-mining/tree/main?tab=readme-ov-file#6-actuar)
+
+
 ## Escenario
 
 Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnologia enfocada en el bienestar para mujeres que ha crecido rápidamente. 
@@ -277,7 +295,7 @@ hourlySteps_BIG$date <- as.Date(hourlySteps_BIG$ActivityHour, format = "%d/%m/%y
 ```
 
 
-# 3. Análisis 
+# 4. Análisis 
 
 ### Daily
 
@@ -539,3 +557,9 @@ En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de a
 ## sleep
 
 -	 Info de esto, respaldo para sacar alguna conclusión. Recomendación de tiempo de pantalla y recordatorio de la app para prepararse para irse a dormir. DONE
+
+
+
+# 5. Compartir
+
+# 6. Actuar
