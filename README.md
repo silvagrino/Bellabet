@@ -16,9 +16,6 @@
 [6. Actuar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#6-actuar)
 
 
-## Escenario
-
-
 
 Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnología enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
@@ -541,13 +538,13 @@ A continuación analizaré las variables dentro de 24 horas.
 ## CALORIES
 
 Promedio de calorías dentro de 24 horas:
-![](imagenes/hourly/promedio_calories_hourly.png)
+![](imagenes/hourly/caloriasporhora.png)
 
 Como es de esperar, en los horarios de sueño hay muy poco gasto energético. Desde las 5 de la mañana al mediodía hay un aumento gradual y constante, para mantenerse dentro de las próximas horas del día sin mayor fluctuación. De 17:00 a 19:00 horas destacan como las horas con mayor gasto energético, probablemente por qué marca el fin de la jornada laboral y los usuarios se enfocan en otras actividades que traen consigo una mayor activación física. 
 
 ## STEPS
 Promedio de pasos dados en 24 horas:
-![](imagenes/hourly/promedio_hourly_steps.png)
+![](imagenes/hourly/Pasosporhora.png)
 
 Los pasos comienzan a ser más elevados cuando los usuarios despiertan hasta las 8:00, destacando esta hora como un pico en la mañana, probablemente por qué hay más movimiento para llegar al trabajo, luego baja gradualmente hasta las 12:00 donde vuelve a haber una ventana que se extiende hasta las 14:00 donde los pasos se elevan, marcando la hora de almuerzo. En la tarde se va aumentando gradualmente hasta alcanzar un máximo de pasos del día a las 19:00, que se asume debe ser el horario de más actividad. EDIT ################
 
