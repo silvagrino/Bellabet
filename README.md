@@ -29,9 +29,10 @@ Objetivo del negocio: Analizar datos de Fitbit para obtener información y guiar
 Estos datos serán presentados a los stakeholders principales Urška Sršen y Sando Mur, miembros del equipo ejecutivo y stakeholders secundarios conformados por el equipo de análisis de marketing de Bellabeat.
 
 Se puede resumir la tarea por delante en 3 preguntas claves para desarrollar este análisis:
-1.¿Cuáles son algunas tendencias en el uso de dispositivos inteligentes?
-2.¿Cómo podrían aplicarse estas tendencias a los clientes de Bellabeat?
-3.¿Cómo podrían estas tendencias influir en la estrategia de marketing de Bellabeat?
+
+1. ¿Cuáles son algunas tendencias en el uso de dispositivos inteligentes?
+2. ¿Cómo podrían aplicarse estas tendencias a los clientes de Bellabeat?
+3. ¿Cómo podrían estas tendencias influir en la estrategia de marketing de Bellabeat?
 
 # 2. Preparar
 
@@ -71,20 +72,20 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 Primero seleccionaré los datasets con los que voy a trabajar, para esto tendré en cuenta la consistencia de datos, cantidad de usuarios y potenciales insgiht que podria darme para compartir con la campaña de marketing.
 Comprobaré cuantos ID's diferentes hay registrados en todos los datasets. Para esto usaré `n_distinct()` dandome como resultado los id's unicos de cada dataset.
 
-33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
+* 33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
 
-24 ID: minuteSleep_merged and sleepDay_merged
+* 24 ID: minuteSleep_merged and sleepDay_merged
 
-14 ID: heartrate_seconds_merged
+* 14 ID: heartrate_seconds_merged
 
-8 ID: weightLogInfo_merged
+* 8 ID: weightLogInfo_merged
 
 Debido a la poca cantidad de usuarios, descartaré los datasets de frecuencia cardiaca y peso.
 
 Seleccionaré los datasets:
--"dailyActivity_merged" porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
--"hourlyCalories_merged" y "hourlySteps_merged" por qué me dan el detalle de cada hora de calorias gastadas y pasos dados.
--"sleepDay_merged" para poder analizar el patrón de sueño diario de los usuarios.
+- "dailyActivity_merged" porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
+- "hourlyCalories_merged" y "hourlySteps_merged" por qué me dan el detalle de cada hora de calorias gastadas y pasos dados.
+- "sleepDay_merged" para poder analizar el patrón de sueño diario de los usuarios.
 
 
 ## DAILY
@@ -107,8 +108,6 @@ Para el 1.º mes hay 457 filas. Para el 2.º mes son 940 filas. La diferencia es
 Eliminaré los datos de distancia, son irrelevantes para mi ruta de análisis.
 
 ## HOURLY 
-
-#### exploratorio para hourly y sleepDay_merged
 
 
 Seleccionaré dos datasets para analizar la cantidad de actividad y energía gastada por horas del dia: calories y steps
@@ -138,15 +137,15 @@ Sin valores duplicados ni valores nulos. En la cantidad de ID hay de 33 a 34. En
 
 
 
-No eliminaré valores 0. No hay horas donde se gaste 0 calorías, siempre se está gastando algo y las horas en donde hay 0 pasos sirven para el analisis, saber cuando no hubo movimiento.
+No eliminaré valores 0. No hay horas donde se gaste 0 calorías, siempre hay un gasto calorico basal. Las horas en donde hay 0 pasos son parte del analisis, saber cuando no hubo movimiento.
 
 
 ## Sleep 
 
-Aplico las mismas funciones al dataset de horas de sueño.
-Se encuentran 3 duplicados, los cuales remuevo.
+Cargo `sleepday_merged` y aplico las mismas funciones al dataset de horas de sueño.
+Encuentro 3 duplicados, los cuales remuevo.
 
-Cargo `sleepday_merged` y creo una columna con la diferencia de tiempo en cama y tiempo dormido para obtener el tiempo que se han tardado los usuarios dormir.
+Creo una columna con la diferencia de tiempo en cama y tiempo dormido para obtener el tiempo que se han tardado los usuarios dormir.
 
 ```
 sleepDay_merged <- sleepDay_merged %>%
@@ -432,9 +431,6 @@ Sin embargo, la relación no es muy fuerte, ya que hay puntos con alta variabili
 
 Esto podría deberse a que las calorías quemadas pueden incluir actividades sedentarias con bajo impacto, como ciertas formas de ejercicio ligero.
 Las calorías quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su relación con el sedentarismo.
-
-########### ¿Qué factores podrían influir en esta relación? Por ejemplo, actividades físicas específicas o características demográficas.
-
 
 
 ## Relación entre Pasos totales y Minutos sedentarios
