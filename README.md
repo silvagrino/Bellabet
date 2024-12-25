@@ -636,12 +636,6 @@ La mayoría de los usuarios cumple con la recomendación semanal de actividad f�
 Aunque la mayoría de los usuarios supera las recomendaciones para actividad vigorosa, la actividad moderada no alcanza los niveles 
 diarios sugeridos (21,3 a 42,8 minutos). 
 
-### Recomendación:
-
-Es crucial fomentar sesiones cortas y frecuentes distribuidas durante la semana para reducir la
-concentración de actividad los sábados y promover una rutina más regular. Importancia de estrategias
- que incentiven una mayor participación.
-
 
 ### Relación entre Calorías Quemadas, Pasos Totales y Minutos Sedentarios 
 
@@ -659,14 +653,6 @@ El patrón de actividad refleja dos picos principales: uno matutino (alrededor d
 Sin embargo, el sábado es el día con mayor actividad, lo que indica la necesidad de promover la distribución de la actividad física durante toda 
 la semana.
 
-### Recomendaciones:
-
-*  Crear notificaciones para motivar movimiento tras periodos prolongados de inactividad.
-
-* Introducir mensajes de felicitaciones al alcanzar metas de pasos diarios (por ejemplo, 5k, 7k o 10k pasos).
-
-* Fomentar actividad consistente a lo largo de los días laborales.
-
 
 ### Patrón de Sueño por Día de la Semana
 
@@ -674,12 +660,8 @@ Los usuarios muestran diferencias claras en los patrones de sueño entre días l
  horas de sueño. Aunque en general hay buena higiene de sueño, hay que considerar que la muestra son solo 24 usuarios, por lo que hay que destacar que 
  algunos de ellos enfrentan dificultades para conciliar el sueño, particularmente durante los días laborales.
 
-* Recomendaciones 
-Incluyen implementar notificaciones que sugieran horarios para ir a dormir, ayudando a reducir el tiempo en cama sin dormir antes de 
-conciliar el sueño.
 
-
-### Conclusión General
+## Conclusión General
 
 El análisis muestra la importancia de estrategias personalizadas para mejorar la actividad física y el sueño de los usuarios. Indicadores como 
 los pasos totales y patrones diarios permiten identificar áreas de oportunidad y diseñar intervenciones efectivas. Al enfocar los esfuerzos en
@@ -689,3 +671,22 @@ los pasos totales y patrones diarios permiten identificar áreas de oportunidad 
 
 
 # 6. Actuar
+
+### Recomendación:
+
+Es crucial fomentar sesiones cortas y frecuentes distribuidas durante la semana para reducir la
+concentración de actividad los sábados y promover una rutina más regular. Importancia de estrategias
+ que incentiven una mayor participación.
+
+ ### Recomendaciones:
+
+*  Crear notificaciones para motivar movimiento tras periodos prolongados de inactividad.
+
+* Introducir mensajes de felicitaciones al alcanzar metas de pasos diarios (por ejemplo, 5k, 7k o 10k pasos).
+
+* Fomentar actividad consistente a lo largo de los días laborales.
+
+### Sleep Recomendaciones 
+
+Incluyen implementar notificaciones que sugieran horarios para ir a dormir, ayudando a reducir el tiempo en cama sin dormir antes de 
+conciliar el sueño.
