@@ -11,7 +11,7 @@
 
 [4. Análisis](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#4-an%C3%A1lisis)
 
-[5. Conclusión](https://github.com/silvagrino/prueba?tab=readme-ov-file#5-conclusi%C3%B3n)
+[5. Conclusión](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#5-conclusi%C3%B3n)
 
 [6. Actuar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#6-actuar)
 
