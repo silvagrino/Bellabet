@@ -9,7 +9,7 @@
 
 [3. Procesar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#3-procesar)
 
-[4. Analisis](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#3-an%C3%A1lisis)
+[4. Análisis](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#4-an%C3%A1lisis)
 
 [5. Conclusión](https://github.com/silvagrino/prueba?tab=readme-ov-file#5-conclusi%C3%B3n)
 
