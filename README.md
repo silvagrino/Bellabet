@@ -157,7 +157,7 @@ sleepDay_merged <- sleepDay_merged %>%
 ```
 
 
-## Numero de datos segun mes 
+## Numero de datos por mes 
 
 Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes. Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas.
 Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1.º mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
@@ -199,7 +199,7 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Solo ocuparé el 2.º mes, la diferencia de datos totales es grande. El 2.º mes tiene datos más consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso.
+Solo consideraré para mi analisis el 2.º mes, la diferencia de datos totales es grande. El 2.º mes tiene datos más consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso.
 
 ## HOURLY 
 
@@ -227,7 +227,7 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
 
 ![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
-Si ocupare los dos meses en este caso, dado que la diferencia no es significativa.
+Si voy a considerar para mi analisis para los dos meses en este caso, dado que la diferencia no es significativa.
 
 ### Sleep
 
@@ -310,7 +310,7 @@ summary(dailyActivity_merged2 %>%
 ![](imagenes/daily/summary_mes_2.png)
 
 
-El conjunto de datos dailyActivity_merged2 proporciona una visión detallada de los patrones de actividad física de los usuarios durante el 
+El conjunto de datos "dailyActivity_merged2" proporciona una visión detallada de los patrones de actividad física de los usuarios durante el 
 período registrado. En general, los usuarios lograron una media diaria de aproximadamente 7,638 pasos, con una distancia promedio de 5.49 kilómetros.
  Estos datos indican un nivel bajo-moderado de actividad física diaria.
 
@@ -358,10 +358,10 @@ Este análisis superficial sugiere que la mayoría de las personas tienen buenos
 requerir más investigación.
 
 
-## Gráfico de pizza de minutos de actividad.
+## Gráfico circular de minutos de actividad.
 ### Daily
 
-Graficaré el total de minutos de actividad de las 4 categorías: very active, fairly active, lightly active y sedentary
+Graficaré el total de minutos de actividad de las 4 categorías: **very active**, **fairly active**, **lightly active** y **sedentary**
 
 ```
 plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textposition = 'outside',textinfo = 'label+percent') %>%
@@ -460,7 +460,7 @@ Se mantienen las calorias en un rango equilibrado (2200-2356), existiendo poca d
 
 
 
-## Gráfico de dispersión entre calorías y pasos totales
+## Gráfico de dispersión **Calorías y Pasos totales**
 
 ```
 ggplot(dataActivity_sind_week2, aes(x = TotalSteps, y = Calories)) +
@@ -484,7 +484,7 @@ Hay que destacar la presencia de outliers. Por un lado, están quienes probablem
 
 
 
-## Relación entre Calorías Quemadas y Minutos sedentarios
+## Relación entre **Calorías Quemadas y Minutos sedentarios**
 
 ![](imagenes/daily/RelaciónentreCaloríasQuemadasyMinutossedentarios.png)
 
@@ -503,64 +503,27 @@ lo que diluye su relación con el sedentarismo.
 
 
 
-## Relación entre Pasos totales y Minutos sedentarios
+## Relación entre **Pasos totales y Minutos sedentarios**
 
 ![](imagenes/daily/RelaciónentrePasostotalesyMinutossedentarios.png)
 
 Existe una relación negativa clara entre pasos totales y minutos sedentarios. Es decir, a medida que los pasos totales aumentan, los minutos
  sedentarios tienden a disminuir de forma más consistente. La línea de regresión muestra esta tendencia negativa.
 El intervalo de confianza, sugiere que la relación observada es relativamente confiable en todo el rango.
-Para valores altos de pasos totales (>20,000), los minutos sedentarios son generalmente bajos (<500), lo que indica que las personas más activas
+Para valores altos de pasos totales (>15,000), los minutos sedentarios son generalmente bajos (<500), lo que indica que las personas más activas
  tienden a pasar menos tiempo en actividades sedentarias.
 Hay algunas observaciones dispersas, como puntos con muchos pasos totales, pero minutos sedentarios moderados o puntos con pocos pasos y también
  pocos minutos sedentarios.
 Este gráfico refuerza la idea de que un mayor nivel de actividad física (medido en pasos totales) está asociado con una reducción significativa 
 en el tiempo sedentario.
 La relación negativa es más fuerte que en el gráfico de calorías quemadas vs. minutos sedentarios, lo que sugiere que los pasos totales podrían 
-ser un mejor indicador de actividad física que las calorías quemadas.
+ser un mejor indicador de actividad física que las calorías quemadas
 
-##### Comparaciones entre los dos gráficos#################################################
+El análisis del gráfico de calorías quemadas vs. minutos sedentarios muestra una relación débil, lo que indica que las calorías quemadas no siempre están directamente asociadas con una reducción significativa del tiempo sedentario. Por otro lado, en el gráfico de pasos totales vs. minutos sedentarios, la relación negativa es mucho más pronunciada. Esto sugiere que aumentar la cantidad de pasos tiene un impacto más directo en reducir el sedentarismo que simplemente enfocarse en quemar calorías.
 
+Los pasos totales son una métrica más específica y confiable para evaluar la influencia de la actividad física en el tiempo sedentario. Mientras que las calorías quemadas pueden incluir factores como el metabolismo basal o actividades estáticas de bajo impacto (por ejemplo, yoga), los pasos se relacionan más estrechamente con el movimiento activo.
 
-1. Relación entre calorías quemadas, pasos totales y minutos sedentarios:
-
-En el gráfico de calorías quemadas vs. minutos sedentarios, la relación es débil, lo que sugiere que las calorías quemadas no siempre están 
-directamente ligadas a una reducción significativa del tiempo sedentario.
-
-En el gráfico de pasos totales vs. minutos sedentarios, la relación negativa es más pronunciada, indicando que caminar más (mayor cantidad de pasos)
- está mucho más relacionado con una reducción del tiempo sedentario.
-
-3. Observaciones clave:
-Pasos totales como mejor predictor de tiempo activo.
- Aumentar los pasos totales parece tener un impacto más directo en la reducción de los minutos sedentarios que simplemente quemar calorías.
-  Esto podría deberse a que las calorías quemadas pueden incluir actividades sedentarias con bajo impacto, como ciertas formas de ejercicio ligero.
-Distribución de los datos:
-En el gráfico de pasos, los datos están más concentrados en torno a valores bajos de pasos  [EDIT !!!!! CUANTO ES POCOS PASOS? MAS DE 10.000 ?] 
-y altos minutos sedentarios, pero muestran un patrón claro de disminución.
-En el gráfico de calorías, aunque hay una tendencia negativa, los puntos están más dispersos, reflejando una mayor variabilidad en la relación 
-entre estos indicadores.
-
-
-
-
-
- entre las calorías y pasos totales hay una diferencia. Las calorías se pueden medir, pero los usuarios generan más variabilidad,
-  los pasos son una medida más consistente que se relaciona inversamente proporcional a los minutos sedentarios. Las calorías pueden variar
-   más por un factor demográfico, genetico, metabolico, etc. pero los pasos totales son una medida que se relaciona más estrechamente con
-    reducir el sedentarismo. Aun así, las dos son medidas que se tienen que tener en cuenta para poder medir la actividad diaria. 
-
-La combinación de estos dos gráficos destaca que los pasos totales son un mejor indicador para predecir el tiempo sedentario. Sin embargo, 
-incorporar las calorías quemadas podría complementar el análisis, especialmente si se consideran actividades físicas que no necesariamente 
-involucran caminar. Los análisis sugeridos ayudarán a identificar patrones más profundos y útiles para promover la actividad física y reducir
- el sedentarismo. 
-
-
-# CONCLUSION ###############
-Pasos totales son una métrica más específica y directa para evaluar el impacto de la actividad física en el tiempo sedentario. Las calorías
- quemadas, aunque útiles, parecen incluir más factores (por ejemplo, metabolismo basal o actividades estáticas como yoga), lo que diluye su
-  relación con el sedentarismo.
-
-
+Además, las calorías quemadas pueden variar considerablemente debido a factores demográficos, genéticos o metabólicos, lo que las hace una medida más variable en comparación con los pasos totales. Aun así, ambas métricas son valiosas y complementarias para evaluar la actividad diaria, especialmente si se consideran actividades físicas que no necesariamente involucran caminar. Integrar ambas medidas puede ofrecer un análisis más completo y preciso del comportamiento sedentario y el impacto de la actividad física en la salud.
 
 
 
@@ -591,16 +554,13 @@ Si bien hay diferencias entre los días, el promedio se mantiene constante, por 
  los usuarios. 
 
 
-##  Variables calorias y pasos por hora del día
+##  Calorias y pasos por hora del día
 
+### CALORIES
 
-## HOURLY
+**Promedio de calorías por hora:** 
 
-## CALORIES
-
-Promedio de calorías por hora:
-
-![](imagenes/hourly/caloriasporhora.png
+![](imagenes/hourly/caloriasporhora.png)
 
 
 El gasto calórico marcado por las horas de sueño es más bajo en las primeras horas del día (00:00 a 05:00) y aumenta progresivamente conforme 
@@ -621,7 +581,7 @@ Un segundo pico en la tarde (alrededor de las 18:00).
 
 ## STEPS
 
-Promedio de pasos por hora:
+**Promedio de pasos por hora:**
 
 ![](imagenes/hourly/Pasosporhora.png)
 
@@ -663,8 +623,7 @@ El comportamiento es coherente con rutinas diarias típicas:
 
 
 
-
-### FINAL
+# 5. Conclusiones
 
 
 
@@ -728,6 +687,5 @@ los pasos totales y patrones diarios permiten identificar áreas de oportunidad 
  significativo en la salud y bienestar de sus usuarios.
 
 
-# 5. Compartir
 
 # 6. Actuar
