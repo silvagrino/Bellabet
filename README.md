@@ -1,5 +1,6 @@
 # Bellabet
 
+![](imagenes/portada1.png)
 
 ## Tabla de Contenidos:
 
