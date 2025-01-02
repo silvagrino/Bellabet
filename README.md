@@ -683,17 +683,17 @@ los pasos totales y patrones diarios permiten identificar áreas de oportunidad 
 
 # 6. Actuar
 
+### Recomendaciones:
+
 * Es crucial fomentar sesiones cortas y frecuentes distribuidas durante la semana para reducir la
 concentración de actividad los sábados y promover una rutina más regular. Ademas de la importancia de estrategias
  que incentiven una mayor participación.
-
-### Recomendaciones:
 
 *  Crear notificaciones para motivar movimiento tras periodos prolongados de inactividad.
 
 * Introducir mensajes de felicitaciones al alcanzar varias metas de pasos diarios, incentivando el alcanzarlas.
 
-* Fomentar actividad consistente a lo largo de los días laborales.
+* Fomentar actividad consistente a traves de notificaciones a lo largo de los días laborales para evitar largas jornadas estaticas. 
 
 ### Recomendaciones de sueño:
 
