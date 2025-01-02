@@ -167,14 +167,18 @@ sleepDay_merged <- sleepDay_merged %>%
 Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes.
 
 Para el 1er mes hay 457 filas.
+
 Para el 2do mes son 940 filas.
 
-Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1.º mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
+Evaluaré la diferencia en la cantidad de datos en los 2 datasets:
+
+1.º mes(3/12/16 al 4/11/16) y 2.º mes (4/12/16 al 5/12/16).
+
 Mediré los datos según mes de todos los datasets para saber con cuáles trabajaré.
 
 ### DAILY (dailyActivity_merged, dailyActivity_merged2)
 
-Hago merge de los meses para crear un único archivo.
+Hago merge de los 2 meses.
 
 ```
 dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
@@ -208,12 +212,12 @@ ggplot(data=dataActivity_SD_big, aes(x=ActivityDate))+
 
 ![](imagenes/daily/Data_recolectada_por_fecha.png)
 
-Solo consideraré para mi analisis el 2.º mes, la diferencia de datos totales es grande. El 2.º mes tiene datos más consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso.
+* Solo consideraré para mi analisis el 2.º mes, la diferencia de datos totales es grande. El 2.º mes tiene datos más consistentes. Ocupar el 1er mes me llevaria a un analisis impreciso.
 
 ## HOURLY 
 
 
-Como vi en el analisis exploratorio  hay una diferencia en la cantidad de filas (1.985) en los datos del 1er y el 2do mes.
+Como vi en el analisis exploratorio  hay una diferencia en la cantidad de filas (1.985 registros) en los datos del 1er y el 2do mes.
 Hago un merge de los datasets de calories y steps respectivamente.
 
 ```
@@ -236,14 +240,15 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
 
 ![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
-Si voy a considerar para mi analisis para los dos meses en este caso, dado que la diferencia no es significativa.
+* Si voy a considerar para mi analisis para los dos meses en este caso, dado que la diferencia no es significativa.
+
 
 ### Sleep
 
 
 ![](imagenes/daily/datarecolectadafechaSleep.png)
 
-También ocuparé los dos meses de las horas de sueño, hay consistencia y regularidad en los datos.
+* Asimismo, dedicaré los dos meses al análisis de los datos registrados durante las horas de sueño, los cuales presentan consistencia y regularidad.
 
 ## Creación de columna para día de la semana
 
@@ -286,11 +291,11 @@ ggplot(data=registros_por_dia, aes(x=reorder(Weekday, -TotalRegistros), y=TotalR
 
 ![](imagenes/daily/Cantidadededatostotalesdiasemanasleep.png)
 
-Hay más datos totales registrados los martes, miércoles y jueves. Graficaré con promedios para minimizar el sesgo en los resultados por esta diferencia.
+*  Hay más datos totales registrados los martes, miércoles y jueves. Graficaré con promedios para minimizar el sesgo en los resultados por esta diferencia.
 
 ## Creación de columnas de fecha y tiempo 
 
-Para poder preparar las visualizaciones donde pueda analizar cada hora del día primero tengo que dividir la columna de fecha y tiempo de los dataset "hourly"
+Para preparar las visualizaciones donde pueda analizar cada hora del día primero tengo que dividir la columna de fecha y tiempo de los dataset "hourly"
 
 ### Hourly
 
@@ -340,7 +345,10 @@ En resumen, dailyActivity_merged2 indica que los usuarios tienen un patrón de a
 <img src="imagenes/hourly/summaryhourly.png" alt="Descripción de la imagen" width="300">
 
 
-Hay una diferencia de 1.985 registros entre el 1.er y 2.º mes. Steps_2 destaca con un promedio y una mediana más elevada respecto a Step_1. 
+Hay una diferencia de 1.985 registros entre el 1.er y 2.º mes. 
+
+Steps_2 destaca con un promedio y una mediana más elevada respecto a Step_1. 
+
 Diferencia que también se hace visible al observar el 3.er cuartil. Por lo tanto, los usuarios del 2.º mes deberían registrar más tiempo 
 destinado a actividad más vigorosa.
 
@@ -383,9 +391,8 @@ plot_ly(percentage, labels = ~level, values = ~minutes, type = 'pie',textpositio
 
 
 Los minutos sedentarios son la gran mayoría con un 81,3%. Hay que considerar que estos datos se miden a través de las 24 horas del día,
- incluyendo las horas de sueño. Se infiere que la actividad en los días laborales se asocia a trabajos de baja demanda física,
-por lo tanto, habrá que medir la actividad fuera del horario laboral típico.
-
+ incluyendo las horas de sueño.
+ 
 La Organización Mundial de la Salud (OMS) recomienda que los adultos realicen al menos 150 a 300 minutos de actividad física aeróbica de
  intensidad moderada a la semana. También se puede realizar un mínimo de 75 a 150 minutos de actividad física aeróbica de intensidad vigorosa, 
  o una combinación de ambas. Lo cual equivale a 21,4 a 42,8 minutos diarios de intensidad moderada o de 10,7 a 21,4 minutos de intensidad vigorosa. 
@@ -404,10 +411,7 @@ dentro de este rango es el sábado, los días laborales de la semana se mantiene
 
 En cuanto a la actividad vigorosa (VeryActiveMinutes) todos los usuarios en promedio alcanzan la recomendación, incluso superando el máximo sugerido. Los días con mayor actividad se producen los lunes
  y martes. Habrá que ver en que horario se producen estos minutos más activos, sabiendo así si se produce esta actividad en
-  horarios típicamente laborales o fuera de la jornada. Analizaré más adelante la actividad por horas.
-
-
-
+  horarios típicamente laborales o fuera de la jornada. Analizaré más adelante la actividad por horas para ver el detalle en este prospecto.
 
 
 #### Compruebo cuantos de los usuarios cumplen con las recomendaciones de actividad de la OMS.
@@ -425,8 +429,7 @@ En el dataset hay 30 usuarios que cumplen con el criterio de al menos tener 150 
 
 ## Minutos sedentarios por día de la semana.
 
-Lunes destaca como el día con más minutos sedentarios y jueves como el día con menos. ¿Pero esto se relacionará con tener más actividad física? 
-¿Una relación inversamente proporcional?
+Lunes destaca como el día con más minutos sedentarios y jueves como el día con menos. Será necesario analizar cómo se relaciona esta variable con las demás para comprender su vínculo con la actividad física.
 
 ![](imagenes/daily/minutossedentariosporsemana.png)
 
@@ -556,9 +559,9 @@ ggplot(avg_sleep_per_day, aes(x = Weekday, y = AvgMinutesAsleep)) +
 
 ![](imagenes/daily/Sueño_por_dia_de_la_semana.png)
 
-La diferencia entre los días laborales y fines de semana se ve muy marcada. Domingo tiene el día con más horas de sueño como cabria esperar
- de un día de descanso, seguido del sábado. Dentro de los días laborales, que se mantienen muy constantes, destaca el día miércoles, justo en 
- mitad de la semana, donde quizás los usuarios necesitan dormir más para seguir con el ritmo laboral dentro de la semana. 
+La diferencia entre los días laborales y fines de semana se ve muy marcada. Domingo es el día con más horas de sueño como cabria esperar
+ de un día de descanso, seguido del sábado. Entre los días laborales, que se mantienen muy constantes, destaca el día miércoles, justo en 
+ mitad de la semana.
 Si bien hay diferencias entre los días, el promedio se mantiene constante, por lo que se podría decir que hay una buena higiene de sueño entre
  los usuarios. 
 
@@ -568,6 +571,7 @@ Si bien hay diferencias entre los días, el promedio se mantiene constante, por 
 ### CALORIES
 
 **Promedio de calorías por hora:** 
+
 
 ![](imagenes/hourly/caloriasporhora.png)
 
@@ -582,15 +586,17 @@ A las 18:00 horas, el promedio alcanza 119.14 calorías/hora, lo que sugiere alt
 A partir de las 19:00 horas, el gasto calórico comienza a descender gradualmente, alcanzando niveles bajos durante la noche.
 
 
-Puntos más altos:
+* Puntos más altos:
 
 Un primer pico en la mañana (alrededor de las 12:00).
+
 Un segundo pico en la tarde (alrededor de las 18:00).
 
 
 ## STEPS
 
 **Promedio de pasos por hora:**
+
 
 ![](imagenes/hourly/Pasosporhora.png)
 
@@ -599,11 +605,11 @@ Se observa un incremento significativo a partir de las 06:00 horas, alcanzando u
 baja a las 15:00 horas
 Después de las 20:00 horas, los pasos comienzan a disminuir gradualmente, con una notable reducción hacia la noche.
 
-Primer pico máximo:
+* Primer pico máximo:
 
 A las 12:00 horas, el promedio alcanza 534.3 pasos/hora, coincidiendo con alta actividad física o movimiento relacionado con tareas diarias.
 
-Segundo pico máximo:
+* Segundo pico máximo:
 
 A las 19:00 horas, el promedio alcanza 554.9 pasos/hora, indicando un segundo período de alta actividad, posiblemente por ejercicio vespertino 
 o desplazamientos.
@@ -634,10 +640,6 @@ El comportamiento es coherente con rutinas diarias típicas:
 
 # 5. Conclusión
 
-
-
-
-# Conclusiones del Análisis de Datos de la App de Bellabeat
 
 ### Actividad Física: Moderada y Vigorosa
 
@@ -681,7 +683,7 @@ los pasos totales y patrones diarios permiten identificar áreas de oportunidad 
 
 # 6. Actuar
 
-Es crucial fomentar sesiones cortas y frecuentes distribuidas durante la semana para reducir la
+* Es crucial fomentar sesiones cortas y frecuentes distribuidas durante la semana para reducir la
 concentración de actividad los sábados y promover una rutina más regular. Ademas de la importancia de estrategias
  que incentiven una mayor participación.
 
