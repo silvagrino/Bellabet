@@ -674,21 +674,19 @@ los pasos totales y patrones diarios permiten identificar áreas de oportunidad 
 
 # 6. Actuar
 
-### Recomendación:
-
 Es crucial fomentar sesiones cortas y frecuentes distribuidas durante la semana para reducir la
-concentración de actividad los sábados y promover una rutina más regular. Importancia de estrategias
+concentración de actividad los sábados y promover una rutina más regular. Ademas de la importancia de estrategias
  que incentiven una mayor participación.
 
- ### Recomendaciones:
+### Recomendaciones:
 
 *  Crear notificaciones para motivar movimiento tras periodos prolongados de inactividad.
 
-* Introducir mensajes de felicitaciones al alcanzar metas de pasos diarios (por ejemplo, 5k, 7k o 10k pasos).
+* Introducir mensajes de felicitaciones al alcanzar varias metas de pasos diarios, incentivando el alcanzarlas.
 
 * Fomentar actividad consistente a lo largo de los días laborales.
 
-### Sleep Recomendaciones 
+### Recomendaciones de sueño:
 
-Incluyen implementar notificaciones que sugieran horarios para ir a dormir, ayudando a reducir el tiempo en cama sin dormir antes de 
+Implementar notificaciones que sugieran horarios para ir a dormir, ayudando a reducir el tiempo en cama sin dormir antes de 
 conciliar el sueño.
