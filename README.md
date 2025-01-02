@@ -1,7 +1,7 @@
 # Bellabet
 
 
-![](imagenes/portada1.png)
+![](imagenes/portada1.jpg)
 
 ## Tabla de Contenidos:
 
