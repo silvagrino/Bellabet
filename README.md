@@ -21,7 +21,9 @@
 
 Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnología enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
+
 Su Objetivo es Convertirse en una de las compañías más grande en el mercado global de dispositivos inteligentes.
+
 La tarea del equipo: Analizar datos de dispositivos inteligentes para obtener información sobre el uso de estos dispositivos por parte de los consumidores y guiar la estrategia de marketing.
 
 # 1. Preguntar
@@ -73,7 +75,8 @@ Constituido por 11 archivos para el primer mes, 18 para el segundo, abarcando un
 # 3. Procesar 
 
 Primero seleccionaré los datasets con los que voy a trabajar, para esto tendré en cuenta la consistencia de datos, cantidad de usuarios y potencial conocimiento del actuar de los usuarios que podria darme para compartir con la campaña de marketing.
-Comprobaré cuantos ID's diferentes hay registrados en todos los datasets. Para esto usaré `n_distinct()` dandome como resultado los id's unicos de cada dataset.
+
+Comprobaré cuantos ID's diferentes hay registrados en todos los datasets. Para esto usaré `n_distinct()` entregandome como resultado los id's unicos de cada dataset.
 
 * 33 ID: dailyActivity_merged, dailyCalories_merged, dailyIntensities_merged, dailySteps_merged, hourlyCalories_merged, hourlyIntensities_merged, hourlySteps_merged, minuteCaloriesNarrow_merged, minuteCaloriesWide_merged, minuteIntensitiesNarrow_merged, minuteIntensitiesWide_merged, minuteMETsNarrow_merged, minuteStepsNarrow_merged and minuteStepsWide
 
@@ -83,13 +86,13 @@ Comprobaré cuantos ID's diferentes hay registrados en todos los datasets. Para 
 
 * 8 ID: weightLogInfo_merged
 
-### Debido a la poca cantidad de usuarios, descartaré los datasets de frecuencia cardiaca y peso.
+#### Debido a la poca cantidad de usuarios, descartaré los datasets de frecuencia cardiaca y peso.
 
 Seleccionaré los datasets:
 
 - "dailyActivity_merged" porque me entrega varios datos en un solo dataset, como lo son los minutos dependiendo de la actividad, calorias y pasos diarios 
 
-- "hourlyCalories_merged" y "hourlySteps_merged" por qué me dan el detalle de cada hora de calorias gastadas y pasos dados.
+- "hourlyCalories_merged" y "hourlySteps_merged" porque me dan el detalle de cada hora de calorias gastadas y pasos dados.
 
 - "sleepDay_merged" para poder analizar el patrón de sueño diario de los usuarios.
 
@@ -111,12 +114,12 @@ sum(is.na(dailyActivity_merged2))
 
 Para el 1.º mes hay 457 filas. Para el 2.º mes son 940 filas. La diferencia es significativa, son mucho menos datos en el 1er mes. No hay duplicados ni valores nulos.
 
-Eliminaré los datos de distancia, son irrelevantes para mi ruta de análisis.
+* Eliminaré los datos de distancia, son irrelevantes para mi ruta de análisis.
 
 ## HOURLY 
 
 
-Seleccionaré dos datasets para analizar la cantidad de actividad y energía gastada por horas del dia: calories y steps
+Seleccionaré dos datasets para analizar la cantidad de actividad y energía gastada por horas del dia: calories y steps, los cuales voy a renombrar.
 
 ```
 Calories_1 <- hourlyCalories_merged_3_12_16_4_11_16
@@ -136,7 +139,7 @@ Aplico un análisis exploratorio
  `class`
 ```
 
-Sin valores duplicados ni valores nulos. La cantidad de ID distintos son de 33 a 34. Entre los datos del 1er y el 2do mes una diferencia en la cantidad de filas de 1.985. La cual voy a analizar si es significativa al graficar la cantidad de datos totales por mes.
+Sin valores duplicados ni valores nulos. La cantidad de ID distintos son de 33 a 34. Entre los datos del 1er y el 2do mes una diferencia en la cantidad de filas de 1.985. Evaluaré si es significativa al graficar la cantidad de datos totales por mes.
 
 
 ![](imagenes/hourly/nrowshourly.png)
@@ -151,7 +154,7 @@ No eliminaré valores 0. No hay horas donde se gaste 0 calorías, siempre hay un
 Cargo `sleepday_merged` y aplico las mismas funciones al dataset de horas de sueño.
 Encuentro 3 duplicados, los cuales remuevo.
 
-Creo una columna con la diferencia de tiempo en cama y tiempo dormido para obtener el tiempo que se han tardado los usuarios dormir.
+Creo una columna con la diferencia de tiempo en cama y tiempo dormido para obtener el tiempo que se han tardado los usuarios en conciliar el sueño.
 
 ```
 sleepDay_merged <- sleepDay_merged %>%
@@ -161,7 +164,11 @@ sleepDay_merged <- sleepDay_merged %>%
 
 ## Numero de datos por mes 
 
-Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes. Para el 1er mes hay 457 filas. Para el 2do mes son 940 filas.
+Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes.
+
+Para el 1er mes hay 457 filas.
+Para el 2do mes son 940 filas.
+
 Evaluaré la diferencia en la cantidad de datos en los 2 datasets: 1.º mes(3/12/16 al 4/11/16) y 2do mes (4/12/16 al 5/12/16).
 Mediré los datos según mes de todos los datasets para saber con cuáles trabajaré.
 
