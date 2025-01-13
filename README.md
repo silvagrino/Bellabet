@@ -164,24 +164,25 @@ sleepDay_merged <- sleepDay_merged %>%
 
 ## Numero de datos por mes 
 
+Contabilizaré el numero de datos según mes de todos los datasets para saber cuáles me servirán para mi analisis.
+
 Como acabo de comprobar hay una diferencia significativa en dailyActivity_merged entre el 1er y 2do mes.
 
-Para el 1er mes hay 457 filas.
+- 1er mes: 457 filas.
 
-Para el 2do mes son 940 filas.
+- 2do mes: 940 filas.
 
 Evaluaré la diferencia en la cantidad de datos en los 2 datasets:
 
-1.º mes(3/12/16 al 4/11/16) y 2.º mes (4/12/16 al 5/12/16).
+**1.º mes(3/12/16 al 4/11/16) y 2.º mes (4/12/16 al 5/12/16).**
 
-Mediré los datos según mes de todos los datasets para saber con cuáles trabajaré.
 
 ### DAILY (dailyActivity_merged, dailyActivity_merged2)
 
 Hago merge de los 2 meses.
 
 ```
-dataActivity_SD_big <- merge(dataActivity_sindistancia, dataActivity_sindistancia2, all = TRUE)
+dataActivity_SD_big <- merge(dailyActivity_merged, dailyActivity_merged2, all = TRUE)
 ```
 
 Numeros Id's unicos por mes
@@ -192,8 +193,7 @@ n_distinct(dataActivity_sindistancia2$Id)
 
 Los Id's registrados en los meses son 33 para el 1.º mes y 35 para el 2.º. Por lo tanto, la diferencia de datos no se debe a que menos ID’s se hayan registrado.
 
-Graficaré los datos totales por fecha, por lo cual lo primero será comprobar el tipo de dato que tiene la columna fecha con `class()` .
-La cual es “character” por lo tanto, hay que convertirla.
+Compruebo el tipo de dato que tiene la columna fecha con la función `class()`, la cual es “character” por lo tanto, hay que convertirla.
 Hago merge de los dos meses y convierto la columna de fechas a tipo Date.
 
 ```
@@ -240,7 +240,7 @@ ggplot(data=hourlySteps_BIG, aes(x=date))+
 
 ![](imagenes/hourly/data_recolectada_por_fecha_hourly.png)
 
-* Si voy a considerar para mi analisis para los dos meses en este caso, dado que la diferencia no es significativa.
+* Si voy a considerar para mi analisis para los dos meses en este caso, dado que la diferencia no es mucha.
 
 
 ### Sleep
