@@ -17,6 +17,18 @@
 
 [6. Actuar](https://github.com/silvagrino/prueba/tree/main?tab=readme-ov-file#6-actuar)
 
+### Herramientas:
+
+* R : minería de texto, análisis y visualización.
+Librerías principales: 
+
+library(ggplot2) 
+library(tidyverse)   
+library(lubridate)    
+ibrary(janitor) 
+library(dplyr) 
+
+* Tableau : Vizualización
 
 
 Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnología enfocada en el bienestar para mujeres que ha crecido rápidamente. 
