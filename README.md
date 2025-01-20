@@ -33,8 +33,8 @@
 
 
 
-
-Bellabeat es una empresa fundada en 2013, es una compañía pequeña de tecnología enfocada en el bienestar para mujeres que ha crecido rápidamente. 
+## Bellabet
+ Es una empresa fundada en 2013, es una compañía pequeña de tecnología enfocada en el bienestar para mujeres que ha crecido rápidamente. 
 Dentro de sus productos destacan la App Bellabeat, Leaf, Time, Spring, y membresía Bellabeat.
 
 Su Objetivo es Convertirse en una de las compañías más grande en el mercado global de dispositivos inteligentes.
